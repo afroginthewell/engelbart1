@@ -15,18 +15,10 @@ Welcome to the COMP3053 - Software Development Workshop III course. This course 
 
 ## How-To
 
-This repository contains a `submodule` which contains some course-related materials. **Always remember to update the `submodule` otherwise you may miss important updates!**
-
 **Clone this repository**
 
 ```shell
-git clone --recursive https://github.com/comp3053/[your-group-name]
-```
-
-**Keep the `submodule` updated**
-
-```shell
-git submodule update --recursive --remote
+git clone https://github.com/comp3053/[your-group-name]
 ```
 
 **Fetch new changes**
