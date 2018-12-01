@@ -41,7 +41,7 @@ git push
 
 ## References & Resources
 
-Please refer to the `submodule` of your repository or access the repository directly [here](https://github.com/comp3053/COMP3053-Materials).
+Please refer to [iSpace](https://ispace.uic.edu.hk) for more information.
 
 ## Copyrights
 
