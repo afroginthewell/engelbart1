@@ -1,5 +1,5 @@
-# COMP3053 - [Your Group Name Here]
-This is the code and documentations of **[your group name here]**, COMP3053, Software Development Workshop III, BNU-HKBU United International College.
+# COMP3053 - [Engelbart]
+This is the code and documentations of **[Engelbart]**, COMP3053, Software Development Workshop III, BNU-HKBU United International College.
 
 ## Message from the Course Team
 **Please absolute keep your work SECRET before the course ends!**
