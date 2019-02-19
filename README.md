@@ -1,4 +1,4 @@
-# COMP3053 - [Engelbart]
+# COMP3053 - Engelbart
 This is the code and documentations of **[Engelbart]**, COMP3053, Software Development Workshop III, BNU-HKBU United International College.
 
 ## Message from the Course Team
