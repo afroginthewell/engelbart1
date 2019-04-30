@@ -7,16 +7,9 @@ import java.util.List;
 
 
 
-/**
- * PersonDao的具体实现类
- * @author lamp
- *
- */
 public class noteDaoiml implements noteDao{
 
-    /**
-     * 实现添加方法
-     */
+
     @Override
     public void add(Note p) throws SQLException {
         Connection conn = null;
@@ -31,15 +24,13 @@ public class noteDaoiml implements noteDao{
             ps.executeUpdate();
         }catch(SQLException e){
             e.printStackTrace();
-            throw new SQLException("添加数据失败");
+            throw new SQLException("add fail");
         }finally{
             DBUtils.close(null, ps, conn);
         }
     }
 
-    /**
-     * 更新方法
-     */
+ 
     @Override
     public void update(Note p) throws SQLException {
         Connection conn = null;
@@ -53,15 +44,13 @@ public class noteDaoiml implements noteDao{
             ps.executeUpdate();
         }catch(SQLException e){
             e.printStackTrace();
-            throw new SQLException("更新数据失败");
+            throw new SQLException("update fail");
         }finally{
             DBUtils.close(null, ps, conn);
         }        
     }
 
-    /**
-     * 删除方法
-     */
+ 
     @Override
     public void delete(int id) throws SQLException {
         Connection conn = null;
@@ -74,15 +63,13 @@ public class noteDaoiml implements noteDao{
             ps.executeUpdate();
         }catch(SQLException e){
             e.printStackTrace();
-            throw new SQLException(" 删除数据失败");
+            throw new SQLException("");
         }finally{
             DBUtils.close(null, ps, conn);
         }        
     }
 
-    /**
-     * 根据ID查询一个对象
-     */
+
     @Override
     public Note findById(int id) throws SQLException {
         Connection conn = null;
@@ -103,16 +90,14 @@ public class noteDaoiml implements noteDao{
             }
         }catch(SQLException e){
             e.printStackTrace();
-            throw new SQLException("根据ID查询数据失败");
+            throw new SQLException("find fail");
         }finally{
             DBUtils.close(rs, ps, conn);
         }
         return p;
     }
 
-    /**
-     * 查询所有数据
-     */
+ 
     @Override
     public List<Note> findAll() throws SQLException {
         Connection conn = null;
@@ -135,7 +120,7 @@ public class noteDaoiml implements noteDao{
             }
         }catch(SQLException e){
             e.printStackTrace();
-            throw new SQLException("查询所有数据失败");
+            throw new SQLException("find all fail");
         }finally{
             DBUtils.close(rs, ps, conn);
         }
