@@ -3,17 +3,20 @@ import java.util.Date;
 public class Note {
 	// Member variable
 	private String content;
-	private Date createDate;
+	private String createDate;
 	private int noteIndex;
 	
 	// Constructor
-	public Note(String content, Date createDate, int noteIndex) {
+	public Note(String content, String createDate, int noteIndex) {
 		super();
 		this.content = content;
 		this.createDate = createDate;
 		this.noteIndex = noteIndex;
 	}
-	
+	public Note() {
+		super();
+    // TODO Auto-generated constructor stub
+	  }
 	// Getter and Setter
 	public String getContent() {
 		return content;
@@ -21,10 +24,10 @@ public class Note {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getCreateDate() {
+	public String getCreateDate() {
 		return createDate;
 	}
-	public void setCreateDate(Date createDate) {
+	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
 	public int getNoteIndex() {
