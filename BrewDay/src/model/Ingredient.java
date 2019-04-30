@@ -1,17 +1,28 @@
+package model;
 
 public class Ingredient {
+	private int index;
 	private String name;
 	private double amount;
 	private String unit;
 	
 	// Constructor
-	public Ingredient(String name, double amount, String unit) {
+	public Ingredient(int index, String name, double amount, String unit) {
+		this.index = index;
 		this.name = name;
 		this.amount = amount;
 		this.unit = unit;
 	}
 	
-	// Getter and Setter
+	// Getter and Setter	
+	public int getindex() {
+		return index;
+	}
+
+	public void setindex(int index) {
+		this.index = index;
+	}
+	
 	public String getName() {
 		return name;
 	}

@@ -1,9 +1,10 @@
+package model;
 
 public class StorageIngredient extends Ingredient {
 	
 	// Constructor
-	public StorageIngredient(String name, double amount, String unit) {
-		super(name, amount, unit);
+	public StorageIngredient(int index, String name, double amount, String unit) {
+		super(index, name, amount, unit);
 	}
 	
 	// FUNCTIONS

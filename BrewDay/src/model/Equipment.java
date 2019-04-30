@@ -1,3 +1,4 @@
+package model;
 public class Equipment {
 	private int equipmentIndex;
 	private String name;

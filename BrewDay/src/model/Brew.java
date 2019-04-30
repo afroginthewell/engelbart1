@@ -1,3 +1,4 @@
+package model;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -50,32 +51,6 @@ public class Brew {
 		this.correspondingNoteIndex = correspondingNoteIndex;
 	}
 
-	// FUNCTIONS
-	public boolean implement(Recipe recipe, double batchSize, Equipment equipment) {
-		// Error handle: If batch size is smaller than 0, reject
-		if (batchSize <= 0)
-			return false;
-
-		// Error handle: If batch size is larger than avaliable capacity, reject
-		if (getCapacity(equipment) < batchSize) {
-			return false;
-		}
-		
-		// Convert recipe's percentage to absolute
-		
-		
-		// Write the note
-		
-		return true;
-	}
 	
-	public ArrayList<Recipe> recommendRecipe(double batchSize){
-		ArrayList<Recipe> rRecipeList = new ArrayList<Recipe>();
-		return rRecipeList;
-	}
-	
-	public double getCapacity(Equipment equipment) {
-		return equipment.getCapacity();
-	}
 	
 }
