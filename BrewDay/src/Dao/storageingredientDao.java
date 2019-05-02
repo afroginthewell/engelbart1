@@ -17,4 +17,6 @@ public interface storageingredientDao {
     
     
     public List<StorageIngredient> findAll()throws SQLException;
+    
+    public int getMaxIndex()throws SQLException;
 }

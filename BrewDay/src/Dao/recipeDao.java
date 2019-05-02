@@ -20,4 +20,6 @@ public interface recipeDao {
     
     
     public List<Recipe> findAll()throws SQLException;
+    
+    public int getMaxIndex()throws SQLException;
 }

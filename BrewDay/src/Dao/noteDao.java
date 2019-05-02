@@ -23,4 +23,6 @@ public interface noteDao {
     //ВщевЫљга
     public List<Note> findAll()throws SQLException;
     
+    public int getMaxIndex()throws SQLException;
+    
 } 

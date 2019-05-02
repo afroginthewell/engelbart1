@@ -9,6 +9,7 @@ import java.util.List;
 import DB.DBUtils;
 import Dao.recipeDao;
 import model.Recipe;
+import model.RecipeIngredient;
 
 
 
@@ -122,6 +123,41 @@ public class recipeDaoiml implements recipeDao{
             DBUtils.close(rs, ps, conn);
         }
         return Recipes;
+    }
+    
+    public int getMaxIndex() throws SQLException{
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Recipe p = null;
+        List<Recipe> Recipes = new ArrayList<Recipe>();
+        String sql = "select recipeindex,name,quantity,unit from recipe";
+        try{
+            conn = DBUtils.getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+            	p = new Recipe(rs.getInt(1),rs.getString(2),rs.getDouble(3),rs.getString(4));                    
+            	Recipes.add(p);
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+            throw new SQLException("find all fail");
+        }finally{
+            DBUtils.close(rs, ps, conn);
+        }
+        int max=0;
+        int current;
+        for(Recipe s:Recipes)
+        {
+        	current=s.getRecipeIndex();
+        	if(current>max)
+        	{
+        		max=current;
+        	}
+        	
+        }
+        return max;
     }
     
    

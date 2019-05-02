@@ -10,6 +10,7 @@ import java.util.List;
 import DB.DBUtils;
 import Dao.RecipeIngredientDao;
 import model.RecipeIngredient;
+import model.StorageIngredient;
 
 
 
@@ -151,6 +152,42 @@ public class RecipeingredientDaoiml implements RecipeIngredientDao{
             DBUtils.close(rs, ps, conn);
         }
         return RecipeIngredients;
+    }
+    
+    @Override
+    public int getMaxIndex() throws SQLException{
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        RecipeIngredient p = null;
+        List<RecipeIngredient> RecipeIngredients = new ArrayList<RecipeIngredient>();
+        String sql = "select recipeingredient_index,amount,unit,recipeindex,name from recipeingredient";
+        try{
+            conn = DBUtils.getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+            	p = new RecipeIngredient(rs.getInt(1),rs.getString(5),rs.getDouble(2),rs.getString(3),rs.getInt(4));                    
+            	RecipeIngredients.add(p);
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+            throw new SQLException("find all fail");
+        }finally{
+            DBUtils.close(rs, ps, conn);
+        }
+        int max=0;
+        int current;
+        for(RecipeIngredient s:RecipeIngredients)
+        {
+        	current=s.getindex();
+        	if(current>max)
+        	{
+        		max=current;
+        	}
+        	
+        }
+        return max;
     }
     
 }

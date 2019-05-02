@@ -20,4 +20,6 @@ public interface equipDao {
     
     
     public double findAll()throws SQLException;
+    
+    public int getMaxIndex()throws SQLException;
 }

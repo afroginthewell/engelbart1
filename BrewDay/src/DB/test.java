@@ -28,14 +28,21 @@ import controller.BrewController;
 public class test {	
 		public static void main(String[] args) throws SQLException {
 			
-			Brew bm = new Brew(2.0, "20-19-5-2-Testing1");
-			BrewView bv = new BrewView();
-			BrewController bc = new BrewController(bm, bv);
+//			Brew bm = new Brew(2.0, "20-19-5-2-Testing1");
+//			BrewView bv = new BrewView();
+//			BrewController bc = new BrewController(bm, bv);
+//			equipDao n=new equipDaoiml();
+//			Equipment z1=n.findById(1);
+//			
+//			List<Recipe> Recipes = bc.recommendRecipe(1.0);
+//			
+//			bc.implement(Recipes.get(1), 1.0, z1);
 			
-			List<Recipe> Recipes = bc.recommendRecipe(1.0);
-			for(Recipe z :Recipes){
-					System.out.print(z.getName()+"\n");
- }
+//			for(Recipe z :Recipes){
+//					System.out.print(z.getName()+"\n");
+//					
+// }
+			
 
 //		RecipeIngredientDao n=new RecipeingredientDaoiml();
 //		n.delete(1);
@@ -61,7 +68,8 @@ public class test {
 		
 		
 		
-//		storageingredientDao n=new storageingredientDaoiml();
+		storageingredientDao n=new storageingredientDaoiml();
+		System.out.print(n.getMaxIndex());
 //		StorageIngredient no=new StorageIngredient(1,"water",15.0,"L");
 //		StorageIngredient no1=new StorageIngredient(2,"malts",10.0,"g");
 //		StorageIngredient no2=new StorageIngredient(3,"hops",8.0,"g");

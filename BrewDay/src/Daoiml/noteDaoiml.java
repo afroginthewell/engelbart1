@@ -9,6 +9,7 @@ import java.util.List;
 import DB.DBUtils;
 import Dao.noteDao;
 import model.Note;
+import model.Recipe;
 
 
 
@@ -130,6 +131,47 @@ public class noteDaoiml implements noteDao{
             DBUtils.close(rs, ps, conn);
         }
         return notes;
+    }
+    
+    @Override
+    public int getMaxIndex() throws SQLException{
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Note p = null;
+        List<Note> notes = new ArrayList<Note>();
+        String sql = "select noteindex,content,createdate from note";
+        try{
+            conn = DBUtils.getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                p = new Note();
+                p = new Note();
+                p.setNoteIndex(rs.getInt(1));
+                p.setContent(rs.getString(2));
+                p.setCreateDate(rs.getString(3));
+                notes.add(p);
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+            throw new SQLException("find all fail");
+        }finally{
+            DBUtils.close(rs, ps, conn);
+        }
+        int max=0;
+        int current;
+        for(Note s:notes)
+        {
+        	current=s.getNoteIndex();
+        	if(current>max)
+        	{
+        		max=current;
+        	}
+        	
+        }
+        return max;
+
     }
 
 }

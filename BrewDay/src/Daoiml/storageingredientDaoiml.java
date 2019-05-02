@@ -120,5 +120,42 @@ public class storageingredientDaoiml implements storageingredientDao{
         return StorageIngredients;
     }
     
+    public int getMaxIndex() throws SQLException{
+    	Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        StorageIngredient p = null;
+        int max=0;
+        int current;
+        List<StorageIngredient> StorageIngredients = new ArrayList<StorageIngredient>();
+        String sql = "select indexstorage,name,amount,unit from storage_ingredient";
+        try{
+            conn = DBUtils.getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+            	p = new StorageIngredient(rs.getInt(1),rs.getString(2),rs.getDouble(3),rs.getString(4));                    
+            	StorageIngredients.add(p);
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+            throw new SQLException("find all fail");
+        }finally{
+            DBUtils.close(rs, ps, conn);
+        }
+        
+        for(StorageIngredient s:StorageIngredients)
+        {
+        	current=s.getindex();
+        	if(current>max)
+        	{
+        		max=current;
+        	}
+        	
+        }
+        return max;
+    	
+    }
+    
    
 }

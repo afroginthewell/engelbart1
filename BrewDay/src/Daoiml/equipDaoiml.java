@@ -9,6 +9,7 @@ import java.util.List;
 import DB.DBUtils;
 import Dao.equipDao;
 import model.Equipment;
+import model.Note;
 public class equipDaoiml implements equipDao{
 	@Override
     public void add(Equipment p) throws SQLException {
@@ -124,5 +125,43 @@ public class equipDaoiml implements equipDao{
         return totallcapacity;
     }
     
-   
+    @Override
+    public int getMaxIndex() throws SQLException{
+    	double totallcapacity=0;
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Equipment p = null;
+        List<Equipment> Equipments = new ArrayList<Equipment>();
+        String sql = "select Equipment_Index,name,capacity from equipment";
+        try{
+            conn = DBUtils.getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+            	p = new Equipment(rs.getInt(1),rs.getString(2),rs.getDouble(3)); ;                    
+            	Equipments.add(p);
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+            throw new SQLException("find all fail");
+        }finally{
+            DBUtils.close(rs, ps, conn);
+        }
+        for(Equipment z :Equipments){
+        	totallcapacity+=z.getCapacity();
+		}
+        int max=0;
+        int current;
+        for(Equipment s:Equipments)
+        {
+        	current=s.getEquipmentIndex();
+        	if(current>max)
+        	{
+        		max=current;
+        	}
+        	
+        }
+        return max;
+    }
 }
