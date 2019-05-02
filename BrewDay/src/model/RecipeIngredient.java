@@ -14,9 +14,6 @@ public class RecipeIngredient extends Ingredient {
 	public int getrecipeIndex() {
 		return recipeIndex;
 	}
-	// FUNCTIONS
-	boolean updateAmount(double changeAmount) {
-		return true;
-	}
+	
 	
 }

@@ -37,11 +37,5 @@ public class Equipment {
 		this.capacity = capacity;
 	}
 
-	// Member function
-	public boolean updateCapacity(double addCapacityVolumn) {
-		if (this.capacity + addCapacityVolumn < 0)
-			return false;
-		this.capacity = this.capacity + addCapacityVolumn;
-		return true;
-	}
+	
 }

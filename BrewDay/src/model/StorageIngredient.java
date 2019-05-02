@@ -7,12 +7,5 @@ public class StorageIngredient extends Ingredient {
 		super(index, name, amount, unit);
 	}
 	
-	// FUNCTIONS
-	public boolean addAmount(int ingredientIndex, double amount) {
-		return true;
-	}
 	
-	public boolean subtractAmount(int ingredientIndex, double amount) {
-		return true;
-	}
 }

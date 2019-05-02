@@ -49,12 +49,5 @@ public class Recipe {
 		this.unit = unit;
 	}
 	
-	// FUNCTION
-	boolean convertToAbsValue(double quantity) {
-		return true;
-	}
 	
-	boolean updateRecipes(int oldRecipeIndex, Recipe newRecipe) {
-		return true;
-	}
 }
