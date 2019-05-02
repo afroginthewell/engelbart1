@@ -18,12 +18,16 @@ public class EquipmentController {
 	// Member function
 		public boolean updateCapacity(double addCapacityVolumn) {
 			
+			equipDaoiml edi = new equipDaoiml();
+			
 			// Error Handle: Capacity cannot be negative value
 			if (model.getCapacity() + addCapacityVolumn < 0)
 				return false;
 			
 			// Update the capacity
 			model.setCapacity(model.getCapacity() + addCapacityVolumn); 
+			edi.update(model);
+			
 			return true;
 		}
 }

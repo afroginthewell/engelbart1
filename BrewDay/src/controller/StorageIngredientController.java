@@ -16,10 +16,30 @@ public class StorageIngredientController {
 	
 	// FUNCTIONS
 		public boolean addAmount(int ingredientIndex, double amount) {
+			storageingredientDaoiml si = new storageingredientDaoiml();
+
+			// Error Handle: add amount's value cannot be negative value
+			if (amount < 0)
+				return false;
+
+			// Set the amount to the new amount
+			model.setAmount(model.getAmount() + changeAmount);
+			si.update(model);
+
 			return true;
 		}
 		
 		public boolean subtractAmount(int ingredientIndex, double amount) {
+			storageingredientDaoiml si = new storageingredientDaoiml();
+
+			// Error Handle: add amount's value cannot be negative value
+			if (amount > 0)
+				return false;
+
+			// Set the amount to the new amount
+			model.setAmount(model.getAmount() - changeAmount);
+			si.update(model);
+
 			return true;
 		}
 }
