@@ -15,14 +15,7 @@ public class Ingredient {
 	}
 	
 	// Getter and Setter	
-	public int getindex() {
-		return index;
-	}
 
-	public void setindex(int index) {
-		this.index = index;
-	}
-	
 	public String getName() {
 		return name;
 	}

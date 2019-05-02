@@ -5,17 +5,15 @@ import java.util.Date;
 public class Brew {
 
 	private double batchSize; // Record the batch size this brew need
-	private Date date; // Record the brew time
+	private String date; // Record the brew time
 	private ArrayList<Integer> recommendedRecipeIndex; // Record the recipe recommended in this brew
 	private int correspondingNoteIndex; // Record this brew's corrsponding note
 
 	// Constructor
-	public Brew(double batchSize, Date date, ArrayList<Integer> recommendedRecipeIndex, int correspondingNoteIndex) {
+	public Brew(double batchSize, String date) {
 		super();
 		this.batchSize = batchSize;
 		this.date = date;
-		this.recommendedRecipeIndex = recommendedRecipeIndex;
-		this.correspondingNoteIndex = correspondingNoteIndex;
 	}
 
 	// Getter and Setter
@@ -27,11 +25,11 @@ public class Brew {
 		this.batchSize = batchSize;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
