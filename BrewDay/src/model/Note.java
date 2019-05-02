@@ -38,9 +38,5 @@ public class Note {
 		this.noteIndex = noteIndex;
 	}
 	
-	// Function
-	public boolean editNode(String newNote) {
-		this.content = newNote;
-		return true;
-	}
+	
 }
