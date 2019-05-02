@@ -30,6 +30,13 @@ public class Ingredient {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public int getindex() {
+		return index;
+	}
+
+	public void setindex(int index) {
+		this.index = index;
+	}
 
 	public double getAmount() {
 		return amount;

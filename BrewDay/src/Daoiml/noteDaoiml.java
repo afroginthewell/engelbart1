@@ -45,7 +45,7 @@ public class noteDaoiml implements noteDao{
             conn = DBUtils.getConnection();
             ps = conn.prepareStatement(sql);
             ps.setString(1, p.getContent());     
-            ps.setInt(4, p.getNoteIndex());
+            ps.setInt(2, p.getNoteIndex());
             ps.executeUpdate();
         }catch(SQLException e){
             e.printStackTrace();
