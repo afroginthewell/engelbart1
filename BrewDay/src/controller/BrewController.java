@@ -32,47 +32,47 @@ public class BrewController {
 	}
 
 	// FUNCTIONS
-//		public boolean implement(Recipe recipe, double batchSize, Equipment equipment) {
-//			
-//			// Create arraylist to store the data fetch from database
-//			ArrayList<StorageIngredient> SIList = new ArrayList<StorageIngredient>();
-//			
-//			// Implement the DAO object
-//			storageingredientDao sIDao = new storageingredientDaoiml();
-//			RecipeIngredientDao rIngDao = new RecipeingredientDaoiml();
-//			
-//			// Fetch data from database
-//			SIList = sIDao.findAll();
-//			
-//			// Error handle: If batch size is smaller than 0, reject
-//			if (batchSize <= 0)
-//				return false;
-//
-//			// Error handle: If batch size is larger than avaliable capacity, reject
-//			if (getCapacity(equipment) < batchSize) {
-//				return false;
-//			}
-//			
-//			// subtract the amount
-//			double amount = batchSize / recipe.getQuantity();
-//			ArrayList<RecipeIngredient> corrRIList = new ArrayList<RecipeIngredient>();
-//			corrRIList = rIngDao.findRecipeWithIndex(recipe.getRecipeIndex());
-//			for (RecipeIngredient ri: corrRIList) {
-//				double needAmount = ri.getAmount() * amount;
-//				for (StorageIngredient si: SIList) {
-//					// Fine the matched ingredient
-//					if(ri.getName().equals(si.getName())) {
-//						// Check if the Stored amount is larger than need amount
-//						si.setAmount(si.getAmount() - needAmount);
-//						sIDao.update(si);
-//					}
-//				} 
-//			}
-//			
-//			// Write the note
-//			
-//			return true;
-//		}
+		public boolean implement(Recipe recipe, double batchSize, Equipment equipment) throws SQLException {
+			
+			// Create arraylist to store the data fetch from database
+			ArrayList<StorageIngredient> SIList = new ArrayList<StorageIngredient>();
+			
+			// Implement the DAO object
+			storageingredientDao sIDao = new storageingredientDaoiml();
+			RecipeIngredientDao rIngDao = new RecipeingredientDaoiml();
+			
+			// Fetch data from database
+			SIList = (ArrayList<StorageIngredient>) sIDao.findAll();
+			
+			// Error handle: If batch size is smaller than 0, reject
+			if (batchSize <= 0)
+				return false;
+
+			// Error handle: If batch size is larger than avaliable capacity, reject
+			if (getCapacity(equipment) < batchSize) {
+				return false;
+			}
+			
+			// subtract the amount
+			double amount = batchSize / recipe.getQuantity();
+			ArrayList<RecipeIngredient> corrRIList = new ArrayList<RecipeIngredient>();
+			corrRIList = (ArrayList<RecipeIngredient>) rIngDao.findbyrecipe(recipe.getRecipeIndex());
+			for (RecipeIngredient ri: corrRIList) {
+				double needAmount = ri.getAmount() * amount;
+				for (StorageIngredient si: SIList) {
+					// Fine the matched ingredient
+					if(ri.getName().equals(si.getName())) {
+						// Check if the Stored amount is larger than need amount
+						si.setAmount(si.getAmount() - needAmount);
+						sIDao.update(si);
+					}
+				} 
+			}
+			
+			// Write the note
+			
+			return true;
+		}
 
 	public ArrayList<Recipe> recommendRecipe(double batchSize) throws SQLException {
 
