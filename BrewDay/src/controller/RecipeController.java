@@ -20,9 +20,42 @@ public class RecipeController {
 		this.model = model;
 		this.view = view;
 	}
-
+	
+	// Add recipe and Delete recipe
+	public void addRecipe(String name, double quantity, String unit, ArrayList<RecipeIngredient> recipeIngredientList) throws SQLException {
+		recipeDaoiml rdi = new recipeDaoiml();
+		// Handle for recipe
+		Recipe tempRecipe = new Recipe(rdi.getMaxIndex()+1, name, quantity, unit);
+		rdi.add(tempRecipe);
+		
+		// Handle for recipe ingredients
+		RecipeingredientDaoiml ridi = new RecipeingredientDaoiml();
+		
+		for (RecipeIngredient ri: recipeIngredientList) {
+			ri.setrecipeIndex(rdi.getMaxIndex() + 1);
+			ri.setindex(ridi.getMaxIndex() + 1);
+			ridi.add(ri);
+		}
+	}
+	
+	// Delete Recipe
+	public void deleteRecipe(int targetIndex) throws SQLException {
+		recipeDaoiml rdi = new recipeDaoiml();
+		RecipeingredientDaoiml ridi = new RecipeingredientDaoiml();
+		
+		// Delete the recipe ingredient first
+		ArrayList<RecipeIngredient> deleteRecipeIngredientList = new ArrayList<RecipeIngredient>();
+		deleteRecipeIngredientList = (ArrayList<RecipeIngredient>) ridi.findbyrecipe(targetIndex);
+		for(RecipeIngredient dri: deleteRecipeIngredientList) {
+			ridi.delete(dri.getindex());
+		}
+		
+		// Then we delete the recipe
+		rdi.delete(targetIndex);
+	}
+	
 	// Turing Complete
-	ArrayList<Double> convertToAbsValue(double quantity) throws SQLException {
+	public ArrayList<Double> convertToAbsValue(double quantity) throws SQLException {
 		RecipeingredientDaoiml ridi = new RecipeingredientDaoiml();
 		ArrayList<RecipeIngredient> recipeIngredientList = new ArrayList<RecipeIngredient>();
 		// To record converted value
@@ -36,7 +69,7 @@ public class RecipeController {
 		return convertedList; 
 	}
 
-	boolean updateRecipes(int oldRecipeIndex, Recipe newRecipe) throws SQLException {
+	public boolean updateRecipes(int oldRecipeIndex, Recipe newRecipe) throws SQLException {
 		// Implement the DAO object
 		recipeDao RecipeDAO = new recipeDaoiml();
 		RecipeDAO.update(newRecipe);
