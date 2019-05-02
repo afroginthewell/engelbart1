@@ -1,5 +1,9 @@
 package controller;
 
+import java.sql.SQLException;
+
+import Daoiml.equipDaoiml;
+
 import model.Equipment;
 import view.EquipmentView;
 
@@ -16,7 +20,7 @@ public class EquipmentController {
 	}
 	
 	// Member function
-		public boolean updateCapacity(double addCapacityVolumn) {
+		public boolean updateCapacity(double addCapacityVolumn) throws SQLException {
 			
 			equipDaoiml edi = new equipDaoiml();
 			

@@ -2,6 +2,9 @@ package controller;
 
 import model.RecipeIngredient;
 import view.RecipeIngredientView;
+
+import java.sql.SQLException;
+
 import Daoiml.RecipeingredientDaoiml;
 
 public class RecipeIngredientController {
@@ -16,7 +19,7 @@ public class RecipeIngredientController {
 	}
 
 	// FUNCTIONS
-	boolean updateAmount(double changeAmount) {
+	boolean updateAmount(double changeAmount) throws SQLException {
 
 		RecipeingredientDaoiml ri = new RecipeingredientDaoiml();
 
