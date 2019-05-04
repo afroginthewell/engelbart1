@@ -19,7 +19,10 @@ public interface equipDao {
     public Equipment findById(int id)throws SQLException;
     
     
-    public double findAll()throws SQLException;
+    public List<Equipment> findAll()throws SQLException;
     
     public int getMaxIndex()throws SQLException;
+
+
+	double getTotalCapacity() throws SQLException;
 }

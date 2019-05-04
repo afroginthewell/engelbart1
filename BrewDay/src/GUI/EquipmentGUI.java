@@ -5,6 +5,8 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -12,8 +14,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import controller.EquipmentController;
+import model.Equipment;
+
 public class EquipmentGUI extends JFrame{
-	public EquipmentGUI() {
+	public EquipmentGUI(Equipment m, EquipmentController c) throws SQLException {
 		this.setTitle("Equipment");
 		this.setSize(400,300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -29,49 +34,77 @@ public class EquipmentGUI extends JFrame{
 		p.add(p1);
 		
 		JPanel p2 = new JPanel();
+		
+		ArrayList<Equipment> equipList = new ArrayList<Equipment>();
+		equipList = c.updateView();
 		p2.setLayout(new GridLayout(3, 3, 20, 10)); 
-		JTextField equipment1 = new JTextField("Equipment 1");
-		equipment1.setEditable(false);
-		p2.add(equipment1);
+		for (Equipment i: equipList) {
+			// Name
+			JTextField equipmentName = new JTextField(i.getName());
+			equipmentName.setEditable(false);
+			p2.add(equipmentName);
+			// Button
+			JButton updateButton = new JButton("Update Equipment");
+			updateButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					boolean checkLegal = true;
+						new EquipmentUpdateGUI().setVisible(true);
+						EquipmentGUI.this.dispose();
+				}
+			});
+			p2.add(updateButton);
+			
+		}
 		
-		JButton updatebutton1 = new JButton("update");
-		updatebutton1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				boolean checkLegal = true;
-					new EquipmentUpdateGUI().setVisible(true);
-					EquipmentGUI.this.dispose();
-
-			}
-		});
-		p2.add(updatebutton1);
-		JTextField equipment2 = new JTextField("Equipment 2");
-		equipment2.setEditable(false);
-		p2.add(equipment2);
-		JButton updatebutton2 = new JButton("update");
+//		p2.setLayout(new GridLayout(3, 3, 20, 10)); 
+//		JTextField equipment1 = new JTextField("Equipment 1");
+//		equipment1.setEditable(false);
+//		p2.add(equipment1);
+//		// b1
+//		JButton updatebutton1 = new JButton("update");
+//		updatebutton1.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				boolean checkLegal = true;
+//					new EquipmentUpdateGUI().setVisible(true);
+//					EquipmentGUI.this.dispose();
+//
+//			}
+//		});
+//		
+//		p2.add(updatebutton1);
+		// b2
+//		JTextField equipment2 = new JTextField("Equipment 2");
+//		equipment2.setEditable(false);
+//		p2.add(equipment2);
+//		
+//		JButton updatebutton2 = new JButton("update");
+//		
+//		updatebutton1.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				boolean checkLegal = true;
+//					new EquipmentUpdateGUI().setVisible(true);
+//					EquipmentGUI.this.dispose();
+//
+//			}
+//		});
+//		p2.add(updatebutton2);
+//		JTextField equipment3 = new JTextField("Equipment 3");
+//		equipment3.setEditable(false);
+//		p2.add(equipment3);
+//		// b3
+//		JButton updatebutton3 = new JButton("update");
+//		updatebutton1.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				boolean checkLegal = true;
+//					new EquipmentUpdateGUI().setVisible(true);
+//					EquipmentGUI.this.dispose();
+//
+//			}
+//		});
+//		p2.add(updatebutton3);
+//		p.add(p2); 
 		
-		updatebutton1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				boolean checkLegal = true;
-					new EquipmentUpdateGUI().setVisible(true);
-					EquipmentGUI.this.dispose();
-
-			}
-		});
-		p2.add(updatebutton2);
-		JTextField equipment3 = new JTextField("Equipment 3");
-		equipment3.setEditable(false);
-		p2.add(equipment3);
-		JButton updatebutton3 = new JButton("update");
-		updatebutton1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				boolean checkLegal = true;
-					new EquipmentUpdateGUI().setVisible(true);
-					EquipmentGUI.this.dispose();
-
-			}
-		});
-		p2.add(updatebutton3);
-		p.add(p2); 
+		// Add list of equipments to p2, fetch data from controller
 		
 		JPanel p3 = new JPanel();
 		p3.setLayout(new FlowLayout(1,10,10));
@@ -97,5 +130,9 @@ public class EquipmentGUI extends JFrame{
 	
 		this.setVisible(true);
 		
+	}
+	
+	public void update() {
+		repaint();// repaint all the thing
 	}
 }

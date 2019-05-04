@@ -1,6 +1,7 @@
 package controller;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import Daoiml.equipDaoiml;
 
@@ -38,5 +39,13 @@ public class EquipmentController {
 		equipDaoiml edi = new equipDaoiml();
 		Equipment newEquipment= new Equipment(edi.getMaxIndex(), name, capacity);
 		edi.add(newEquipment);
+	}
+	
+	// Update view
+	public ArrayList<Equipment> updateView() throws SQLException {
+		ArrayList<Equipment> equipList = new ArrayList<Equipment>();
+		equipDaoiml edi = new equipDaoiml();
+		equipList = (ArrayList<Equipment>) edi.findAll();
+		return equipList;
 	}
 }

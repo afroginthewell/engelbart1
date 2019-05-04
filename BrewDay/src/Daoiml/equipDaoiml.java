@@ -97,7 +97,7 @@ public class equipDaoiml implements equipDao{
 
  
     @Override
-    public double findAll() throws SQLException {
+    public double getTotalCapacity() throws SQLException {
     	double totallcapacity=0;
         Connection conn = null;
         PreparedStatement ps = null;
@@ -123,6 +123,32 @@ public class equipDaoiml implements equipDao{
         	totallcapacity+=z.getCapacity();
 		}
         return totallcapacity;
+    }
+    
+    @Override
+    public List<Equipment> findAll() throws SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Equipment p = null;
+        List<Equipment> Equipments = new ArrayList<Equipment>();
+        String sql = "select Equipment_Index,name,capacity from equipment";
+        try{
+            conn = DBUtils.getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+            	p = new Equipment(rs.getInt(1),rs.getString(2),rs.getDouble(3)); ;                    
+            	Equipments.add(p);
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+            throw new SQLException("find all fail");
+        }finally{
+            DBUtils.close(rs, ps, conn);
+        }
+       
+        return Equipments;
     }
     
     @Override
