@@ -12,8 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class DetailRecipeInformation extends JFrame{
-	public DetailRecipeInformation() {
+public class DetailRecipeInformationGUI extends JFrame{
+	public DetailRecipeInformationGUI() {
 		this.setTitle("Detail Recipe Information page");
 		this.setSize(400,300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,7 +38,7 @@ public class DetailRecipeInformation extends JFrame{
 		chooseButton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new  ConfirmWindowAddRecipeGUI().setVisible(true);
-				DetailRecipeInformation.this.dispose();
+				DetailRecipeInformationGUI.this.dispose();
 			}
 		});
 		JTextField ingredient2 = new JTextField("Ingredient 2 300g");
@@ -48,8 +48,8 @@ public class DetailRecipeInformation extends JFrame{
 		p2.add(backtopreviousButton);
 		backtopreviousButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new ResultList().setVisible(true);
-				DetailRecipeInformation.this.dispose();
+				new ResultListGUI().setVisible(true);
+				DetailRecipeInformationGUI.this.dispose();
 			}
 		});
 		JTextField equipment3 = new JTextField("Ingredient 3 200g");

@@ -13,8 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class EquipmentAdd extends JFrame{
-	public EquipmentAdd() {
+public class EquipmentAddGUI extends JFrame{
+	public EquipmentAddGUI() {
 		this.setTitle("EquipmentAdd page");
 		this.setSize(400,300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,11 +36,11 @@ public class EquipmentAdd extends JFrame{
 					String gett2 = t2.getText().toString();
 					//System.out.println(gett1);
 					//System.out.println(gett2);
-					new Equipment().setVisible(true);
-					EquipmentAdd.this.dispose();
+					new EquipmentGUI().setVisible(true);
+					EquipmentAddGUI.this.dispose();
 				}else {
-					new EquipmentAdd().setVisible(true);
-					EquipmentAdd.this.dispose();
+					new EquipmentAddGUI().setVisible(true);
+					EquipmentAddGUI.this.dispose();
 				}
 			}
 		});
@@ -49,8 +49,8 @@ public class EquipmentAdd extends JFrame{
 		JButton b2 = new JButton("Cancel");
 		b2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Equipment().setVisible(true);
-				EquipmentAdd.this.dispose();
+				new EquipmentGUI().setVisible(true);
+				EquipmentAddGUI.this.dispose();
 			}
 		});
 		p1.add(b2);

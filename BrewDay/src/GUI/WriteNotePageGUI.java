@@ -1,4 +1,4 @@
-package GUI;
+
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+
 public class WriteNotePageGUI extends JFrame{
 	public WriteNotePageGUI() {
 		this.setTitle("RecommendRecipePageGUI");
@@ -22,7 +23,6 @@ public class WriteNotePageGUI extends JFrame{
 		//p.setLayout(new BoxLayout(p,BoxLayout.PAGE_AXIS));
 		
 		JTextArea note = new JTextArea("Note", 5,25);
-		note.setFont(new Font("Π³Με",Font.BOLD|Font.ITALIC,16));	
 		p.add(note);
 		
 		JButton submit = new JButton("submit");		

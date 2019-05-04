@@ -12,8 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class DeleteRecipe extends JFrame{
-	public DeleteRecipe() {
+public class DeleteRecipeGUI extends JFrame{
+	public DeleteRecipeGUI() {
 		this.setTitle("DeleteRecipe");
 		this.setSize(400,300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -37,8 +37,8 @@ public class DeleteRecipe extends JFrame{
 		p2.add(deleteButton1);
 		deleteButton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MaintainRecipes().setVisible(true);
-				DeleteRecipe.this.dispose();
+				new MaintainRecipesGUI().setVisible(true);
+				DeleteRecipeGUI.this.dispose();
 			}
 		});
 		JTextField equipment2 = new JTextField("Equipment 1");
@@ -48,8 +48,8 @@ public class DeleteRecipe extends JFrame{
 		p2.add(deleteButton2);
 		deleteButton2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MaintainRecipes().setVisible(true);
-				DeleteRecipe.this.dispose();
+				new MaintainRecipesGUI().setVisible(true);
+				DeleteRecipeGUI.this.dispose();
 			}
 		});
 		JTextField equipment3 = new JTextField("Equipment 1");
@@ -60,8 +60,8 @@ public class DeleteRecipe extends JFrame{
 		
 		deleteButton3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MaintainRecipes().setVisible(true);
-				DeleteRecipe.this.dispose();
+				new MaintainRecipesGUI().setVisible(true);
+				DeleteRecipeGUI.this.dispose();
 			}
 		});
 		p.add(p2); 
@@ -71,8 +71,8 @@ public class DeleteRecipe extends JFrame{
 		JButton cancelButton = new JButton("Cancel"); 
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MaintainRecipes().setVisible(true);
-				DeleteRecipe.this.dispose();
+				new MaintainRecipesGUI().setVisible(true);
+				DeleteRecipeGUI.this.dispose();
 			}
 		});
 		p3.add(cancelButton);

@@ -13,40 +13,43 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class EquipmentUpdate extends JFrame {
-	public EquipmentUpdate() {
-		this.setTitle("Equipment update page");
+public class IngredientAddGUI extends JFrame {
+	public IngredientAddGUI() {
+		this.setTitle("Ingredient add page");
 		this.setSize(400, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel p = new JPanel();
 		this.add(p);
 		p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
-		JTextArea t1 = new JTextArea("Input you want to update to how much?");
+		JTextArea t1 = new JTextArea("Which ingredient you want to add?");
 		p.add(t1);
-
+		JTextArea t2 = new JTextArea("Input how much you want to add?");
+		p.add(t2);
 		JPanel p1 = new JPanel();
 		p1.setLayout(new FlowLayout(1, 10, 10));
-		JButton b1 = new JButton("Cancel");
+		JButton b1 = new JButton("Add");
 		b1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				new MaintainRecipes().setVisible(true);
-				EquipmentUpdate.this.dispose();
-			}
-		});
-		p1.add(b1);
-		JButton b2 = new JButton("Update");
-		b2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean checkLegal = true;
 				if (checkLegal == true) {
 					String gett1 = t1.getText().toString();
+					String gett2 = t2.getText().toString();
 					//System.out.println(gett1);
-					new MaintainRecipes().setVisible(true);  // if legal, move to Maintain page.
-					EquipmentUpdate.this.dispose();
-				} else { // if illegal, return itself
-					new EquipmentUpdate().setVisible(true);
-					EquipmentUpdate.this.dispose();
+					//System.out.println(gett2);
+					new IngredientMantainGUI().setVisible(true); // if legal, move to IngredientMantain.
+					IngredientAddGUI.this.dispose();
+				} else {    // if illegal, return itself
+					new EquipmentUpdateGUI().setVisible(true);
+					IngredientAddGUI.this.dispose();
 				}
+			}
+		});
+		p1.add(b1);
+		JButton b2 = new JButton("Cancel");
+		b2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new IngredientMantainGUI().setVisible(true);
+				IngredientAddGUI.this.dispose();
 			}
 		});
 		p1.add(b2);

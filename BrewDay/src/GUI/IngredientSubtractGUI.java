@@ -92,7 +92,7 @@ public class IngredientSubtractGUI extends JFrame{
 				System.out.println(getIyeasts);
 				System.out.println(getIsugars);
 				if(checkLegal == true) {
-					new IngredientMantain().setVisible(true);
+					new IngredientMantainGUI().setVisible(true);
 					IngredientSubtractGUI.this.dispose();	
 				}else {
 					new IngredientSubtractGUI().setVisible(true);
@@ -103,7 +103,7 @@ public class IngredientSubtractGUI extends JFrame{
 		JButton Cancel = new JButton("Cancel");	
 		Cancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new IngredientMantain().setVisible(true);
+				new IngredientMantainGUI().setVisible(true);
 				IngredientSubtractGUI.this.dispose();
 			}
 		});

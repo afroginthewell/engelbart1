@@ -12,6 +12,7 @@ import model.Recipe;
 import model.RecipeIngredient;
 import model.StorageIngredient;
 import view.BrewView;
+import view.EquipmentView;
 import Dao.storageingredientDao;
 import Dao.recipeDao;
 import Dao.RecipeIngredientDao;
@@ -25,9 +26,9 @@ import Daoiml.storageingredientDaoiml;
 import controller.BrewController;
 
 
-public class test {	
+public class TestSys {	
 		public static void main(String[] args) throws SQLException {
-			
+			EquipmentView ev = new EquipmentView();
 //			Brew bm = new Brew(2.0, "20-19-5-2-Testing1");
 //			BrewView bv = new BrewView();
 //			BrewController bc = new BrewController(bm, bv);
@@ -68,8 +69,8 @@ public class test {
 		
 		
 		
-		storageingredientDao n=new storageingredientDaoiml();
-		System.out.print(n.getMaxIndex());
+		//storageingredientDao n=new storageingredientDaoiml();
+	//	System.out.print(n.getMaxIndex());
 //		StorageIngredient no=new StorageIngredient(1,"water",15.0,"L");
 //		StorageIngredient no1=new StorageIngredient(2,"malts",10.0,"g");
 //		StorageIngredient no2=new StorageIngredient(3,"hops",8.0,"g");

@@ -13,8 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class IngredientUpdate extends JFrame{
-	public IngredientUpdate() {
+public class IngredientUpdateGUI extends JFrame{
+	public IngredientUpdateGUI() {
 		this.setTitle("Ingredient update page");
 		this.setSize(400,300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -30,7 +30,7 @@ public class IngredientUpdate extends JFrame{
 		cancalButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new MainpageGUI().setVisible(true);
-				IngredientUpdate.this.dispose();
+				IngredientUpdateGUI.this.dispose();
 			}
 		});
 		p1.add(cancalButton);
@@ -42,10 +42,10 @@ public class IngredientUpdate extends JFrame{
 					String gett1 = amountText.getText().toString();
 					//System.out.println(gett1);
 					new MainpageGUI().setVisible(true);
-					IngredientUpdate.this.dispose();
+					IngredientUpdateGUI.this.dispose();
 				}else {
-					new IngredientUpdate().setVisible(true);
-					IngredientUpdate.this.dispose();
+					new IngredientUpdateGUI().setVisible(true);
+					IngredientUpdateGUI.this.dispose();
 				}
 			}
 		});

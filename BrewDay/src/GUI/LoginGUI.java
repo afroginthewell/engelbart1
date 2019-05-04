@@ -1,5 +1,4 @@
 package GUI;
-
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,9 +21,6 @@ public class LoginGUI extends JFrame{
 		
 		JTextField UserName = new JTextField("User Name",30);
 		JTextField Password = new JTextField("Password",30);
-		UserName.setFont(new Font("Π³Με",Font.BOLD|Font.ITALIC,16));
-		Password.setFont(new Font("Π³Με",Font.BOLD|Font.ITALIC,16));
-		
 		
 		BoxLayout layout = new BoxLayout(p,BoxLayout.Y_AXIS);
 		p.setLayout(layout);

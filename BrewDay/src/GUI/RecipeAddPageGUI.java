@@ -13,8 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class RecipeAddPage extends JFrame{
-	public RecipeAddPage() {
+public class RecipeAddPageGUI extends JFrame{
+	public RecipeAddPageGUI() {
 		this.setTitle("RecommendRecipePageGUI");
 		this.setSize(400,300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -104,7 +104,7 @@ public class RecipeAddPage extends JFrame{
 		JButton add = new JButton("Add");
 		add.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MaintainRecipes().setVisible(true);
+				new MaintainRecipesGUI().setVisible(true);
 				String getIweight = Iweight.getText().toString();
 				String getIwater = Iwater.getText().toString();
 				String getImalts = Imalts.getText().toString();
@@ -113,14 +113,14 @@ public class RecipeAddPage extends JFrame{
 				String getIsugars = Isugars.getText().toString();
 				String getIadditives = Iadditives.getText().toString();
 				String getInote = Inote.getText().toString();
-				RecipeAddPage.this.dispose();// here we need some judgment conditions 
+				RecipeAddPageGUI.this.dispose();// here we need some judgment conditions 
 			}
 		});
 		JButton cancel = new JButton("Cancel");	
 		cancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MaintainRecipes().setVisible(true);
-				RecipeAddPage.this.dispose();
+				new MaintainRecipesGUI().setVisible(true);
+				RecipeAddPageGUI.this.dispose();
 			}
 		});
 		p2.add(add);

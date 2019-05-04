@@ -12,8 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Equipment extends JFrame{
-	public Equipment() {
+public class EquipmentGUI extends JFrame{
+	public EquipmentGUI() {
 		this.setTitle("Equipment");
 		this.setSize(400,300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,16 +35,41 @@ public class Equipment extends JFrame{
 		p2.add(equipment1);
 		
 		JButton updatebutton1 = new JButton("update");
+		updatebutton1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				boolean checkLegal = true;
+					new EquipmentUpdateGUI().setVisible(true);
+					EquipmentGUI.this.dispose();
+
+			}
+		});
 		p2.add(updatebutton1);
 		JTextField equipment2 = new JTextField("Equipment 2");
 		equipment2.setEditable(false);
 		p2.add(equipment2);
 		JButton updatebutton2 = new JButton("update");
+		
+		updatebutton1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				boolean checkLegal = true;
+					new EquipmentUpdateGUI().setVisible(true);
+					EquipmentGUI.this.dispose();
+
+			}
+		});
 		p2.add(updatebutton2);
 		JTextField equipment3 = new JTextField("Equipment 3");
 		equipment3.setEditable(false);
 		p2.add(equipment3);
 		JButton updatebutton3 = new JButton("update");
+		updatebutton1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				boolean checkLegal = true;
+					new EquipmentUpdateGUI().setVisible(true);
+					EquipmentGUI.this.dispose();
+
+			}
+		});
 		p2.add(updatebutton3);
 		p.add(p2); 
 		
@@ -55,7 +80,7 @@ public class Equipment extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				boolean checkLegal = true;
 					new MainpageGUI().setVisible(true);
-					Equipment.this.dispose();
+					EquipmentGUI.this.dispose();
 
 			}
 		});
@@ -63,8 +88,8 @@ public class Equipment extends JFrame{
 		JButton addButton = new JButton("Add"); 
 		addButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {	
-					new EquipmentAdd().setVisible(true);
-					Equipment.this.dispose();
+					new EquipmentAddGUI().setVisible(true);
+					EquipmentGUI.this.dispose();
 			}
 		});
 		p3.add(addButton);

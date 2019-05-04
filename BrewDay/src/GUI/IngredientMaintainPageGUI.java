@@ -21,7 +21,6 @@ public class IngredientMaintainPageGUI extends JFrame{
 		//p.setLayout(new BoxLayout(p,BoxLayout.PAGE_AXIS));
 		
 		JTextField BatchSize = new JTextField("Input Batach Size",20);
-		BatchSize.setFont(new Font("Π³Με",Font.BOLD|Font.ITALIC,16));
 		p.add(BatchSize);
 		
 		JPanel p2 = new JPanel();
@@ -39,7 +38,7 @@ public class IngredientMaintainPageGUI extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				String getbatchsize = BatchSize.getText().toString();
 				//System.out.println(getbatchsize);
-				new MaintainRecipes().setVisible(true);
+				new MaintainRecipesGUI().setVisible(true);
 				IngredientMaintainPageGUI.this.dispose();
 			}
 		});

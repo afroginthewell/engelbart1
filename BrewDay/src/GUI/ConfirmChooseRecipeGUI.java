@@ -22,7 +22,6 @@ public class ConfirmChooseRecipeGUI extends JFrame{
 		//p.setLayout(new BoxLayout(p,BoxLayout.PAGE_AXIS));
 		
 		JTextArea note = new JTextArea("Are you sure to \n choose this recipe?", 5,25);
-		note.setFont(new Font("Π³Με",Font.BOLD|Font.ITALIC,16));
 		p.add(note);
 		
 		JPanel p2 = new JPanel(new FlowLayout(1,10,10));
@@ -37,7 +36,7 @@ public class ConfirmChooseRecipeGUI extends JFrame{
 		JButton no = new JButton("no");	
 		no.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new ResultList().setVisible(true);
+				new ResultListGUI().setVisible(true);
 				ConfirmChooseRecipeGUI.this.dispose();
 			}
 		});

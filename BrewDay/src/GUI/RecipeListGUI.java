@@ -12,8 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class RecipeList extends JFrame{
-	public RecipeList() {
+public class RecipeListGUI extends JFrame{
+	public RecipeListGUI() {
 		this.setTitle("Recipes list page");
 		this.setSize(400,300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,7 +34,7 @@ public class RecipeList extends JFrame{
 		b1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new MainpageGUI().setVisible(true);
-				RecipeList.this.dispose();
+				RecipeListGUI.this.dispose();
 			}
 		});
 		p1.add(b1);

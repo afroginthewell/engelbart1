@@ -22,14 +22,13 @@ public class ConfirmWindowAddRecipeGUI extends JFrame{
 		//p.setLayout(new BoxLayout(p,BoxLayout.PAGE_AXIS));
 		
 		JTextArea note = new JTextArea("You don't have any recipe, \n do you want to add recipe?", 5,25);
-		note.setFont(new Font("Π³Με",Font.BOLD|Font.ITALIC,16));
 		p.add(note);
 		
 		JPanel p2 = new JPanel(new FlowLayout(1,10,10));
 		JButton yes = new JButton("yes");
 		yes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MaintainRecipes().setVisible(true);
+				new MaintainRecipesGUI().setVisible(true);
 				ConfirmWindowAddRecipeGUI.this.dispose();
 			}
 		});

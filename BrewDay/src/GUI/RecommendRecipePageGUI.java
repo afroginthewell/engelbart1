@@ -37,7 +37,7 @@ public class RecommendRecipePageGUI extends JFrame{
 		JButton GetRecommend = new JButton("Get Recommend");	
 		GetRecommend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new ResultList().setVisible(true);
+				new ResultListGUI().setVisible(true);
 				RecommendRecipePageGUI.this.dispose();
 				String getBatchSize = BatchSize.getText().toString();
 			}

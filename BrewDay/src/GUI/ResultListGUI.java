@@ -12,8 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class ResultList extends JFrame{
-	public ResultList() {
+public class ResultListGUI extends JFrame{
+	public ResultListGUI() {
 		this.setTitle("Result list page");
 		this.setSize(400,300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,8 +38,8 @@ public class ResultList extends JFrame{
 		JButton AButton = new JButton("detail");
 		AButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new DetailRecipeInformation().setVisible(true);
-				ResultList.this.dispose();
+				new DetailRecipeInformationGUI().setVisible(true);
+				ResultListGUI.this.dispose();
 			}
 		});
 		p2.add(AButton);
@@ -53,8 +53,8 @@ public class ResultList extends JFrame{
 		JButton BButton = new JButton("detail");
 		BButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new DetailRecipeInformation().setVisible(true);
-				ResultList.this.dispose();
+				new DetailRecipeInformationGUI().setVisible(true);
+				ResultListGUI.this.dispose();
 			}
 		});
 		p2.add(BButton);
@@ -68,8 +68,8 @@ public class ResultList extends JFrame{
 		JButton CButton = new JButton("detail");
 		CButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new DetailRecipeInformation().setVisible(true);
-				ResultList.this.dispose();
+				new DetailRecipeInformationGUI().setVisible(true);
+				ResultListGUI.this.dispose();
 			}
 		});
 		p2.add(CButton);
@@ -81,8 +81,8 @@ public class ResultList extends JFrame{
 		JButton b3 = new JButton("Non-executable recipes");
 		b3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new NotavailableList().setVisible(true);
-				ResultList.this.dispose();
+				new NotavailableListGUI().setVisible(true);
+				ResultListGUI.this.dispose();
 			}
 		});
 		p3.add(b3);

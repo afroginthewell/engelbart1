@@ -12,8 +12,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Update extends JFrame{
-	public Update() {
+
+public class UpdateGUI extends JFrame{
+	public UpdateGUI() {
 		this.setTitle("Update page");
 		this.setSize(400,300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,7 +35,7 @@ public class Update extends JFrame{
 		b1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new UpdataeRecipeGUI().setVisible(true);
-				Update.this.dispose();
+				UpdateGUI.this.dispose();
 			}
 		});
 		p1.add(b1);
@@ -43,7 +44,7 @@ public class Update extends JFrame{
 		b2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new UpdataeRecipeGUI().setVisible(true);
-				Update.this.dispose();
+				UpdateGUI.this.dispose();
 			}
 		});
 		p1.add(b2);
@@ -52,7 +53,7 @@ public class Update extends JFrame{
 		b3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new UpdataeRecipeGUI().setVisible(true);
-				Update.this.dispose();
+				UpdateGUI.this.dispose();
 			}
 		});
 		p1.add(b3);
@@ -63,8 +64,8 @@ public class Update extends JFrame{
 		JButton b4 = new JButton("Cancel");
 		b4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MaintainRecipes().setVisible(true);
-				Update.this.dispose();
+				new MaintainRecipesGUI().setVisible(true);
+				UpdateGUI.this.dispose();
 			}
 		});
 		p2.add(b4);

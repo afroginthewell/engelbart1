@@ -37,7 +37,7 @@ public class MainpageGUI extends JFrame{
 		JButton b2 = new JButton("Maintain recipe");
 		b2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MaintainRecipes().setVisible(true);
+				new MaintainRecipesGUI().setVisible(true);
 				MainpageGUI.this.dispose();
 			}
 		});
@@ -45,7 +45,7 @@ public class MainpageGUI extends JFrame{
 		JButton b3 = new JButton("Maintain equipment");
 		b3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Equipment().setVisible(true);
+				new EquipmentGUI().setVisible(true);
 				MainpageGUI.this.dispose();
 			}
 		});
@@ -53,7 +53,7 @@ public class MainpageGUI extends JFrame{
 		JButton b4 = new JButton("Maintain ingredient");
 		b4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new IngredientMantain().setVisible(true);
+				new IngredientMantainGUI().setVisible(true);
 				MainpageGUI.this.dispose();
 			}
 		});

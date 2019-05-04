@@ -1,4 +1,5 @@
 package GUI;
+
 public class Test {
 	public static void main(String[] args) {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
@@ -17,7 +18,7 @@ public class Test {
 				//new UpdataeRecipeGUI();
 				//new Equipment();
 				//new ResultList();
-				new ResultList();
+				new ResultListGUI();
 			}
 		});
 	}

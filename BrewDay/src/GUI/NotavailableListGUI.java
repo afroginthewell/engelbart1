@@ -15,8 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class NotavailableList extends JFrame{
-	public NotavailableList() {
+public class NotavailableListGUI extends JFrame{
+	public NotavailableListGUI() {
 		this.setTitle("NotavailableList");
 		this.setSize(400,300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,8 +47,8 @@ public class NotavailableList extends JFrame{
 		JButton b1 = new JButton("Back to previous");
 		b1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new ResultList().setVisible(true);
-				NotavailableList.this.dispose();
+				new ResultListGUI().setVisible(true);
+				NotavailableListGUI.this.dispose();
 			}
 		});
 		p3.add(b1);
@@ -56,7 +56,7 @@ public class NotavailableList extends JFrame{
 		b2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new MainpageGUI().setVisible(true);
-				NotavailableList.this.dispose();
+				NotavailableListGUI.this.dispose();
 			}
 		});
 		p3.add(b2);

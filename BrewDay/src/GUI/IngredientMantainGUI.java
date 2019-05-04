@@ -12,8 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class IngredientMantain extends JFrame{
-	public IngredientMantain() {
+public class IngredientMantainGUI extends JFrame{
+	public IngredientMantainGUI() {
 		this.setTitle("IngredientMantain page");
 		this.setSize(400,300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -43,22 +43,22 @@ public class IngredientMantain extends JFrame{
 		p3.add(Add);
 		Add.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new IngredientAdd().setVisible(true);
-				IngredientMantain.this.dispose();
+				new IngredientAddGUI().setVisible(true);
+				IngredientMantainGUI.this.dispose();
 			}
 		});
 		p3.add(Subtract);
 		Subtract.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new IngredientSubtractGUI().setVisible(true);
-				IngredientMantain.this.dispose();
+				IngredientMantainGUI.this.dispose();
 			}
 		});
 		p3.add(Mainpage);
 		Mainpage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new MainpageGUI().setVisible(true);
-				IngredientMantain.this.dispose();
+				IngredientMantainGUI.this.dispose();
 			}
 		});
 ;		p.add(p3);

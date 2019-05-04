@@ -15,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+
+
 public class UpdataeRecipeGUI extends JFrame{
 	public UpdataeRecipeGUI() {
 		this.setTitle("UpdataeRecipeGUI");
@@ -112,7 +114,7 @@ public class UpdataeRecipeGUI extends JFrame{
 		JButton update = new JButton("update");
 		update.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MaintainRecipes().setVisible(true);
+				new MaintainRecipesGUI().setVisible(true);
 				String getIweight = Iweight.getText().toString();
 				String getIwater = Iwater.getText().toString();
 				String getImalts = Imalts.getText().toString();
@@ -127,7 +129,7 @@ public class UpdataeRecipeGUI extends JFrame{
 		JButton cancel = new JButton("Cancel");	
 		cancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Update().setVisible(true);
+				new UpdateGUI().setVisible(true);
 				UpdataeRecipeGUI.this.dispose();
 			}
 		});
