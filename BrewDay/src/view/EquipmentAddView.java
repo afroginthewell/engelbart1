@@ -7,14 +7,14 @@ import GUI.EquipmentGUI;
 import controller.EquipmentController;
 import model.Equipment;
 
-public class EquipmentView {
-	
+public class EquipmentAddView {
 	private EquipmentController c;
 	private Equipment m;
 	
-	public EquipmentView(Equipment m, EquipmentController c) throws SQLException {
+	public EquipmentAddView(Equipment m, EquipmentController c) throws SQLException {
 		this.m = m;
 		this.c = c;
-		EquipmentGUI equipmentGUI = new EquipmentGUI(m, c);
+		EquipmentAddGUI equipmentAddGUI = new EquipmentAddGUI(m, c);
 	}
+
 }

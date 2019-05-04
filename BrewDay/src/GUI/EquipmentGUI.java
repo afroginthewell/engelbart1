@@ -16,14 +16,18 @@ import javax.swing.JTextField;
 
 import controller.EquipmentController;
 import model.Equipment;
+import view.EquipmentAddView;
 
 public class EquipmentGUI extends JFrame{
+	
 	public EquipmentGUI(Equipment m, EquipmentController c) throws SQLException {
+	
 		this.setTitle("Equipment");
 		this.setSize(400,300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel p = new JPanel();
 		this.add(p);
+		
 		p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
 		
 		JPanel p1 = new JPanel(); 
@@ -37,11 +41,10 @@ public class EquipmentGUI extends JFrame{
 		
 		ArrayList<Equipment> equipList = new ArrayList<Equipment>();
 		equipList = c.updateView();
-		p2.setLayout(new GridLayout(equipList.size(), 3, 20, 10)); 
+		p2.setLayout(new GridLayout(3, 3, 20, 10)); 
 		for (Equipment i: equipList) {
 			// Name
 			JTextField equipmentName = new JTextField(i.getName());
-			//System.out.println(i.getName());
 			equipmentName.setEditable(false);
 			p2.add(equipmentName);
 			// Button
@@ -54,8 +57,8 @@ public class EquipmentGUI extends JFrame{
 				}
 			});
 			p2.add(updateButton);
+			
 		}
-		p.add(p2);
 		
 //		p2.setLayout(new GridLayout(3, 3, 20, 10)); 
 //		JTextField equipment1 = new JTextField("Equipment 1");
@@ -115,22 +118,31 @@ public class EquipmentGUI extends JFrame{
 				boolean checkLegal = true;
 					new MainpageGUI().setVisible(true);
 					EquipmentGUI.this.dispose();
-
 			}
 		});
+		
 		p3.add(mainpagebutton);
 		JButton addButton = new JButton("Add"); 
 		addButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {	
-					new EquipmentAddGUI().setVisible(true);
-					EquipmentGUI.this.dispose();
+			public void actionPerformed(ActionEvent e) {
+				try {
+					EquipmentAddView add = new EquipmentAddView(m,c);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				EquipmentGUI.this.dispose();
 			}
 		});
 		p3.add(addButton);
 		p.add(p3);
 	
-		this.setVisible(true);
+		controlVisible(true);
 		
+	}
+	
+	public void controlVisible(boolean flag) {
+		this.setVisible(flag);
 	}
 	
 	public void update() {
