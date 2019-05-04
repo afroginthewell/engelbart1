@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 
 import controller.EquipmentController;
 import model.Equipment;
+import view.EquipmentAddView;
 import view.EquipmentView;
 
 public class EquipmentAddGUI extends JFrame{
@@ -49,16 +50,26 @@ public class EquipmentAddGUI extends JFrame{
 				if(checkLegal == true) {
 					String name = t1.getText().toString();
 					String capacity = t2.getText().toString();
-					c.addEquipment(name, Double.parseDouble(capacity));
 					try {
-						new EquipmentView();
+						c.addEquipment(name, Double.parseDouble(capacity));
+					} catch (NumberFormatException | SQLException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					}
+					try {
+						new EquipmentView(m,c);
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 					EquipmentAddGUI.this.dispose();
 				}else {
-					new EquipmentAddGUI().setVisible(true);
+					try {
+						new EquipmentAddView(m,c);
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					EquipmentAddGUI.this.dispose();
 				}
 			}
@@ -69,7 +80,7 @@ public class EquipmentAddGUI extends JFrame{
 		b2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					new EquipmentView();
+					new EquipmentView(m,c);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

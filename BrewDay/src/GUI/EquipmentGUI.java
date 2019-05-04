@@ -41,7 +41,7 @@ public class EquipmentGUI extends JFrame{
 		
 		ArrayList<Equipment> equipList = new ArrayList<Equipment>();
 		equipList = c.updateView();
-		p2.setLayout(new GridLayout(3, 3, 20, 10)); 
+		p2.setLayout(new GridLayout(equipList.size(), 3, 20, 10)); 
 		for (Equipment i: equipList) {
 			// Name
 			JTextField equipmentName = new JTextField(i.getName());
@@ -106,7 +106,7 @@ public class EquipmentGUI extends JFrame{
 //			}
 //		});
 //		p2.add(updatebutton3);
-//		p.add(p2); 
+		p.add(p2); 
 		
 		// Add list of equipments to p2, fetch data from controller
 		

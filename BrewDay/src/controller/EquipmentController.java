@@ -36,7 +36,8 @@ public class EquipmentController {
 	
 	public void addEquipment(String name, double capacity) throws SQLException {
 		equipDaoiml edi = new equipDaoiml();
-		Equipment newEquipment= new Equipment(edi.getMaxIndex(), name, capacity);
+		int newEquipIndex = edi.getMaxIndex() + 1;
+		Equipment newEquipment= new Equipment(newEquipIndex, name, capacity);
 		edi.add(newEquipment);
 	}
 	
