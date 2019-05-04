@@ -5,12 +5,15 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import view.EquipmentView;
 
 public class MainpageGUI extends JFrame{
 	public MainpageGUI() {
@@ -45,7 +48,12 @@ public class MainpageGUI extends JFrame{
 		JButton b3 = new JButton("Maintain equipment");
 		b3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new EquipmentGUI().setVisible(true);
+				try {
+					new EquipmentView();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				MainpageGUI.this.dispose();
 			}
 		});
@@ -53,7 +61,12 @@ public class MainpageGUI extends JFrame{
 		JButton b4 = new JButton("Maintain ingredient");
 		b4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new IngredientMantainGUI().setVisible(true);
+				try {
+					new EquipmentView();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				MainpageGUI.this.dispose();
 			}
 		});

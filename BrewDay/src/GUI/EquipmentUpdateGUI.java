@@ -44,7 +44,7 @@ public class EquipmentUpdateGUI extends JFrame {
 					new MaintainRecipesGUI().setVisible(true);  // if legal, move to Maintain page.
 					EquipmentUpdateGUI.this.dispose();
 				} else { // if illegal, return itself
-					new EquipmentUpdateGUI().setVisible(true);
+					new EquipmentUpdateGUI();
 					EquipmentUpdateGUI.this.dispose();
 				}
 			}

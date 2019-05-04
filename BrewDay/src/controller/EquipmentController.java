@@ -3,6 +3,7 @@ package controller;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import Dao.equipDao;
 import Daoiml.equipDaoiml;
 
 import model.Equipment;
@@ -11,13 +12,11 @@ import view.EquipmentView;
 public class EquipmentController {
 
 	private Equipment model;
-	private EquipmentView view;
 
 	// Constructor
-	public EquipmentController(Equipment model, EquipmentView view) {
+	public EquipmentController(Equipment model) {
 		super();
 		this.model = model;
-		this.view = view;
 	}
 
 	// Member function
@@ -44,7 +43,7 @@ public class EquipmentController {
 	// Update view
 	public ArrayList<Equipment> updateView() throws SQLException {
 		ArrayList<Equipment> equipList = new ArrayList<Equipment>();
-		equipDaoiml edi = new equipDaoiml();
+		equipDao edi = new equipDaoiml();
 		equipList = (ArrayList<Equipment>) edi.findAll();
 		return equipList;
 	}

@@ -37,10 +37,11 @@ public class EquipmentGUI extends JFrame{
 		
 		ArrayList<Equipment> equipList = new ArrayList<Equipment>();
 		equipList = c.updateView();
-		p2.setLayout(new GridLayout(3, 3, 20, 10)); 
+		p2.setLayout(new GridLayout(equipList.size(), 3, 20, 10)); 
 		for (Equipment i: equipList) {
 			// Name
 			JTextField equipmentName = new JTextField(i.getName());
+			//System.out.println(i.getName());
 			equipmentName.setEditable(false);
 			p2.add(equipmentName);
 			// Button
@@ -53,8 +54,8 @@ public class EquipmentGUI extends JFrame{
 				}
 			});
 			p2.add(updateButton);
-			
 		}
+		p.add(p2);
 		
 //		p2.setLayout(new GridLayout(3, 3, 20, 10)); 
 //		JTextField equipment1 = new JTextField("Equipment 1");

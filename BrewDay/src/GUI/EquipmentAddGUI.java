@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -12,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import view.EquipmentView;
 
 public class EquipmentAddGUI extends JFrame{
 	public EquipmentAddGUI() {
@@ -36,7 +39,12 @@ public class EquipmentAddGUI extends JFrame{
 					String gett2 = t2.getText().toString();
 					//System.out.println(gett1);
 					//System.out.println(gett2);
-					new EquipmentGUI().setVisible(true);
+					try {
+						new EquipmentView();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					EquipmentAddGUI.this.dispose();
 				}else {
 					new EquipmentAddGUI().setVisible(true);
@@ -49,7 +57,12 @@ public class EquipmentAddGUI extends JFrame{
 		JButton b2 = new JButton("Cancel");
 		b2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new EquipmentGUI().setVisible(true);
+				try {
+					new EquipmentView();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				EquipmentAddGUI.this.dispose();
 			}
 		});

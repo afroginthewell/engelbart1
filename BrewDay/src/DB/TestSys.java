@@ -24,11 +24,17 @@ import Daoiml.recipeDaoiml;
 import Daoiml.RecipeingredientDaoiml;
 import Daoiml.storageingredientDaoiml;
 import controller.BrewController;
+import controller.EquipmentController;
 
 
 public class TestSys {	
 		public static void main(String[] args) throws SQLException {
-			EquipmentView ev = new EquipmentView();
+			// Construct model
+			Equipment m = new Equipment();
+			EquipmentController c = new EquipmentController(m);
+			// Construct controller
+			
+			EquipmentView ev = new EquipmentView(m, c);
 //			Brew bm = new Brew(2.0, "20-19-5-2-Testing1");
 //			BrewView bv = new BrewView();
 //			BrewController bc = new BrewController(bm, bv);

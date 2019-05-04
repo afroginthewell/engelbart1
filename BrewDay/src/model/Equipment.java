@@ -11,6 +11,9 @@ public class Equipment {
 		this.name = name;
 		this.capacity = capacity;
 	}
+	
+	public Equipment() {
+	}
 
 	// Getter and Setter for each member variable
 	public int getEquipmentIndex() {
