@@ -20,7 +20,7 @@ import view.EquipmentAddView;
 
 public class EquipmentGUI extends JFrame{
 	
-	public EquipmentGUI(Equipment m, EquipmentController c) throws SQLException {
+	public EquipmentGUI(ArrayList<Equipment> equipList, EquipmentController c,Equipment m) throws SQLException {
 	
 		this.setTitle("Equipment");
 		this.setSize(400,300);
@@ -39,8 +39,8 @@ public class EquipmentGUI extends JFrame{
 		
 		JPanel p2 = new JPanel();
 		
-		ArrayList<Equipment> equipList = new ArrayList<Equipment>();
-		equipList = c.updateView();
+//		ArrayList<Equipment> equipList = new ArrayList<Equipment>();
+//		equipList = c.updateView();
 		p2.setLayout(new GridLayout(equipList.size(), 3, 20, 10)); 
 		for (Equipment i: equipList) {
 			// Name
@@ -60,52 +60,7 @@ public class EquipmentGUI extends JFrame{
 			
 		}
 		
-//		p2.setLayout(new GridLayout(3, 3, 20, 10)); 
-//		JTextField equipment1 = new JTextField("Equipment 1");
-//		equipment1.setEditable(false);
-//		p2.add(equipment1);
-//		// b1
-//		JButton updatebutton1 = new JButton("update");
-//		updatebutton1.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				boolean checkLegal = true;
-//					new EquipmentUpdateGUI().setVisible(true);
-//					EquipmentGUI.this.dispose();
-//
-//			}
-//		});
-//		
-//		p2.add(updatebutton1);
-		// b2
-//		JTextField equipment2 = new JTextField("Equipment 2");
-//		equipment2.setEditable(false);
-//		p2.add(equipment2);
-//		
-//		JButton updatebutton2 = new JButton("update");
-//		
-//		updatebutton1.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				boolean checkLegal = true;
-//					new EquipmentUpdateGUI().setVisible(true);
-//					EquipmentGUI.this.dispose();
-//
-//			}
-//		});
-//		p2.add(updatebutton2);
-//		JTextField equipment3 = new JTextField("Equipment 3");
-//		equipment3.setEditable(false);
-//		p2.add(equipment3);
-//		// b3
-//		JButton updatebutton3 = new JButton("update");
-//		updatebutton1.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				boolean checkLegal = true;
-//					new EquipmentUpdateGUI().setVisible(true);
-//					EquipmentGUI.this.dispose();
-//
-//			}
-//		});
-//		p2.add(updatebutton3);
+
 		p.add(p2); 
 		
 		// Add list of equipments to p2, fetch data from controller
@@ -125,24 +80,37 @@ public class EquipmentGUI extends JFrame{
 		JButton addButton = new JButton("Add"); 
 		addButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+//				System.out.println(m.getView().get(0).getvisible());
+//				System.out.println(m.getView().get(1).getvisible());
+				m.getView().get(0).setvisible(0);
+				EquipmentGUI.this.dispose();
+				m.getView().get(1).setvisible(1);
 				try {
-					EquipmentAddView add = new EquipmentAddView(m,c);
+					m.notifyView();
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				EquipmentGUI.this.dispose();
+				
 			}
 		});
 		p3.add(addButton);
 		p.add(p3);
 	
-		controlVisible(true);
+		
 		
 	}
 	
-	public void controlVisible(boolean flag) {
-		this.setVisible(flag);
+	public void controlVisible(int flag) {
+		if(flag==1)
+		{
+			this.setVisible(true);
+		}
+		else {
+			System.out.print(this.getClass());
+			this.setVisible(false);
+		}
+		
 	}
 	
 	public void update() {

@@ -12,6 +12,7 @@ import model.Recipe;
 import model.RecipeIngredient;
 import model.StorageIngredient;
 import view.BrewView;
+import view.EquipmentAddView;
 import view.EquipmentView;
 import Dao.storageingredientDao;
 import Dao.recipeDao;
@@ -30,11 +31,16 @@ import controller.EquipmentController;
 public class TestSys {	
 		public static void main(String[] args) throws SQLException {
 			// Construct model
-			Equipment m = new Equipment();
+			Equipment m = new Equipment(); // Use empty constructor
 			EquipmentController c = new EquipmentController(m);
 			// Construct controller
 			
-			EquipmentView ev = new EquipmentView(m, c);
+			EquipmentView ev = new EquipmentView(m, c,1);
+			EquipmentAddView eav = new EquipmentAddView(m, c,0);
+			m.addView(ev); // Add view function
+			m.addView(eav);
+			
+			
 //			Brew bm = new Brew(2.0, "20-19-5-2-Testing1");
 //			BrewView bv = new BrewView();
 //			BrewController bc = new BrewController(bm, bv);

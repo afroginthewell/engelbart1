@@ -55,7 +55,15 @@ public class IngredientAddGUI extends JFrame {
 		p1.add(b2);
 		p.add(p1);
 
-		this.setVisible(true);
-
+	}
+	public void controlVisible(int flag) {
+		if(flag==1)
+		{
+			this.setVisible(true);
+		}
+		else {
+			this.setVisible(false);
+		}
+		
 	}
 }

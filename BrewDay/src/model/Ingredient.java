@@ -13,6 +13,9 @@ public class Ingredient {
 		this.amount = amount;
 		this.unit = unit;
 	}
+	public Ingredient() {
+	
+	}
 	
 	// Getter and Setter	
 

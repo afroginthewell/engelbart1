@@ -3,6 +3,7 @@ package controller;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import Dao.RecipeIngredientDao;
 import Dao.recipeDao;
 import Daoiml.RecipeingredientDaoiml;
 import Daoiml.recipeDaoiml;
@@ -12,36 +13,26 @@ import view.RecipeView;
 
 public class RecipeController {
 	private Recipe model;
-	private RecipeView view;
+	
 
 	// Constructor
-	public RecipeController(Recipe model, RecipeView view) {
+	public RecipeController(Recipe model) {
 		super();
-		this.model = model;
-		this.view = view;
+		this.model = model;		
 	}
 	
 	// Add recipe and Delete recipe
-	public void addRecipe(String name, double quantity, String unit, ArrayList<RecipeIngredient> recipeIngredientList) throws SQLException {
-		recipeDaoiml rdi = new recipeDaoiml();
+	public void addRecipe(String name, double quantity, String unit) throws SQLException {
+		recipeDao rdi = new recipeDaoiml();
 		// Handle for recipe
 		Recipe tempRecipe = new Recipe(rdi.getMaxIndex()+1, name, quantity, unit);
-		rdi.add(tempRecipe);
-		
-		// Handle for recipe ingredients
-		RecipeingredientDaoiml ridi = new RecipeingredientDaoiml();
-		
-		for (RecipeIngredient ri: recipeIngredientList) {
-			ri.setrecipeIndex(rdi.getMaxIndex() + 1);
-			ri.setindex(ridi.getMaxIndex() + 1);
-			ridi.add(ri);
-		}
+		rdi.add(tempRecipe);	
 	}
 	
 	// Delete Recipe
 	public void deleteRecipe(int targetIndex) throws SQLException {
-		recipeDaoiml rdi = new recipeDaoiml();
-		RecipeingredientDaoiml ridi = new RecipeingredientDaoiml();
+		recipeDao rdi = new recipeDaoiml();
+		RecipeIngredientDao ridi = new RecipeingredientDaoiml();
 		
 		// Delete the recipe ingredient first
 		ArrayList<RecipeIngredient> deleteRecipeIngredientList = new ArrayList<RecipeIngredient>();
@@ -69,10 +60,19 @@ public class RecipeController {
 		return convertedList; 
 	}
 
-	public boolean updateRecipes(int oldRecipeIndex, Recipe newRecipe) throws SQLException {
+	public boolean updateRecipes(String name, double amount, Recipe r) throws SQLException {
 		// Implement the DAO object
 		recipeDao RecipeDAO = new recipeDaoiml();
-		RecipeDAO.update(newRecipe);
+		r.setName(name);
+		r.setQuantity(amount);
+		RecipeDAO.update(r);
 		return true;
 	}
+	public ArrayList<Recipe> updateRecipeView() throws SQLException {
+		ArrayList<Recipe> RecipeList = new ArrayList<Recipe>();
+		recipeDao rdi = new recipeDaoiml();
+		RecipeList = (ArrayList<Recipe>) rdi.findAll();
+		return RecipeList;
+	}
+	
 }

@@ -1,10 +1,23 @@
 package model;
-public class Equipment {
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import Dao.equipDao;
+import Daoiml.equipDaoiml;
+import view.View;
+
+public class Equipment extends Model {
+	
 	private int equipmentIndex;
 	private String name;
 	private double capacity;
-
+	equipDaoiml edi = new equipDaoiml();
 	// Constructor
+	public Equipment() {
+		super();
+	}
+	
 	public Equipment(int equipmentIndex, String name, double capacity) {
 		super();
 		this.equipmentIndex = equipmentIndex;
@@ -12,8 +25,7 @@ public class Equipment {
 		this.capacity = capacity;
 	}
 	
-	public Equipment() {
-	}
+	
 
 	// Getter and Setter for each member variable
 	public int getEquipmentIndex() {
@@ -39,6 +51,24 @@ public class Equipment {
 	public void setCapacity(double capacity) {
 		this.capacity = capacity;
 	}
-
 	
+	public void addEquipmentToDB(Equipment equipment) throws SQLException
+	{
+		int newEquipIndex = edi.getMaxIndex() + 1;
+		equipment.setEquipmentIndex(newEquipIndex);		
+		edi.add(equipment);
+		
+	}
+
+	public void notifyView() throws SQLException {
+		for (View v: super.views) {
+			v.update();
+		}
+	} 
+	
+	public ArrayList<Equipment> updateView() throws SQLException {
+		ArrayList<Equipment> equipList = new ArrayList<Equipment>();
+		equipList = (ArrayList<Equipment>) edi.findAll();
+		return equipList;
+	}
 }

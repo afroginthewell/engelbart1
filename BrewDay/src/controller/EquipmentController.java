@@ -9,14 +9,15 @@ import Daoiml.equipDaoiml;
 import model.Equipment;
 import view.EquipmentView;
 
-public class EquipmentController {
+public class EquipmentController extends Controller{
 
 	private Equipment model;
 
 	// Constructor
 	public EquipmentController(Equipment model) {
-		super();
-		this.model = model;
+		super(model);
+		this.model=model;
+		//this.model=model;
 	}
 
 	// Member function
@@ -35,17 +36,12 @@ public class EquipmentController {
 	}
 	
 	public void addEquipment(String name, double capacity) throws SQLException {
-		equipDaoiml edi = new equipDaoiml();
-		int newEquipIndex = edi.getMaxIndex() + 1;
-		Equipment newEquipment= new Equipment(newEquipIndex, name, capacity);
-		edi.add(newEquipment);
+		
+		model.setCapacity(capacity);
+		model.setName(name);
+		model.addEquipmentToDB(model);
 	}
 	
 	// Update view
-	public ArrayList<Equipment> updateView() throws SQLException {
-		ArrayList<Equipment> equipList = new ArrayList<Equipment>();
-		equipDao edi = new equipDaoiml();
-		equipList = (ArrayList<Equipment>) edi.findAll();
-		return equipList;
-	}
+
 }

@@ -7,6 +7,9 @@ public class RecipeIngredient extends Ingredient {
 		super(Index,name, amount, unit);
 		this.recipeIndex=recipeIndex;
 	}
+	public RecipeIngredient() {
+		
+	}
 	public void setrecipeIndex(int recipeIndex) {
 		this.recipeIndex = recipeIndex;
 	}

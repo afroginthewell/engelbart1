@@ -16,6 +16,10 @@ public class Recipe {
 		this.unit = unit;
 	}
 	
+	public Recipe() {
+		
+	}
+	
 	// Getter and Setter
 	public int getRecipeIndex() {
 		return recipeIndex;

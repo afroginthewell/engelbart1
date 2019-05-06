@@ -56,45 +56,48 @@ public class EquipmentAddGUI extends JFrame{
 						// TODO Auto-generated catch block
 						e2.printStackTrace();
 					}
+					
+					m.getView().get(0).setvisible(1);
+					EquipmentAddGUI.this.dispose();
+					m.getView().get(1).setvisible(0);
 					try {
-						new EquipmentView(m,c);
+						m.notifyView();
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					EquipmentAddGUI.this.dispose();
-				}else {
-					try {
-						new EquipmentAddView(m,c);
-					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					EquipmentAddGUI.this.dispose();
-				}
-			}
+				}}
+					
+			
 		});
 		
 		p1.add(addButton);
 		JButton b2 = new JButton("Cancel");
-		b2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					new EquipmentView(m,c);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				EquipmentAddGUI.this.dispose();
-			}
-		});
+//		b2.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				try {
+//					new EquipmentView(m,c);
+//				} catch (SQLException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
+//				EquipmentAddGUI.this.dispose();
+//			}
+//		});
 		p1.add(b2);
 		p.add(p1);
 		
-		controlVisible(true);
+		
 	}
 	
-	public void controlVisible(boolean flag) {
-		this.setVisible(flag);
+	public void controlVisible(int flag) {
+		if(flag==1)
+		{
+			this.setVisible(true);
+		}
+		else {
+			this.setVisible(false);
+		}
+		
 	}
 }
