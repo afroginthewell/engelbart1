@@ -1,6 +1,5 @@
 package model;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import view.View;
@@ -21,6 +20,4 @@ public class Model {
 	{
 		return views;
 	}
-	
-	protected void notifyView() throws SQLException {}
 }

@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -13,8 +14,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import controller.StorageIngredientController;
+import model.StorageIngredient;
+
 public class IngredientAddGUI extends JFrame {
-	public IngredientAddGUI() {
+	
+	public IngredientAddGUI(ArrayList<StorageIngredient> sIngredientList, StorageIngredientController c,StorageIngredient m) {
+	
 		this.setTitle("Ingredient add page");
 		this.setSize(400, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,7 +42,7 @@ public class IngredientAddGUI extends JFrame {
 					String gett2 = t2.getText().toString();
 					//System.out.println(gett1);
 					//System.out.println(gett2);
-					new IngredientMantainGUI().setVisible(true); // if legal, move to IngredientMantain.
+					// new IngredientMantainGUI().setVisible(true); // if legal, move to IngredientMantain.
 					IngredientAddGUI.this.dispose();
 				} else {    // if illegal, return itself
 					new EquipmentUpdateGUI().setVisible(true);
@@ -48,7 +54,7 @@ public class IngredientAddGUI extends JFrame {
 		JButton b2 = new JButton("Cancel");
 		b2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new IngredientMantainGUI().setVisible(true);
+				// new IngredientMantainGUI().setVisible(true);
 				IngredientAddGUI.this.dispose();
 			}
 		});

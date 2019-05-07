@@ -29,7 +29,7 @@ public class ConfirmChooseRecipeGUI extends JFrame{
 		yes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String getnote = note.getText().toString();
-				new IngredientSubtractGUI().setVisible(true);
+				new IngredientUpdateGUI().setVisible(true);
 				ConfirmChooseRecipeGUI.this.dispose();
 			}
 		});

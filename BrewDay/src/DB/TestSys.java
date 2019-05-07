@@ -14,6 +14,9 @@ import model.StorageIngredient;
 import view.BrewView;
 import view.EquipmentAddView;
 import view.EquipmentView;
+import view.StorageIngredientAddView;
+import view.StorageIngredientUpdateView;
+import view.StorageIngredientView;
 import Dao.storageingredientDao;
 import Dao.recipeDao;
 import Dao.RecipeIngredientDao;
@@ -24,8 +27,10 @@ import Daoiml.noteDaoiml;
 import Daoiml.recipeDaoiml;
 import Daoiml.RecipeingredientDaoiml;
 import Daoiml.storageingredientDaoiml;
+import GUI.IngredientMantainGUI;
 import controller.BrewController;
 import controller.EquipmentController;
+import controller.StorageIngredientController;
 
 
 public class TestSys {	
@@ -33,14 +38,29 @@ public class TestSys {
 			// Construct model
 			Equipment m = new Equipment(); // Use empty constructor
 			EquipmentController c = new EquipmentController(m);
-			// Construct controller
 			
+			// Create all related views
 			EquipmentView ev = new EquipmentView(m, c,1);
 			EquipmentAddView eav = new EquipmentAddView(m, c,0);
 			m.addView(ev); // Add view function
 			m.addView(eav);
 			
+			//////////////////////
+			// Test for Storage Ingredient 
+			//////////////////////
 			
+			// Construct Model
+			StorageIngredient sim = new StorageIngredient();
+			StorageIngredientController sic = new StorageIngredientController(sim);
+			
+			// Create all related views
+			StorageIngredientView simv = new StorageIngredientView(sim, sic, 1);
+			StorageIngredientUpdateView siuv = new StorageIngredientUpdateView(sim, sic, 0);
+			StorageIngredientAddView siav = new StorageIngredientAddView(sim, sic, 0);
+			
+			sim.addView(simv);
+			sim.addView(siuv);
+			sim.addView(siav);
 //			Brew bm = new Brew(2.0, "20-19-5-2-Testing1");
 //			BrewView bv = new BrewView();
 //			BrewController bc = new BrewController(bm, bv);

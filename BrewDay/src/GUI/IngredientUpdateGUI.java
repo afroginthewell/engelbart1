@@ -1,11 +1,12 @@
 package GUI;
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,46 +14,120 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import controller.StorageIngredientController;
+import model.StorageIngredient;
+
 public class IngredientUpdateGUI extends JFrame{
-	public IngredientUpdateGUI() {
-		this.setTitle("Ingredient update page");
+	public IngredientUpdateGUI(ArrayList<StorageIngredient> sIngredientList, StorageIngredientController c,StorageIngredient m) {
+		this.setTitle("Ingredient Update GUI");
 		this.setSize(400,300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		JPanel p = new JPanel();
-		this.add(p);
-		p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
-		JTextArea amountText = new JTextArea("Input you want to update to how much");
-		p.add(amountText);
 		
-		JPanel p1 = new JPanel();
-		p1.setLayout(new FlowLayout(1,10,10));
-		JButton cancalButton = new JButton("Cancel");
-		cancalButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				new MainpageGUI().setVisible(true);
-				IngredientUpdateGUI.this.dispose();
-			}
-		});
-		p1.add(cancalButton);
-		JButton updateButton = new JButton("Update");
-		updateButton.addActionListener(new ActionListener() {
+		JPanel p = new JPanel();
+		p.setLayout(new FlowLayout(1,0,0));
+		
+		JPanel name = new JPanel();
+		name.setLayout(new BoxLayout(name, BoxLayout.PAGE_AXIS));
+		JTextArea water = new JTextArea("water", 1,10);
+		water.setEditable(false);
+		JTextArea malts = new JTextArea("malts", 1,10);
+		malts.setEditable(false);
+		JTextArea hops = new JTextArea("hops", 1,10);
+		hops.setEditable(false);
+		JTextArea yeasts = new JTextArea("yeasts", 1,10);
+		yeasts.setEditable(false);
+		JTextArea sugars = new JTextArea("sugars", 1,10);
+		malts.setEditable(false);
+		name.add(water);
+		name.add(malts);
+		name.add(hops);
+		name.add(yeasts);
+		name.add(sugars);
+		p.add(name);
+		
+		JPanel input = new JPanel();
+		input.setLayout(new BoxLayout(input, BoxLayout.PAGE_AXIS));
+		JTextArea Iwater = new JTextArea("", 1,10);
+		JTextArea Imalts = new JTextArea("", 1,10);
+		JTextArea Ihops = new JTextArea("", 1,10);
+		JTextArea Iyeasts = new JTextArea("", 1,10);
+		JTextArea Isugars = new JTextArea("", 1,10);
+		
+		input.add(Iwater);
+		input.add(Imalts);
+		input.add(Ihops);
+		input.add(Iyeasts);
+		input.add(Isugars);
+		p.add(input);
+		
+		JPanel unit = new JPanel();
+		unit.setLayout(new BoxLayout(unit, BoxLayout.PAGE_AXIS));
+		JTextArea uwater = new JTextArea("g", 1,5);
+		uwater.setEditable(false);
+		JTextArea umalts = new JTextArea("g", 1,5);
+		umalts.setEditable(false);
+		JTextArea uhops = new JTextArea("g", 1,5);
+		uhops.setEditable(false);
+		JTextArea uyeasts = new JTextArea("g", 1,5);
+		uyeasts.setEditable(false);
+		JTextArea usugars = new JTextArea("g", 1,5);
+		usugars.setEditable(false);
+		unit.add(uwater);
+		unit.add(umalts);
+		unit.add(uhops);           
+		unit.add(uyeasts);   
+		unit.add(usugars);
+		p.add(unit);	
+		
+		
+		JPanel p2 = new JPanel(new FlowLayout(1,10,10));
+		JButton Subtract = new JButton("Update");
+		Subtract.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean checkLegal = true;
+				String getIwater = Iwater.getText().toString();
+				String getImalts = Imalts.getText().toString();
+				String getIhops = Ihops.getText().toString();
+				String getIyeasts = Iyeasts.getText().toString();
+				String getIsugars = Iyeasts.getText().toString();
+				System.out.println(getIwater);
+				System.out.println(getImalts);
+				System.out.println(getIhops);
+				System.out.println(getIyeasts);
+				System.out.println(getIsugars);
 				if(checkLegal == true) {
-					String gett1 = amountText.getText().toString();
-					//System.out.println(gett1);
-					new MainpageGUI().setVisible(true);
-					IngredientUpdateGUI.this.dispose();
+			//		new IngredientMantainGUI().setVisible(true);
+					IngredientUpdateGUI.this.dispose();	
 				}else {
-					new IngredientUpdateGUI().setVisible(true);
+			//		new IngredientUpdateGUI().setVisible(true);
 					IngredientUpdateGUI.this.dispose();
 				}
 			}
 		});
-		p1.add(updateButton);
-		p.add(p1);
-		
+		JButton Cancel = new JButton("Cancel");	
+		Cancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			// 	new IngredientMantainGUI().setVisible(true);
+				IngredientUpdateGUI.this.dispose();
+			}
+		});
+		p2.add(Subtract);
+		p2.add(Cancel);
+		p.add(p2);
+		this.add(p);
 		this.setVisible(true);
+	}
+	
+	public void controlVisible(int flag) {
+		if(flag==1)
+		{
+			this.setVisible(true);
+		}
+		else {
+			System.out.print(this.getClass());
+			this.setVisible(false);
+		}
 		
 	}
+	
 }

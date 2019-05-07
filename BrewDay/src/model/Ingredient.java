@@ -1,6 +1,8 @@
 package model;
 
-public class Ingredient {
+import java.sql.SQLException;
+
+public class Ingredient extends Model {
 	private int index;
 	private String name;
 	private double amount;
@@ -14,7 +16,7 @@ public class Ingredient {
 		this.unit = unit;
 	}
 	public Ingredient() {
-	
+		super();
 	}
 	
 	// Getter and Setter	
@@ -49,5 +51,7 @@ public class Ingredient {
 	public void setUnit(String unit) {
 		this.unit = unit;
 	}
+	
+	protected void notifyView() throws SQLException {}
 	
 }
