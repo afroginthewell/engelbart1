@@ -52,13 +52,13 @@ public class Equipment extends Model {
 		this.capacity = capacity;
 	}
 	
-	public void addEquipmentToDB(Equipment equipment) throws SQLException
-	{
-		int newEquipIndex = edi.getMaxIndex() + 1;
-		equipment.setEquipmentIndex(newEquipIndex);		
-		edi.add(equipment);
-		
-	}
+//	public void addEquipmentToDB(Equipment equipment) throws SQLException
+//	{
+//		int newEquipIndex = edi.getMaxIndex() + 1;
+//		equipment.setEquipmentIndex(newEquipIndex);		
+//		edi.add(equipment);
+//		
+//	}
 
 	public void notifyView() throws SQLException {
 		for (View v: super.views) {
@@ -66,9 +66,5 @@ public class Equipment extends Model {
 		}
 	} 
 	
-	public ArrayList<Equipment> updateView() throws SQLException {
-		ArrayList<Equipment> equipList = new ArrayList<Equipment>();
-		equipList = (ArrayList<Equipment>) edi.findAll();
-		return equipList;
-	}
+	
 }

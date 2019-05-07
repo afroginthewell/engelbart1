@@ -22,14 +22,14 @@ public class EquipmentView extends View{
 		this.m = m;
 		this.c = c;
 		this.visible=visible;
-		equipList=m.updateView();
+		equipList=c.updateView();
 		EquipmentGUI equipmentGUI = new EquipmentGUI(equipList, c,m);
 		equipmentGUI.controlVisible(this.getvisible());
 	}
 	
 	public void update() throws SQLException
 	{
-		equipList = m.updateView();
+		equipList = c.updateView();
 //		for(Equipment e:equipList)
 //		{
 //			System.out.println(e.getName());

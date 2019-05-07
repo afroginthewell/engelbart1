@@ -36,10 +36,19 @@ public class EquipmentController extends Controller{
 	}
 	
 	public void addEquipment(String name, double capacity) throws SQLException {
-		
+		equipDaoiml edi = new equipDaoiml();
+		int newEquipIndex = edi.getMaxIndex() + 1;
+		model.setEquipmentIndex(newEquipIndex);		
 		model.setCapacity(capacity);
 		model.setName(name);
-		model.addEquipmentToDB(model);
+		edi.add(model);
+	}
+	
+	public ArrayList<Equipment> updateView() throws SQLException {
+		equipDaoiml edi = new equipDaoiml();
+		ArrayList<Equipment> equipList = new ArrayList<Equipment>();
+		equipList = (ArrayList<Equipment>) edi.findAll();
+		return equipList;
 	}
 	
 	// Update view
