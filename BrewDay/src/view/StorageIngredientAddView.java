@@ -28,5 +28,13 @@ public class StorageIngredientAddView extends View {
 		// Convert the visibility
 		ingreUpdatePage.controlVisible(this.getvisible());
 	}
+	
+	public void update() throws SQLException
+	{
+		
+		IngredientAddGUI singredientAddGUI = new IngredientAddGUI(sIngredientList, c,m);
+		System.out.println(this.getvisible());
+		singredientAddGUI.controlVisible(this.getvisible());
+	}
 
 }

@@ -1,9 +1,11 @@
 package GUI;
+
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.Box;
@@ -14,101 +16,81 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import Daoiml.storageingredientDaoiml;
 import controller.StorageIngredientController;
 import model.StorageIngredient;
 
-public class IngredientUpdateGUI extends JFrame{
-	public IngredientUpdateGUI(ArrayList<StorageIngredient> sIngredientList, StorageIngredientController c,StorageIngredient m) {
+public class IngredientUpdateGUI extends JFrame {
+	public IngredientUpdateGUI(ArrayList<StorageIngredient> sIngredientList, StorageIngredient m,
+			StorageIngredientController c) {
 		this.setTitle("Ingredient Update GUI");
-		this.setSize(400,300);
+		this.setSize(400, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		JPanel p = new JPanel();
-		p.setLayout(new FlowLayout(1,0,0));
+		p.setLayout(new FlowLayout(1, 0, 0));
+		ArrayList<JTextArea> inputList = new ArrayList<JTextArea>();
 		
-		JPanel name = new JPanel();
-		name.setLayout(new BoxLayout(name, BoxLayout.PAGE_AXIS));
-		JTextArea water = new JTextArea("water", 1,10);
-		water.setEditable(false);
-		JTextArea malts = new JTextArea("malts", 1,10);
-		malts.setEditable(false);
-		JTextArea hops = new JTextArea("hops", 1,10);
-		hops.setEditable(false);
-		JTextArea yeasts = new JTextArea("yeasts", 1,10);
-		yeasts.setEditable(false);
-		JTextArea sugars = new JTextArea("sugars", 1,10);
-		malts.setEditable(false);
-		name.add(water);
-		name.add(malts);
-		name.add(hops);
-		name.add(yeasts);
-		name.add(sugars);
-		p.add(name);
+		// Connected with Dao
+		storageingredientDaoiml sidi = new storageingredientDaoiml();
 		
-		JPanel input = new JPanel();
-		input.setLayout(new BoxLayout(input, BoxLayout.PAGE_AXIS));
-		JTextArea Iwater = new JTextArea("", 1,10);
-		JTextArea Imalts = new JTextArea("", 1,10);
-		JTextArea Ihops = new JTextArea("", 1,10);
-		JTextArea Iyeasts = new JTextArea("", 1,10);
-		JTextArea Isugars = new JTextArea("", 1,10);
-		
-		input.add(Iwater);
-		input.add(Imalts);
-		input.add(Ihops);
-		input.add(Iyeasts);
-		input.add(Isugars);
-		p.add(input);
-		
-		JPanel unit = new JPanel();
-		unit.setLayout(new BoxLayout(unit, BoxLayout.PAGE_AXIS));
-		JTextArea uwater = new JTextArea("g", 1,5);
-		uwater.setEditable(false);
-		JTextArea umalts = new JTextArea("g", 1,5);
-		umalts.setEditable(false);
-		JTextArea uhops = new JTextArea("g", 1,5);
-		uhops.setEditable(false);
-		JTextArea uyeasts = new JTextArea("g", 1,5);
-		uyeasts.setEditable(false);
-		JTextArea usugars = new JTextArea("g", 1,5);
-		usugars.setEditable(false);
-		unit.add(uwater);
-		unit.add(umalts);
-		unit.add(uhops);           
-		unit.add(uyeasts);   
-		unit.add(usugars);
-		p.add(unit);	
-		
-		
-		JPanel p2 = new JPanel(new FlowLayout(1,10,10));
+		// Print the ingredients list fetched from database
+		for (StorageIngredient si : sIngredientList) {
+			JPanel information = new JPanel();
+			information.setLayout(new BoxLayout(information, BoxLayout.X_AXIS));
+			JTextArea ingredientType = new JTextArea(si.getName(), 1, 10);
+			ingredientType.setEditable(false);
+			JTextArea input = new JTextArea("",1,10);
+			inputList.add(input);
+			JTextArea unit = new JTextArea("g", 1, 5);
+			information.add(ingredientType);
+			information.add(input);
+			information.add(unit);
+			p.add(information);
+		}
+
+		JPanel p2 = new JPanel(new FlowLayout(1, 10, 10));
 		JButton Subtract = new JButton("Update");
 		Subtract.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean checkLegal = true;
-				String getIwater = Iwater.getText().toString();
-				String getImalts = Imalts.getText().toString();
-				String getIhops = Ihops.getText().toString();
-				String getIyeasts = Iyeasts.getText().toString();
-				String getIsugars = Iyeasts.getText().toString();
-				System.out.println(getIwater);
-				System.out.println(getImalts);
-				System.out.println(getIhops);
-				System.out.println(getIyeasts);
-				System.out.println(getIsugars);
-				if(checkLegal == true) {
-			//		new IngredientMantainGUI().setVisible(true);
-					IngredientUpdateGUI.this.dispose();	
-				}else {
-			//		new IngredientUpdateGUI().setVisible(true);
-					IngredientUpdateGUI.this.dispose();
+				
+				try {
+					c.updateAmount(inputList, sIngredientList);
+				} catch (SQLException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
 				}
+				
+				// Alert successful information
+				
+				// Jump back to IngredientMaintain page
+				m.getView().get(1).setvisible(0);
+				IngredientUpdateGUI.this.dispose();
+				m.getView().get(0).setvisible(1);
+				try {
+					m.notifyView();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
 			}
 		});
-		JButton Cancel = new JButton("Cancel");	
+		JButton Cancel = new JButton("Cancel");
 		Cancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			// 	new IngredientMantainGUI().setVisible(true);
+				// Jump to IngredientMaintainGUI
+				m.getView().get(1).setvisible(0);
 				IngredientUpdateGUI.this.dispose();
+				m.getView().get(0).setvisible(1);
+				try {
+					m.notifyView();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		p2.add(Subtract);
@@ -117,17 +99,15 @@ public class IngredientUpdateGUI extends JFrame{
 		this.add(p);
 		this.setVisible(true);
 	}
-	
+
 	public void controlVisible(int flag) {
-		if(flag==1)
-		{
+		if (flag == 1) {
 			this.setVisible(true);
-		}
-		else {
+		} else {
 			System.out.print(this.getClass());
 			this.setVisible(false);
 		}
-		
+
 	}
-	
+
 }

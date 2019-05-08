@@ -40,6 +40,7 @@ public class IngredientMantainGUI extends JFrame{
 		p2.setLayout(new GridLayout(sIngredientList.size(), 1, 20, 10)); 
 		for (StorageIngredient si : sIngredientList) {
 			p2.add(new JTextField(si.getName(),30));
+			p2.add(new JTextField(""+si.getAmount(),30));
 		}
 		p.add(p2); 
 		
@@ -68,6 +69,7 @@ public class IngredientMantainGUI extends JFrame{
 		});
 		
 		// Control the jump between pages (Maintain TO update)
+		////////////////  UPDATE
 		p3.add(update);
 		update.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -79,7 +81,6 @@ public class IngredientMantainGUI extends JFrame{
 				try {
 					m.notifyView();
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -93,9 +94,9 @@ public class IngredientMantainGUI extends JFrame{
 				IngredientMantainGUI.this.dispose();
 			}
 		});
-;		p.add(p3);
+		p.add(p3);
 	
-		this.setVisible(true);
+		
 		
 	}
 	
@@ -105,9 +106,13 @@ public class IngredientMantainGUI extends JFrame{
 			this.setVisible(true);
 		}
 		else {
-			System.out.print(this.getClass());
 			this.setVisible(false);
 		}
 		
+	}
+	
+	public void update() {
+		System.out.println("Hello");
+		repaint();// repaint all the thing
 	}
 }

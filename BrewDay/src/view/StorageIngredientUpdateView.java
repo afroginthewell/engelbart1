@@ -3,6 +3,8 @@ package view;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import GUI.EquipmentAddGUI;
+import GUI.EquipmentUpdateGUI;
 import GUI.IngredientMantainGUI;
 import GUI.IngredientUpdateGUI;
 import controller.Controller;
@@ -24,9 +26,17 @@ public class StorageIngredientUpdateView extends View{
 		this.c = c;
 		this.visible = visible;
 		sIngredientList = c.updateView();
-		IngredientUpdateGUI ingreUpdatePage = new IngredientUpdateGUI(sIngredientList, c, m);
+		IngredientUpdateGUI ingreUpdatePage = new IngredientUpdateGUI(sIngredientList, m, c);
 		// Convert the visibility
 		ingreUpdatePage.controlVisible(this.getvisible());
+	}
+	
+	public void update() throws SQLException
+	{
+		
+		IngredientUpdateGUI singredientUpdateGUI = new IngredientUpdateGUI(sIngredientList, m,c);
+		System.out.println(this.getvisible());
+		singredientUpdateGUI.controlVisible(this.getvisible());
 	}
 	
 }

@@ -40,11 +40,11 @@ public class TestSys {
 			EquipmentController c = new EquipmentController(m);
 			
 			// Create all related views
-			EquipmentView ev = new EquipmentView(m, c,1);
-			EquipmentAddView eav = new EquipmentAddView(m, c,0);
-			m.addView(ev); // Add view function
-			m.addView(eav);
-			
+//			EquipmentView ev = new EquipmentView(m, c,1);
+//			EquipmentAddView eav = new EquipmentAddView(m, c,0);
+//			m.addView(ev); // Add view function
+//			m.addView(eav);
+//			
 			//////////////////////
 			// Test for Storage Ingredient 
 			//////////////////////

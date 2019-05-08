@@ -3,13 +3,14 @@ package controller;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.JTextArea;
+
 import Daoiml.storageingredientDaoiml;
 import model.StorageIngredient;
 import view.StorageIngredientView;
 
 public class StorageIngredientController extends Controller {
 	private StorageIngredient model;
-
 
 	// Constructor
 	public StorageIngredientController(StorageIngredient model) {
@@ -18,34 +19,42 @@ public class StorageIngredientController extends Controller {
 	}
 
 	// FUNCTIONS
-	public boolean addAmount(int ingredientIndex, double amount) throws SQLException {
-		storageingredientDaoiml si = new storageingredientDaoiml();
-
-		// Error Handle: add amount's value cannot be negative value
-		if (amount < 0)
-			return false;
-
-		// Set the amount to the new amount
-		model.setAmount(model.getAmount() + amount);
-		si.update(model);
-
-		return true;
+	public void updateAmount(ArrayList<JTextArea> inputList, ArrayList<StorageIngredient> sIngredientList) throws SQLException {
+		// Connected with Dao
+		storageingredientDaoiml sidi = new storageingredientDaoiml();
+		
+		// Write Data to Database
+		for (int i = 0; i < inputList.size(); i++) {
+			
+			// Fetch the amount
+			String inputTemp = inputList.get(i).getText().toString();
+			
+			// Empty Error handle
+			if (inputTemp.equals("")) {inputTemp = "0.0";}
+			double changedAmount = Double.parseDouble(inputTemp);
+			
+			double updatedAmount = sIngredientList.get(i).getAmount() + changedAmount;
+			sIngredientList.get(i).setAmount(updatedAmount);
+			try {
+				sidi.update(sIngredientList.get(i));
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
 	}
 
-	public boolean subtractAmount(int ingredientIndex, double amount) throws SQLException {
-		storageingredientDaoiml si = new storageingredientDaoiml();
-
-		// Error Handle: add amount's value cannot be negative value
-		if (amount > 0)
-			return false;
-
-		// Set the amount to the new amount
-		model.setAmount(model.getAmount() - amount);
-		si.update(model);
-
-		return true;
+	public void addNewIngredient(String name, String amount) throws SQLException {
+		// Connected with Dao
+		storageingredientDaoiml sidi = new storageingredientDaoiml();
+		int newIngreIndex = sidi.getMaxIndex() + 1;
+		model.setindex(newIngreIndex);
+		model.setName(name);
+		model.setAmount(Double.parseDouble(amount));
+		model.setUnit("g");
+		sidi.add(model);
 	}
-	
+
 	public ArrayList<StorageIngredient> updateView() throws SQLException {
 		storageingredientDaoiml sidi = new storageingredientDaoiml();
 		ArrayList<StorageIngredient> sIngredientList = new ArrayList<StorageIngredient>();

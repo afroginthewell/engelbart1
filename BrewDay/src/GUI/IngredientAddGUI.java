@@ -1,10 +1,12 @@
 package GUI;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
@@ -14,13 +16,15 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import Daoiml.storageingredientDaoiml;
 import controller.StorageIngredientController;
 import model.StorageIngredient;
 
 public class IngredientAddGUI extends JFrame {
-	
-	public IngredientAddGUI(ArrayList<StorageIngredient> sIngredientList, StorageIngredientController c,StorageIngredient m) {
-	
+
+	public IngredientAddGUI(ArrayList<StorageIngredient> sIngredientList, StorageIngredientController c,
+			StorageIngredient m) {
+
 		this.setTitle("Ingredient add page");
 		this.setSize(400, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,18 +40,37 @@ public class IngredientAddGUI extends JFrame {
 		JButton b1 = new JButton("Add");
 		b1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+						
 				boolean checkLegal = true;
 				if (checkLegal == true) {
-					String gett1 = t1.getText().toString();
-					String gett2 = t2.getText().toString();
-					//System.out.println(gett1);
-					//System.out.println(gett2);
-					// new IngredientMantainGUI().setVisible(true); // if legal, move to IngredientMantain.
+					String name = t1.getText().toString();
+					String amount = t2.getText().toString();
+					
+					try {
+						c.addNewIngredient(name, amount);
+					} catch (SQLException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					}
+					
+					// Alert successful information
+
+					// Jump back to IngredientMaintain page
+					m.getView().get(1).setvisible(0);
 					IngredientAddGUI.this.dispose();
-				} else {    // if illegal, return itself
+					m.getView().get(0).setvisible(1);
+					try {
+						m.notifyView();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					IngredientAddGUI.this.dispose();
+				} else { // if illegal, return itself
 					new EquipmentUpdateGUI().setVisible(true);
 					IngredientAddGUI.this.dispose();
 				}
+
 			}
 		});
 		p1.add(b1);
@@ -62,14 +85,13 @@ public class IngredientAddGUI extends JFrame {
 		p.add(p1);
 
 	}
+
 	public void controlVisible(int flag) {
-		if(flag==1)
-		{
+		if (flag == 1) {
 			this.setVisible(true);
-		}
-		else {
+		} else {
 			this.setVisible(false);
 		}
-		
+
 	}
 }
