@@ -11,37 +11,32 @@ import model.Recipe;
 import model.RecipeIngredient;
 import view.RecipeView;
 
-public class RecipeController {
+public class RecipeController extends Controller{
 	private Recipe model;
 	
 
 	// Constructor
 	public RecipeController(Recipe model) {
-		super();
+		super(model);
 		this.model = model;		
 	}
 	
 	// Add recipe and Delete recipe
-	public void addRecipe(String name, double quantity, String unit) throws SQLException {
+	public int addRecipe(String name, double quantity, String unit) throws SQLException {
 		recipeDao rdi = new recipeDaoiml();
 		// Handle for recipe
-		Recipe tempRecipe = new Recipe(rdi.getMaxIndex()+1, name, quantity, unit);
-		rdi.add(tempRecipe);	
+		int a=rdi.getMaxIndex()+1;
+		model.setName(name);
+		model.setQuantity(quantity);
+		model.setRecipeIndex(a);
+		model.setUnit(unit);		
+		rdi.add(model);	
+		return a;
 	}
 	
 	// Delete Recipe
 	public void deleteRecipe(int targetIndex) throws SQLException {
 		recipeDao rdi = new recipeDaoiml();
-		RecipeIngredientDao ridi = new RecipeingredientDaoiml();
-		
-		// Delete the recipe ingredient first
-		ArrayList<RecipeIngredient> deleteRecipeIngredientList = new ArrayList<RecipeIngredient>();
-		deleteRecipeIngredientList = (ArrayList<RecipeIngredient>) ridi.findbyrecipe(targetIndex);
-		for(RecipeIngredient dri: deleteRecipeIngredientList) {
-			ridi.delete(dri.getindex());
-		}
-		
-		// Then we delete the recipe
 		rdi.delete(targetIndex);
 	}
 	
@@ -60,12 +55,13 @@ public class RecipeController {
 		return convertedList; 
 	}
 
-	public boolean updateRecipes(String name, double amount, Recipe r) throws SQLException {
+	public boolean updateRecipes(String name, double amount, int id) throws SQLException {
 		// Implement the DAO object
 		recipeDao RecipeDAO = new recipeDaoiml();
-		r.setName(name);
-		r.setQuantity(amount);
-		RecipeDAO.update(r);
+		model=RecipeDAO.findById(id);
+		model.setName(name);
+		model.setQuantity(amount);
+		RecipeDAO.update(model);
 		return true;
 	}
 	public ArrayList<Recipe> updateRecipeView() throws SQLException {

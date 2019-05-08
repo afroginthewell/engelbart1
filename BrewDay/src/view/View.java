@@ -3,7 +3,9 @@ package view;
 import java.sql.SQLException;
 
 import controller.Controller;
+import controller.RecipeController;
 import model.Model;
+import model.Recipe;
 
 public class View {
 	private Model m;
@@ -15,6 +17,8 @@ public class View {
 		this.c = c;
 		this.visible = visible;
 	}
+
+	
 
 	public void update() throws SQLException {
 		// Wait for sub class to fulfill

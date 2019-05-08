@@ -1,6 +1,10 @@
 package model;
 
-public class Recipe {
+import java.sql.SQLException;
+
+import view.View;
+
+public class Recipe extends Model{
 	
 	private int recipeIndex;
 	private String name;
@@ -8,6 +12,11 @@ public class Recipe {
 	private String unit;
 	
 	// Constructor
+	public Recipe() {
+		super();
+		
+	}
+	
 	public Recipe(int recipeIndex, String name, double quantity, String unit) {
 		super();
 		this.recipeIndex = recipeIndex;
@@ -16,9 +25,6 @@ public class Recipe {
 		this.unit = unit;
 	}
 	
-	public Recipe() {
-		
-	}
 	
 	// Getter and Setter
 	public int getRecipeIndex() {
@@ -52,6 +58,10 @@ public class Recipe {
 	public void setUnit(String unit) {
 		this.unit = unit;
 	}
-	
+	public void notifyView() throws SQLException {
+		for (View v: super.views) {
+			v.update();
+		}
+	} 
 	
 }

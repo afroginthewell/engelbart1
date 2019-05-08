@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -13,8 +14,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import controller.RecipeController;
+import controller.RecipeIngredientController;
+import model.Recipe;
+import model.RecipeIngredient;
+
 public class RecipeAddPageGUI extends JFrame{
-	public RecipeAddPageGUI() {
+	public RecipeAddPageGUI(Recipe m, RecipeController c,RecipeIngredient i,RecipeIngredientController ic) {
 		this.setTitle("RecommendRecipePageGUI");
 		this.setSize(400,300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -24,7 +30,7 @@ public class RecipeAddPageGUI extends JFrame{
 		
 		JPanel name = new JPanel();
 		name.setLayout(new BoxLayout(name, BoxLayout.PAGE_AXIS));
-		JTextArea weight = new JTextArea("Total Weight", 1,10);
+		JTextArea weight = new JTextArea("amount", 1,10);
 		weight.setEditable(false);
 		JTextArea water = new JTextArea("water", 1,10);
 		water.setEditable(false);
@@ -36,18 +42,15 @@ public class RecipeAddPageGUI extends JFrame{
 		yeasts.setEditable(false);
 		JTextArea sugars = new JTextArea("sugars", 1,10);
 		sugars.setEditable(false);
-		JTextArea additives= new JTextArea("additives", 1,10);
-		additives.setEditable(false);
-		JTextArea note = new JTextArea("note", 1,10);
-		note.setEditable(false);
+		JTextArea recipename = new JTextArea("note", 1,10);
+		recipename.setEditable(false);
 		name.add(weight);
 		name.add(water);
 		name.add(malts);
 		name.add(hops);
 		name.add(yeasts);
 		name.add(sugars);
-		name.add(additives);
-		name.add(note);
+		name.add(recipename);
 		p.add(name);
 
 		
@@ -59,7 +62,6 @@ public class RecipeAddPageGUI extends JFrame{
 		JTextArea Ihops = new JTextArea("", 1,10);
 		JTextArea Iyeasts = new JTextArea("", 1,10);
 		JTextArea Isugars = new JTextArea("", 1,10);
-		JTextArea Iadditives= new JTextArea("", 1,10);
 		JTextArea Inote = new JTextArea("", 1,10);
 		input.add(Iweight);
 		input.add(Iwater);
@@ -67,13 +69,12 @@ public class RecipeAddPageGUI extends JFrame{
 		input.add(Ihops);
 		input.add(Iyeasts);
 		input.add(Isugars);
-		input.add(Iadditives);
 		input.add(Inote);
 		p.add(input);
 		
 		JPanel unit = new JPanel();
 		unit.setLayout(new BoxLayout(unit, BoxLayout.PAGE_AXIS));
-		JTextArea uweight = new JTextArea("kg", 1,5);
+		JTextArea uweight = new JTextArea("L", 1,5);
 		uweight.setEditable(false);
 		JTextArea uwater = new JTextArea("%", 1,5);
 		uwater.setEditable(false);
@@ -85,8 +86,6 @@ public class RecipeAddPageGUI extends JFrame{
 		uyeasts.setEditable(false);
 		JTextArea usugars = new JTextArea("%", 1,5);
 		usugars.setEditable(false);
-		JTextArea uadditives= new JTextArea("%", 1,5);
-		uadditives.setEditable(false);
 		JTextArea unote = new JTextArea("  ", 1,5);
 		unote.setEditable(false);
 		unit.add(uweight);
@@ -95,7 +94,6 @@ public class RecipeAddPageGUI extends JFrame{
 		unit.add(uhops);
 		unit.add(uyeasts);
 		unit.add(usugars);
-		unit.add(uadditives);
 		unit.add(unote);
 		p.add(unit);	
 		
@@ -104,29 +102,79 @@ public class RecipeAddPageGUI extends JFrame{
 		JButton add = new JButton("Add");
 		add.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MaintainRecipesGUI().setVisible(true);
+				
+				m.getView().get(0).setvisible(1);
+				RecipeAddPageGUI.this.dispose();
+				m.getView().get(1).setvisible(0);
+				try {
+					m.notifyView();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				String getIweight = Iweight.getText().toString();
 				String getIwater = Iwater.getText().toString();
 				String getImalts = Imalts.getText().toString();
 				String getIhops = Ihops.getText().toString();
 				String getIyeasts = Iyeasts.getText().toString();
 				String getIsugars = Isugars.getText().toString();
-				String getIadditives = Iadditives.getText().toString();
 				String getInote = Inote.getText().toString();
-				RecipeAddPageGUI.this.dispose();// here we need some judgment conditions 
+				double amount=Double.parseDouble(getIweight);
+				
+				System.out.println(amount*Double.parseDouble(getImalts));
+				
+				try {
+					
+					int recipid=c.addRecipe(getInote, amount*Double.parseDouble(getIweight), "L");
+					
+					
+					ic.addRecipeIngredient("water", amount*Double.parseDouble(getIwater)/100, "L", recipid);
+					ic.addRecipeIngredient("malts", amount*Double.parseDouble(getImalts), "g", recipid);
+					ic.addRecipeIngredient("hops", amount*Double.parseDouble(getIhops), "g", recipid);
+					ic.addRecipeIngredient("yeasts", amount*Double.parseDouble(getIyeasts), "g", recipid);
+					ic.addRecipeIngredient("sugars", amount*Double.parseDouble(getIsugars), "g", recipid);
+					
+				} catch (NumberFormatException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
+				
+				
 			}
 		});
 		JButton cancel = new JButton("Cancel");	
 		cancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MaintainRecipesGUI().setVisible(true);
+				m.getView().get(0).setvisible(1);
 				RecipeAddPageGUI.this.dispose();
+				m.getView().get(1).setvisible(0);
+				try {
+					m.notifyView();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		p2.add(add);
 		p2.add(cancel);
 		p.add(p2);
 		this.add(p);
-		this.setVisible(true);
+		
+	}
+	
+	public void controlVisible(int flag) {
+		if(flag==1)
+		{
+			this.setVisible(true);
+		}
+		else {
+			System.out.print(this.getClass());
+			this.setVisible(false);
+		}
+		
 	}
 }

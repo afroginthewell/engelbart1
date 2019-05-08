@@ -5,6 +5,8 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -12,66 +14,104 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import controller.RecipeController;
+import controller.RecipeIngredientController;
+import model.Equipment;
+import model.Recipe;
+import model.RecipeIngredient;
 
 public class UpdateGUI extends JFrame{
-	public UpdateGUI() {
-		this.setTitle("Update page");
+	public UpdateGUI(ArrayList<Recipe> recipeList,Recipe m, RecipeController c,RecipeIngredient i,RecipeIngredientController ic) {
+		this.setTitle("Update Recipe");
 		this.setSize(400,300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel p = new JPanel();
-		p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
 		this.add(p);
+		p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
+		
+		JPanel p1 = new JPanel(); 
+		p1.setLayout(new FlowLayout(1,10,10));
+		JTextField title = new JTextField("recipes");
+		title.setEditable(false);
+		p1.add(title);
+		p.add(p1);
+		
+		JPanel p2 = new JPanel(); 	
+		p2.setLayout(new GridLayout(recipeList.size(), 3, 20, 10)); 
+		for (Recipe r: recipeList) {
+			// Name
+			JTextField equipmentName = new JTextField(r.getName());
+			equipmentName.setEditable(false);
+			p2.add(equipmentName);
+		JButton deleteButton1 = new JButton("update");
+		p2.add(deleteButton1);
+		deleteButton1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int targetIndex=r.getRecipeIndex();
+				
+				
+				m.getView().get(0).setvisible(1);
+				UpdateGUI.this.dispose();
+				m.getView().get(4).setvisible(0);
+				try {
+					m.notifyView();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		}
+	
+		p.add(p2); 
 		
 		JPanel p3 = new JPanel();
-		JTextField RecipeL = new JTextField("Recipes list");
-		RecipeL.setEditable(false);
-		p3.add(RecipeL);
+		p3.setLayout(new FlowLayout(1,10,10));
+		JButton cancelButton = new JButton("Cancel"); 
+		cancelButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				m.getView().get(0).setvisible(1);
+				UpdateGUI.this.dispose();
+				m.getView().get(4).setvisible(0);
+				try {
+					m.notifyView();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+			}
+		});
+		p3.add(cancelButton);
 		p.add(p3);
 		
-		JPanel p1 = new JPanel();
-		p1.setLayout(new GridLayout(3, 3, 20, 10)); 
-		p1.add(new JTextField("Recipe 1",30));
-		JButton b1 = new JButton("update");
-		b1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				new UpdataeRecipeGUI().setVisible(true);
-				UpdateGUI.this.dispose();
-			}
-		});
-		p1.add(b1);
-		p1.add(new JTextField("Recipe 2",30));
-		JButton b2 = new JButton("update");
-		b2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				new UpdataeRecipeGUI().setVisible(true);
-				UpdateGUI.this.dispose();
-			}
-		});
-		p1.add(b2);
-		p1.add(new JTextField("Recipe 2",30));
-		JButton b3 = new JButton("update");
-		b3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				new UpdataeRecipeGUI().setVisible(true);
-				UpdateGUI.this.dispose();
-			}
-		});
-		p1.add(b3);
-		p.add(p1); 
-		
-		JPanel p2 = new JPanel();
-		p2.setLayout(new FlowLayout(1,10,10));
-		JButton b4 = new JButton("Cancel");
-		b4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				new MaintainRecipesGUI().setVisible(true);
-				UpdateGUI.this.dispose();
-			}
-		});
-		p2.add(b4);
-		p.add(p2);
-	
-		this.setVisible(true);
 		
 	}
+		public void controlVisible(int flag) {
+			if(flag==1)
+			{
+				this.setVisible(true);
+			}
+			else {
+				System.out.print(this.getClass());
+				this.setVisible(false);
+			}
+			
+		}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

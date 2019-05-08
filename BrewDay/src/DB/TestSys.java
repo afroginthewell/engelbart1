@@ -14,9 +14,14 @@ import model.StorageIngredient;
 import view.BrewView;
 import view.EquipmentAddView;
 import view.EquipmentView;
+import view.MaitainRecipesView;
+import view.RecipeAddView;
+import view.RecipeDeleteView;
 import view.StorageIngredientAddView;
 import view.StorageIngredientUpdateView;
 import view.StorageIngredientView;
+import view.UpdateRecipeView;
+import view.recipeListView;
 import Dao.storageingredientDao;
 import Dao.recipeDao;
 import Dao.RecipeIngredientDao;
@@ -30,14 +35,33 @@ import Daoiml.storageingredientDaoiml;
 import GUI.IngredientMantainGUI;
 import controller.BrewController;
 import controller.EquipmentController;
+import controller.RecipeController;
+import controller.RecipeIngredientController;
 import controller.StorageIngredientController;
 
 
 public class TestSys {	
 		public static void main(String[] args) throws SQLException {
 			// Construct model
-			Equipment m = new Equipment(); // Use empty constructor
-			EquipmentController c = new EquipmentController(m);
+//			Equipment m = new Equipment(); // Use empty constructor
+//			EquipmentController c = new EquipmentController(m);
+			RecipeIngredient i = new RecipeIngredient(); // Use empty constructor
+			Recipe r=new Recipe();
+			RecipeIngredientController ic = new RecipeIngredientController(i);
+			RecipeController rc=new RecipeController(r);
+			// Construct controller
+			MaitainRecipesView mv=new MaitainRecipesView(r, rc,1);
+			
+			RecipeAddView av = new RecipeAddView(r, rc,i,ic,0);
+			RecipeDeleteView dv=new RecipeDeleteView(r, rc,i,ic,0);
+			recipeListView lv=new recipeListView(r,rc,0);
+			UpdateRecipeView uv=new UpdateRecipeView(r, rc,i,ic,0);
+			
+			r.addView(mv); // Add view function
+			r.addView(av);
+			r.addView(dv);
+			r.addView(lv);
+			r.addView(uv);
 			
 			// Create all related views
 //			EquipmentView ev = new EquipmentView(m, c,1);
@@ -50,17 +74,17 @@ public class TestSys {
 			//////////////////////
 			
 			// Construct Model
-			StorageIngredient sim = new StorageIngredient();
-			StorageIngredientController sic = new StorageIngredientController(sim);
-			
-			// Create all related views
-			StorageIngredientView simv = new StorageIngredientView(sim, sic, 1);
-			StorageIngredientUpdateView siuv = new StorageIngredientUpdateView(sim, sic, 0);
-			StorageIngredientAddView siav = new StorageIngredientAddView(sim, sic, 0);
-			
-			sim.addView(simv);
-			sim.addView(siuv);
-			sim.addView(siav);
+//			StorageIngredient sim = new StorageIngredient();
+//			StorageIngredientController sic = new StorageIngredientController(sim);
+//			
+//			// Create all related views
+//			StorageIngredientView simv = new StorageIngredientView(sim, sic, 1);
+//			StorageIngredientUpdateView siuv = new StorageIngredientUpdateView(sim, sic, 0);
+//			StorageIngredientAddView siav = new StorageIngredientAddView(sim, sic, 0);
+//			
+//			sim.addView(simv);
+//			sim.addView(siuv);
+//			sim.addView(siav);
 //			Brew bm = new Brew(2.0, "20-19-5-2-Testing1");
 //			BrewView bv = new BrewView();
 //			BrewController bc = new BrewController(bm, bv);

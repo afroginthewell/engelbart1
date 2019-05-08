@@ -26,14 +26,25 @@ public class RecipeIngredientController {
 	boolean updateAmount(double changeAmount,int recipeid) throws SQLException {
 
 		RecipeIngredientDao ri = new RecipeingredientDaoiml();
-		RecipeIngredient r=ri.findById(recipeid);
-		// Error Handle: Capacity cannot be negative value
-		if (r.getAmount() + changeAmount < 0)
+		model=ri.findById(recipeid);
+		
+		if (model.getAmount() + changeAmount < 0)
 			return false;
 
 		// Set the amount to the new amount
-		r.setAmount(r.getAmount() + changeAmount);
-		ri.update(r);
+		model.setAmount(model.getAmount() + changeAmount);
+		ri.update(model);
+
+		return true;
+	}
+	public boolean deleteRecipeIngredient(int recipeid) throws SQLException {
+
+		RecipeIngredientDao ri = new RecipeingredientDaoiml();	
+		ArrayList<RecipeIngredient> deleteRecipeIngredientList = new ArrayList<RecipeIngredient>();
+		deleteRecipeIngredientList = (ArrayList<RecipeIngredient>) ri.findbyrecipe(recipeid);
+		for(RecipeIngredient dri: deleteRecipeIngredientList) {
+			ri.delete(dri.getindex());
+		}
 
 		return true;
 	}
@@ -43,9 +54,13 @@ public class RecipeIngredientController {
 	public void addRecipeIngredient(String name, double amount,String unit,int recipeindex) throws SQLException {
 		
 		RecipeIngredientDao ri = new RecipeingredientDaoiml();
-		int newrecipeIndex = ri.getMaxIndex() + 1;
-		RecipeIngredient newRecipeIngredient= new RecipeIngredient(newrecipeIndex, name,amount, unit,recipeindex);
-		ri.add(newRecipeIngredient);
+		int newIndex = ri.getMaxIndex() + 1;
+		model.setName(name);
+		model.setAmount(amount);
+		model.setUnit(unit);
+		model.setrecipeIndex(recipeindex);
+		model.setindex(newIndex);
+		ri.add(model);
 	}
 	
 	// Update view

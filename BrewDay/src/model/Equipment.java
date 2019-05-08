@@ -12,7 +12,7 @@ public class Equipment extends Model {
 	private int equipmentIndex;
 	private String name;
 	private double capacity;
-	equipDaoiml edi = new equipDaoiml();
+	//equipDaoiml edi = new equipDaoiml();
 	// Constructor
 	public Equipment() {
 		super();

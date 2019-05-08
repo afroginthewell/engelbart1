@@ -5,6 +5,8 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -12,8 +14,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import controller.RecipeController;
+import controller.RecipeIngredientController;
+import model.Equipment;
+import model.Recipe;
+import model.RecipeIngredient;
+
 public class DeleteRecipeGUI extends JFrame{
-	public DeleteRecipeGUI() {
+	public DeleteRecipeGUI(ArrayList<Recipe> recipeList,Recipe m, RecipeController c,RecipeIngredient i,RecipeIngredientController ic) {
 		this.setTitle("DeleteRecipe");
 		this.setSize(400,300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -23,47 +31,45 @@ public class DeleteRecipeGUI extends JFrame{
 		
 		JPanel p1 = new JPanel(); 
 		p1.setLayout(new FlowLayout(1,10,10));
-		JTextField title = new JTextField("Equipments recipes");
+		JTextField title = new JTextField("recipes");
 		title.setEditable(false);
 		p1.add(title);
 		p.add(p1);
 		
-		JPanel p2 = new JPanel();
-		p2.setLayout(new GridLayout(3, 3, 20, 10)); 
-		JTextField equipment1 = new JTextField("Equipment 1");
-		equipment1.setEditable(false);
-		p2.add(equipment1);
+		JPanel p2 = new JPanel(); 	
+		p2.setLayout(new GridLayout(recipeList.size(), 3, 20, 10)); 
+		for (Recipe r: recipeList) {
+			// Name
+			JTextField equipmentName = new JTextField(r.getName());
+			equipmentName.setEditable(false);
+			p2.add(equipmentName);
 		JButton deleteButton1 = new JButton("delete");
 		p2.add(deleteButton1);
 		deleteButton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MaintainRecipesGUI().setVisible(true);
+				int targetIndex=r.getRecipeIndex();
+				
+				try {
+					c.deleteRecipe(targetIndex);
+					ic.deleteRecipeIngredient(targetIndex);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				m.getView().get(0).setvisible(1);
 				DeleteRecipeGUI.this.dispose();
+				m.getView().get(2).setvisible(0);
+				try {
+					m.notifyView();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
-		JTextField equipment2 = new JTextField("Equipment 1");
-		equipment2.setEditable(false);
-		p2.add(equipment2);
-		JButton deleteButton2 = new JButton("delete");
-		p2.add(deleteButton2);
-		deleteButton2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				new MaintainRecipesGUI().setVisible(true);
-				DeleteRecipeGUI.this.dispose();
-			}
-		});
-		JTextField equipment3 = new JTextField("Equipment 1");
-		equipment3.setEditable(false);
-		p2.add(equipment3);
-		JButton deleteButton3 = new JButton("delete");
-		p2.add(deleteButton3);
-		
-		deleteButton3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				new MaintainRecipesGUI().setVisible(true);
-				DeleteRecipeGUI.this.dispose();
-			}
-		});
+		}
+	
 		p.add(p2); 
 		
 		JPanel p3 = new JPanel();
@@ -71,14 +77,32 @@ public class DeleteRecipeGUI extends JFrame{
 		JButton cancelButton = new JButton("Cancel"); 
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MaintainRecipesGUI().setVisible(true);
+				m.getView().get(0).setvisible(1);
 				DeleteRecipeGUI.this.dispose();
+				m.getView().get(2).setvisible(0);
+				try {
+					m.notifyView();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
 			}
 		});
 		p3.add(cancelButton);
 		p.add(p3);
-	
-		this.setVisible(true);
+		
 		
 	}
+		public void controlVisible(int flag) {
+			if(flag==1)
+			{
+				this.setVisible(true);
+			}
+			else {
+				System.out.print(this.getClass());
+				this.setVisible(false);
+			}
+			
+		}
 }
