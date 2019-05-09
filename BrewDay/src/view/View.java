@@ -11,6 +11,12 @@ public class View {
 	private Model m;
 	private Controller c;
 	int visible;
+	int index;
+	
+	public void setindex(int index) throws SQLException
+	{
+		this.index=index;
+	}
 
 	public View(Model m, Controller c, int visible) {
 		this.m = m;

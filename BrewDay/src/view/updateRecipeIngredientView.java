@@ -1,11 +1,14 @@
+
 package view;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Dao.storageingredientDao;
+import Daoiml.RecipeingredientDaoiml;
 import Daoiml.storageingredientDaoiml;
 import GUI.RecipeAddPageGUI;
+import GUI.UpdataeRecipeGUI;
 import controller.RecipeController;
 import controller.RecipeIngredientController;
 import model.Recipe;
@@ -13,7 +16,7 @@ import model.RecipeIngredient;
 import model.StorageIngredient;
 import view.View;
 
-public class RecipeAddView extends View{
+public class updateRecipeIngredientView extends View{
 
 	
 	private RecipeController c;
@@ -23,18 +26,21 @@ public class RecipeAddView extends View{
 	private RecipeIngredientController ic;
 	
 	
+
 	
-	public RecipeAddView(Recipe m, RecipeController c,RecipeIngredient i,RecipeIngredientController ic,int visible) throws SQLException {
+	
+	public updateRecipeIngredientView(Recipe m, RecipeController c,RecipeIngredient i,RecipeIngredientController ic,int visible) throws SQLException {
 		super(m, c,visible);
 		this.m = m;
 		this.c = c;
 		this.i=i;
 		this.ic=ic;
 		this.visible=visible;	
-		storageingredientDaoiml sidi = new storageingredientDaoiml();
-		ArrayList<StorageIngredient> sIngredientList = new ArrayList<StorageIngredient>();
-		sIngredientList=(ArrayList<StorageIngredient>) sidi.findAll();
-		RecipeAddPageGUI addrecipeGUI = new RecipeAddPageGUI(sIngredientList,m,c,i,ic);
+		
+		ArrayList<RecipeIngredient> sIngredientList = new ArrayList<RecipeIngredient>();
+		sIngredientList=ic.GetByRecipe(index);
+		
+		UpdataeRecipeGUI addrecipeGUI = new UpdataeRecipeGUI(sIngredientList,m,c,i,ic);
 		addrecipeGUI.controlVisible(this.getvisible());
 	}
 	
@@ -42,10 +48,10 @@ public class RecipeAddView extends View{
 	public void update() throws SQLException
 	{
 		
-		storageingredientDaoiml sidi = new storageingredientDaoiml();
-		ArrayList<StorageIngredient> sIngredientList = new ArrayList<StorageIngredient>();
-		sIngredientList=(ArrayList<StorageIngredient>) sidi.findAll();
-		RecipeAddPageGUI addrecipeGUI = new RecipeAddPageGUI(sIngredientList,m,c,i,ic);
+		ArrayList<RecipeIngredient> sIngredientList = new ArrayList<RecipeIngredient>();
+		sIngredientList=ic.GetByRecipe(index);
+		
+		UpdataeRecipeGUI addrecipeGUI = new UpdataeRecipeGUI(sIngredientList,m,c,i,ic);
 		addrecipeGUI.controlVisible(this.getvisible());
 	}
 }

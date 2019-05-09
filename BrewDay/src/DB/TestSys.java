@@ -22,6 +22,7 @@ import view.StorageIngredientUpdateView;
 import view.StorageIngredientView;
 import view.UpdateRecipeView;
 import view.recipeListView;
+import view.updateRecipeIngredientView;
 import Dao.storageingredientDao;
 import Dao.recipeDao;
 import Dao.RecipeIngredientDao;
@@ -45,23 +46,31 @@ public class TestSys {
 			// Construct model
 //			Equipment m = new Equipment(); // Use empty constructor
 //			EquipmentController c = new EquipmentController(m);
+			
+			
+			
+			
 			RecipeIngredient i = new RecipeIngredient(); // Use empty constructor
 			Recipe r=new Recipe();
 			RecipeIngredientController ic = new RecipeIngredientController(i);
-			RecipeController rc=new RecipeController(r);
-			// Construct controller
+			RecipeController rc=new RecipeController(r);			
 			MaitainRecipesView mv=new MaitainRecipesView(r, rc,1);
 			
 			RecipeAddView av = new RecipeAddView(r, rc,i,ic,0);
 			RecipeDeleteView dv=new RecipeDeleteView(r, rc,i,ic,0);
 			recipeListView lv=new recipeListView(r,rc,0);
 			UpdateRecipeView uv=new UpdateRecipeView(r, rc,i,ic,0);
+			updateRecipeIngredientView uiv=new updateRecipeIngredientView(r, rc,i,ic,0);
 			
 			r.addView(mv); // Add view function
 			r.addView(av);
 			r.addView(dv);
 			r.addView(lv);
 			r.addView(uv);
+			r.addView(uiv);
+//			
+			
+			
 			
 			// Create all related views
 //			EquipmentView ev = new EquipmentView(m, c,1);

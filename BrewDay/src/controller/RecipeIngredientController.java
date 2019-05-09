@@ -2,8 +2,6 @@ package controller;
 
 import model.Equipment;
 import model.RecipeIngredient;
-import view.RecipeIngredientView;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -23,16 +21,11 @@ public class RecipeIngredientController {
 	}
 
 	// FUNCTIONS
-	boolean updateAmount(double changeAmount,int recipeid) throws SQLException {
+	public boolean updateAmount(double changeAmount,int recipeid) throws SQLException {
 
 		RecipeIngredientDao ri = new RecipeingredientDaoiml();
 		model=ri.findById(recipeid);
-		
-		if (model.getAmount() + changeAmount < 0)
-			return false;
-
-		// Set the amount to the new amount
-		model.setAmount(model.getAmount() + changeAmount);
+		model.setAmount(changeAmount);
 		ri.update(model);
 
 		return true;
@@ -69,5 +62,12 @@ public class RecipeIngredientController {
 		RecipeIngredientDao ri = new RecipeingredientDaoiml();
 		RecipeIngredientList = (ArrayList<RecipeIngredient>) ri.findAll();
 		return RecipeIngredientList;
-	}
+	}	
+	
+	public ArrayList<RecipeIngredient> GetByRecipe(int id) throws SQLException {
+		ArrayList<RecipeIngredient> RecipeIngredientList = new ArrayList<RecipeIngredient>();
+		RecipeIngredientDao ri = new RecipeingredientDaoiml();
+		RecipeIngredientList = (ArrayList<RecipeIngredient>) ri.findbyrecipe(id);
+		return RecipeIngredientList;
+	}	
 }

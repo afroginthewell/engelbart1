@@ -9,7 +9,7 @@ import Daoiml.RecipeingredientDaoiml;
 import Daoiml.recipeDaoiml;
 import model.Recipe;
 import model.RecipeIngredient;
-import view.RecipeView;
+
 
 public class RecipeController extends Controller{
 	private Recipe model;
@@ -70,5 +70,10 @@ public class RecipeController extends Controller{
 		RecipeList = (ArrayList<Recipe>) rdi.findAll();
 		return RecipeList;
 	}
+	public Recipe getRecipe(int id) throws SQLException {
 	
+		recipeDao rdi = new recipeDaoiml();
+		Recipe r= rdi.findById(id);
+		return r;
+	}
 }

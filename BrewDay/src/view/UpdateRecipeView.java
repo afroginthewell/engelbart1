@@ -30,6 +30,7 @@ public class UpdateRecipeView extends View{
 		this.ic=ic;
 		this.visible=visible;	
 		recipeList=c.updateRecipeView();
+		
 		UpdateGUI uprecipeGUI = new UpdateGUI(recipeList,m,c,i,ic);
 		uprecipeGUI.controlVisible(this.getvisible());
 	}

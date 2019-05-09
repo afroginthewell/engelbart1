@@ -19,6 +19,8 @@ import controller.RecipeIngredientController;
 import model.Equipment;
 import model.Recipe;
 import model.RecipeIngredient;
+import view.View;
+import view.updateRecipeIngredientView;
 
 public class UpdateGUI extends JFrame{
 	public UpdateGUI(ArrayList<Recipe> recipeList,Recipe m, RecipeController c,RecipeIngredient i,RecipeIngredientController ic) {
@@ -50,7 +52,13 @@ public class UpdateGUI extends JFrame{
 				int targetIndex=r.getRecipeIndex();
 				
 				
-				m.getView().get(0).setvisible(1);
+				m.getView().get(5).setvisible(1);
+				try {
+					m.getView().get(5).setindex(r.getRecipeIndex());
+				} catch (SQLException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}		
 				UpdateGUI.this.dispose();
 				m.getView().get(4).setvisible(0);
 				try {
