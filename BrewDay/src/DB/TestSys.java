@@ -11,17 +11,21 @@ import model.Equipment;
 import model.Recipe;
 import model.RecipeIngredient;
 import model.StorageIngredient;
-import view.BrewView;
 import view.EquipmentAddView;
 import view.EquipmentView;
 import view.MaitainRecipesView;
 import view.RecipeAddView;
 import view.RecipeDeleteView;
+import view.RecommendView;
+import view.ResultListView;
 import view.StorageIngredientAddView;
 import view.StorageIngredientUpdateView;
 import view.StorageIngredientView;
 import view.UpdateRecipeView;
+import view.detailinfoView;
+import view.notAvailableView;
 import view.recipeListView;
+import view.shoppinglistView;
 import view.updateRecipeIngredientView;
 import Dao.storageingredientDao;
 import Dao.recipeDao;
@@ -50,25 +54,42 @@ public class TestSys {
 			
 			
 			
-			RecipeIngredient i = new RecipeIngredient(); // Use empty constructor
-			Recipe r=new Recipe();
-			RecipeIngredientController ic = new RecipeIngredientController(i);
-			RecipeController rc=new RecipeController(r);			
-			MaitainRecipesView mv=new MaitainRecipesView(r, rc,1);
-			
-			RecipeAddView av = new RecipeAddView(r, rc,i,ic,0);
-			RecipeDeleteView dv=new RecipeDeleteView(r, rc,i,ic,0);
-			recipeListView lv=new recipeListView(r,rc,0);
-			UpdateRecipeView uv=new UpdateRecipeView(r, rc,i,ic,0);
-			updateRecipeIngredientView uiv=new updateRecipeIngredientView(r, rc,i,ic,0);
-			
-			r.addView(mv); // Add view function
-			r.addView(av);
-			r.addView(dv);
-			r.addView(lv);
-			r.addView(uv);
-			r.addView(uiv);
+//			RecipeIngredient i = new RecipeIngredient(); // Use empty constructor
+//			Recipe r=new Recipe();
+//			RecipeIngredientController ic = new RecipeIngredientController(i);
+//			RecipeController rc=new RecipeController(r);			
+//			MaitainRecipesView mv=new MaitainRecipesView(r, rc,1);
 //			
+//			RecipeAddView av = new RecipeAddView(r, rc,i,ic,0);
+//			RecipeDeleteView dv=new RecipeDeleteView(r, rc,i,ic,0);
+//			recipeListView lv=new recipeListView(r,rc,0);
+//			UpdateRecipeView uv=new UpdateRecipeView(r, rc,i,ic,0);
+//			updateRecipeIngredientView uiv=new updateRecipeIngredientView(r, rc,i,ic,0);
+//			
+//			r.addView(mv); // Add view function
+//			r.addView(av);
+//			r.addView(dv);
+//			r.addView(lv);
+//			r.addView(uv);
+//			r.addView(uiv);
+			
+			
+			Brew m=new Brew();
+			BrewController c=new BrewController(m);			
+			RecommendView v=new RecommendView(m,c,1);
+			ResultListView resultv=new ResultListView(m,c,0);
+			detailinfoView detailv=new detailinfoView(m,c,0);
+			notAvailableView notav=new notAvailableView(m,c,0);
+			shoppinglistView sv=new shoppinglistView(m,c,0);
+			m.addView(v);
+			m.addView(resultv);
+			m.addView(detailv);
+			m.addView(notav);
+			m.addView(sv);
+			
+			
+			
+			
 			
 			
 			
@@ -177,6 +198,8 @@ public class TestSys {
 //		for(Recipe z :Recipes){
 //				System.out.print(z.getName());
 			}
+
+
 	
 	}
 

@@ -3,6 +3,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -11,8 +12,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import controller.BrewController;
+import model.Brew;
+
 public class RecommendRecipePageGUI extends JFrame{
-	public RecommendRecipePageGUI() {
+	public RecommendRecipePageGUI(Brew m, BrewController c) {
 		this.setTitle("RecommendRecipePageGUI");
 		this.setSize(400,300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -30,22 +34,48 @@ public class RecommendRecipePageGUI extends JFrame{
 		JButton GoToMain = new JButton("Go to main page");	
 		GoToMain.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
 				new MainpageGUI().setVisible(true);
 				RecommendRecipePageGUI.this.dispose();
 			}
 		});
+		
 		JButton GetRecommend = new JButton("Get Recommend");	
 		GetRecommend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new ResultListGUI().setVisible(true);
+				 
+				int Index=Integer.parseInt(BatchSize.getText().toString());
+				m.setBatchSize(Index);
+				
+				m.getView().get(0).setvisible(0);
 				RecommendRecipePageGUI.this.dispose();
-				String getBatchSize = BatchSize.getText().toString();
+				m.getView().get(1).setvisible(1);
+				try {
+					m.notifyView();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		p2.add(GoToMain);
 		p2.add(GetRecommend);
 		p.add(p2);		
 		this.add(p);
-		this.setVisible(true);
+		
+	}
+	
+	public void controlVisible(int flag) {
+		if(flag==1)
+		{
+			this.setVisible(true);
+		}
+		else {
+			System.out.print(this.getClass());
+			this.setVisible(false);
+		}
+		
 	}
 }

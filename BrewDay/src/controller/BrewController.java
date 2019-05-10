@@ -5,7 +5,7 @@ import model.Equipment;
 import model.Recipe;
 import model.RecipeIngredient;
 import model.StorageIngredient;
-import view.BrewView;
+
 import Dao.storageingredientDao;
 import Dao.recipeDao;
 import Dao.RecipeIngredientDao;
@@ -21,25 +21,27 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BrewController {
+public class BrewController extends Controller{
 	private Brew model;
-	private BrewView view;
+	
 
-	public BrewController(Brew model, BrewView view) {
-		super();
+	public BrewController(Brew model) {
+		super(model);
 		this.model = model;
-		this.view = view;
 	}
 
 	// FUNCTIONS
-		public boolean implement(Recipe recipe, double batchSize, Equipment equipment) throws SQLException {
+		public boolean implement(int recipeindex, double batchSize) throws SQLException {
 			
 			// Create arraylist to store the data fetch from database
 			ArrayList<StorageIngredient> SIList = new ArrayList<StorageIngredient>();
 			
+			recipeDao rdi = new recipeDaoiml();
+			Recipe recipe=rdi.findById(recipeindex);
 			// Implement the DAO object
 			storageingredientDao sIDao = new storageingredientDaoiml();
 			RecipeIngredientDao rIngDao = new RecipeingredientDaoiml();
+			equipDao e=new equipDaoiml();
 			
 			// Fetch data from database
 			SIList = (ArrayList<StorageIngredient>) sIDao.findAll();
@@ -49,7 +51,7 @@ public class BrewController {
 				return false;
 
 			// Error handle: If batch size is larger than avaliable capacity, reject
-			if (getCapacity(equipment) < batchSize) {
+			if (e.getTotalCapacity()< batchSize) {
 				return false;
 			}
 			
@@ -73,11 +75,59 @@ public class BrewController {
 			
 			return true;
 		}
+		
+		
+public boolean computeamount(int recipeindex, double batchSize) throws SQLException {
+			
+			storageingredientDao sIDao = new storageingredientDaoiml();
+			RecipeIngredientDao rIngDao = new RecipeingredientDaoiml();
+			recipeDao rdi = new recipeDaoiml();
+			ArrayList<StorageIngredient> SIList = new ArrayList<StorageIngredient>();			
+			ArrayList<Double> shopingAmount=new ArrayList<Double>();
+			Recipe recipe=rdi.findById(recipeindex);
+			equipDao e=new equipDaoiml();
+			
+			// Fetch data from database
+			SIList = (ArrayList<StorageIngredient>) sIDao.findAll();
+			
+			// Error handle: If batch size is smaller than 0, reject
+			if (batchSize <= 0)
+				return false;
+
+			// Error handle: If batch size is larger than avaliable capacity, reject
+			if (e.getTotalCapacity()< batchSize) {
+				return false;
+			}
+			
+			// subtract the amount
+			double amount = batchSize / recipe.getQuantity();
+			ArrayList<RecipeIngredient> corrRIList = new ArrayList<RecipeIngredient>();
+			corrRIList = (ArrayList<RecipeIngredient>) rIngDao.findbyrecipe(recipe.getRecipeIndex());
+			for (RecipeIngredient ri: corrRIList) {
+				double needAmount = ri.getAmount() * amount;
+				for (StorageIngredient si: SIList) {
+					// Fine the matched ingredient
+					if(ri.getName().equals(si.getName())) {
+						// Check if the Stored amount is larger than need amount
+						shopingAmount.add(needAmount-si.getAmount());				
+					}
+				} 
+			}
+			model.setShopingAmount(shopingAmount);
+			// Write the note
+			
+			return true;
+		}	
+		
+		
+		
+		
 
 	public ArrayList<Recipe> recommendRecipe(double batchSize) throws SQLException {
 
 		// Create arraylist to store the data fetch from database
 		ArrayList<Recipe> rRecipeList = new ArrayList<Recipe>();
+		ArrayList<Recipe> nRecipeList = new ArrayList<Recipe>();
 		ArrayList<Recipe> allRecipeList = new ArrayList<Recipe>();
 		ArrayList<StorageIngredient> SIList = new ArrayList<StorageIngredient>();
 		ArrayList<RecipeIngredient> RIList = new ArrayList<RecipeIngredient>();
@@ -115,11 +165,17 @@ public class BrewController {
 					}
 				}
 			}
-			if (flag == 0) {
+			if (flag == 0) 
+			{
 				rRecipeList.add(i);
 			}
-
+			if (flag == 1) 
+			{
+				nRecipeList.add(i);
+			}
 		}
+		model.setRecommendedRecipeIndex(rRecipeList);
+		model.setnotRecommendedRecipeIndex(nRecipeList);	
 		return rRecipeList;
 	}
 

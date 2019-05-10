@@ -70,10 +70,5 @@ public class RecipeController extends Controller{
 		RecipeList = (ArrayList<Recipe>) rdi.findAll();
 		return RecipeList;
 	}
-	public Recipe getRecipe(int id) throws SQLException {
-	
-		recipeDao rdi = new recipeDaoiml();
-		Recipe r= rdi.findById(id);
-		return r;
-	}
+
 }
