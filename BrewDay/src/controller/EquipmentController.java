@@ -23,14 +23,15 @@ public class EquipmentController extends Controller{
 	// Member function
 	public boolean updateCapacity(double addCapacityVolumn) throws SQLException {
 		equipDaoiml edi = new equipDaoiml();
-
+		int index=model.getupdateindex();
+		Equipment e=edi.findById(index);
 		// Error Handle: Capacity cannot be negative value
-		if (model.getCapacity() + addCapacityVolumn < 0)
+		if (e.getCapacity() + addCapacityVolumn < 0)
 			return false;
 
 		// Update the capacity
-		model.setCapacity(model.getCapacity() + addCapacityVolumn);
-		edi.update(model);
+		e.setCapacity(e.getCapacity() + addCapacityVolumn);
+		edi.update(e);
 
 		return true;
 	}

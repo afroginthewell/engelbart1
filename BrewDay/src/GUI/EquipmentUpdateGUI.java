@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -13,8 +14,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import controller.EquipmentController;
+import model.Equipment;
+import view.EquipmentView;
+
 public class EquipmentUpdateGUI extends JFrame {
-	public EquipmentUpdateGUI() {
+	public EquipmentUpdateGUI(Equipment m,EquipmentController c) {
 		this.setTitle("Equipment update page");
 		this.setSize(400, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -29,30 +34,56 @@ public class EquipmentUpdateGUI extends JFrame {
 		JButton b1 = new JButton("Cancel");
 		b1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MaintainRecipesGUI().setVisible(true);
+				m.getView().get(0).setvisible(1);
+				
+				m.getView().get(2).setvisible(0);
+				try {
+					m.notifyView();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				EquipmentUpdateGUI.this.dispose();
 			}
 		});
 		p1.add(b1);
+		
+		
 		JButton b2 = new JButton("Update");
 		b2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				boolean checkLegal = true;
-				if (checkLegal == true) {
-					String gett1 = t1.getText().toString();
-					//System.out.println(gett1);
-					new MaintainRecipesGUI().setVisible(true);  // if legal, move to Maintain page.
+				String gett1 = t1.getText().toString();
+				double batchSize = Double.parseDouble(gett1);
+				
+					try {
+						c.updateCapacity(batchSize);
+					} catch (SQLException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					}
+					m.getView().get(0).setvisible(1);
 					EquipmentUpdateGUI.this.dispose();
-				} else { // if illegal, return itself
-					new EquipmentUpdateGUI();
-					EquipmentUpdateGUI.this.dispose();
-				}
+					m.getView().get(2).setvisible(0);
+					try {
+						m.notifyView();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+		
+			
 			}
 		});
 		p1.add(b2);
 		p.add(p1);
-
-		this.setVisible(true);
+// visible question canno solve
+	}
+	public void controlVisible(int flag) {
+		if (flag == 1) {
+			this.setVisible(true);
+		} else {
+			this.setVisible(false);
+		}
 
 	}
 }

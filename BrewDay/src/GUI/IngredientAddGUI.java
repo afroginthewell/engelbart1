@@ -67,7 +67,15 @@ public class IngredientAddGUI extends JFrame {
 					}
 					IngredientAddGUI.this.dispose();
 				} else { // if illegal, return itself
-					new EquipmentUpdateGUI().setVisible(true);
+					m.getView().get(0).setvisible(1);
+					
+					m.getView().get(2).setvisible(0);
+					try {
+						m.notifyView();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					IngredientAddGUI.this.dispose();
 				}
 
@@ -77,7 +85,15 @@ public class IngredientAddGUI extends JFrame {
 		JButton b2 = new JButton("Cancel");
 		b2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// new IngredientMantainGUI().setVisible(true);
+				m.getView().get(0).setvisible(1);
+				
+				m.getView().get(2).setvisible(0);
+				try {
+					m.notifyView();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				IngredientAddGUI.this.dispose();
 			}
 		});

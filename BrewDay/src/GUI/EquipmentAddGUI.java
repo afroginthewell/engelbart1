@@ -73,17 +73,19 @@ public class EquipmentAddGUI extends JFrame{
 		
 		p1.add(addButton);
 		JButton b2 = new JButton("Cancel");
-//		b2.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				try {
-//					new EquipmentView(m,c);
-//				} catch (SQLException e1) {
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				}
-//				EquipmentAddGUI.this.dispose();
-//			}
-//		});
+		b2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				m.getView().get(0).setvisible(1);
+				EquipmentAddGUI.this.dispose();
+				m.getView().get(1).setvisible(0);
+				try {
+					m.notifyView();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		p1.add(b2);
 		p.add(p1);
 		

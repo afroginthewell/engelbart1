@@ -51,9 +51,18 @@ public class EquipmentGUI extends JFrame{
 			JButton updateButton = new JButton("Update Equipment");
 			updateButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					boolean checkLegal = true;
-						new EquipmentUpdateGUI().setVisible(true);
-						EquipmentGUI.this.dispose();
+					m.getView().get(0).setvisible(0);
+					EquipmentGUI.this.dispose();
+					m.getView().get(2).setvisible(1);
+					m.setupdateindex(i.getEquipmentIndex());
+					
+					try {
+						m.notifyView();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					EquipmentGUI.this.dispose();
 				}
 			});
 			p2.add(updateButton);
@@ -80,8 +89,7 @@ public class EquipmentGUI extends JFrame{
 		JButton addButton = new JButton("Add"); 
 		addButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				System.out.println(m.getView().get(0).getvisible());
-//				System.out.println(m.getView().get(1).getvisible());
+
 				m.getView().get(0).setvisible(0);
 				EquipmentGUI.this.dispose();
 				m.getView().get(1).setvisible(1);

@@ -1,7 +1,10 @@
 package model;
+import java.sql.SQLException;
 import java.util.Date;
 
-public class Note {
+import view.View;
+
+public class Note extends Model{
 	// Member variable
 	private String content;
 	private String createDate;
@@ -9,16 +12,18 @@ public class Note {
 	
 	// Constructor
 	public Note(String content, String createDate, int noteIndex) {
-		super();
+		//super();
 		this.content = content;
 		this.createDate = createDate;
 		this.noteIndex = noteIndex;
 	}
 	public Note() {
 		super();
-    // TODO Auto-generated constructor stub
-	  }
-	// Getter and Setter
+	}
+	
+	
+	
+	
 	public String getContent() {
 		return content;
 	}
@@ -39,4 +44,9 @@ public class Note {
 	}
 	
 	
+	public void notifyView() throws SQLException {
+		for (View v: super.views) {
+			v.update();
+		}
+	} 
 }

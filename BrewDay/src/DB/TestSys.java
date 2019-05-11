@@ -12,8 +12,10 @@ import model.Recipe;
 import model.RecipeIngredient;
 import model.StorageIngredient;
 import view.EquipmentAddView;
+import view.EquipmentUpdateView;
 import view.EquipmentView;
 import view.MaitainRecipesView;
+import view.NoteView;
 import view.RecipeAddView;
 import view.RecipeDeleteView;
 import view.RecommendView;
@@ -40,6 +42,7 @@ import Daoiml.storageingredientDaoiml;
 import GUI.IngredientMantainGUI;
 import controller.BrewController;
 import controller.EquipmentController;
+import controller.NoteController;
 import controller.RecipeController;
 import controller.RecipeIngredientController;
 import controller.StorageIngredientController;
@@ -48,12 +51,15 @@ import controller.StorageIngredientController;
 public class TestSys {	
 		public static void main(String[] args) throws SQLException {
 			// Construct model
-//			Equipment m = new Equipment(); // Use empty constructor
-//			EquipmentController c = new EquipmentController(m);
+//note
+			Note m=new Note();
+			NoteController c=new NoteController(m);
+			NoteView v=new NoteView(m,c,1);
+			m.addView(v);
 			
 			
 			
-			
+//recipe			
 //			RecipeIngredient i = new RecipeIngredient(); // Use empty constructor
 //			Recipe r=new Recipe();
 //			RecipeIngredientController ic = new RecipeIngredientController(i);
@@ -73,31 +79,34 @@ public class TestSys {
 //			r.addView(uv);
 //			r.addView(uiv);
 			
-			
-			Brew m=new Brew();
-			BrewController c=new BrewController(m);			
-			RecommendView v=new RecommendView(m,c,1);
-			ResultListView resultv=new ResultListView(m,c,0);
-			detailinfoView detailv=new detailinfoView(m,c,0);
-			notAvailableView notav=new notAvailableView(m,c,0);
-			shoppinglistView sv=new shoppinglistView(m,c,0);
-			m.addView(v);
-			m.addView(resultv);
-			m.addView(detailv);
-			m.addView(notav);
-			m.addView(sv);
-			
-			
-			
+	
+//brew			
+//			Brew m=new Brew();
+//			BrewController c=new BrewController(m);			
+//			RecommendView v=new RecommendView(m,c,1);
+//			ResultListView resultv=new ResultListView(m,c,0);
+//			detailinfoView detailv=new detailinfoView(m,c,0);
+//			notAvailableView notav=new notAvailableView(m,c,0);
+//			shoppinglistView sv=new shoppinglistView(m,c,0);
+//			m.addView(v);
+//			m.addView(resultv);
+//			m.addView(detailv);
+//			m.addView(notav);
+//			m.addView(sv);
 			
 			
 			
 			
-			// Create all related views
+			
+//equi			
+//			Equipment m = new Equipment(); // Use empty constructor
+//			EquipmentController c = new EquipmentController(m);		
 //			EquipmentView ev = new EquipmentView(m, c,1);
 //			EquipmentAddView eav = new EquipmentAddView(m, c,0);
+//			EquipmentUpdateView upv=new EquipmentUpdateView(m, c,0);
 //			m.addView(ev); // Add view function
 //			m.addView(eav);
+//			m.addView(upv);
 //			
 			//////////////////////
 			// Test for Storage Ingredient 
@@ -115,6 +124,9 @@ public class TestSys {
 //			sim.addView(simv);
 //			sim.addView(siuv);
 //			sim.addView(siav);
+			
+			
+			
 //			Brew bm = new Brew(2.0, "20-19-5-2-Testing1");
 //			BrewView bv = new BrewView();
 //			BrewController bc = new BrewController(bm, bv);

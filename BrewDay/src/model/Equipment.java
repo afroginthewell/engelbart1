@@ -12,6 +12,8 @@ public class Equipment extends Model {
 	private int equipmentIndex;
 	private String name;
 	private double capacity;
+	private int updateindex;
+	
 	//equipDaoiml edi = new equipDaoiml();
 	// Constructor
 	public Equipment() {
@@ -30,6 +32,14 @@ public class Equipment extends Model {
 	// Getter and Setter for each member variable
 	public int getEquipmentIndex() {
 		return equipmentIndex;
+	}
+
+	public void setupdateindex(int updateindex) {
+		this.updateindex = updateindex;
+	}
+	
+	public int getupdateindex() {
+		return updateindex;
 	}
 
 	public void setEquipmentIndex(int equipmentIndex) {
