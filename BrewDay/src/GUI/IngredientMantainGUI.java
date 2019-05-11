@@ -90,7 +90,7 @@ public class IngredientMantainGUI extends JFrame{
 		p3.add(Mainpage);
 		Mainpage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MainpageGUI().setVisible(true);
+				
 				IngredientMantainGUI.this.dispose();
 			}
 		});

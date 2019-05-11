@@ -10,12 +10,14 @@ public class Recipe extends Model{
 	private String name;
 	private double quantity;
 	private String unit;
+	private double tmpLackAmount;
 	
 	// Constructor
 	public Recipe() {
 		super();
 		
 	}
+	
 	
 	public Recipe(int recipeIndex, String name, double quantity, String unit) {
 		super();
@@ -62,6 +64,14 @@ public class Recipe extends Model{
 		for (View v: super.views) {
 			v.update();
 		}
+	}
+
+
+	public void setLackAmount(double tmpLackAmount) {
+		this.tmpLackAmount=tmpLackAmount;
+		
 	} 
-	
+	public double getLackAmount() {
+		return this.tmpLackAmount;
+	} 
 }

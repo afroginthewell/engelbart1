@@ -25,6 +25,7 @@ import view.StorageIngredientUpdateView;
 import view.StorageIngredientView;
 import view.UpdateRecipeView;
 import view.detailinfoView;
+import view.mainPageView;
 import view.notAvailableView;
 import view.recipeListView;
 import view.shoppinglistView;
@@ -52,167 +53,91 @@ public class TestSys {
 		public static void main(String[] args) throws SQLException {
 			// Construct model
 //note
-			Note m=new Note();
-			NoteController c=new NoteController(m);
-			NoteView v=new NoteView(m,c,1);
-			m.addView(v);
+//			Note m=new Note();
+//			NoteController c=new NoteController(m);
+//			NoteView v=new NoteView(m,c,1);
+//			m.addView(v);
 			
 			
 			
 //recipe			
-//			RecipeIngredient i = new RecipeIngredient(); // Use empty constructor
-//			Recipe r=new Recipe();
-//			RecipeIngredientController ic = new RecipeIngredientController(i);
-//			RecipeController rc=new RecipeController(r);			
-//			MaitainRecipesView mv=new MaitainRecipesView(r, rc,1);
-//			
-//			RecipeAddView av = new RecipeAddView(r, rc,i,ic,0);
-//			RecipeDeleteView dv=new RecipeDeleteView(r, rc,i,ic,0);
-//			recipeListView lv=new recipeListView(r,rc,0);
-//			UpdateRecipeView uv=new UpdateRecipeView(r, rc,i,ic,0);
-//			updateRecipeIngredientView uiv=new updateRecipeIngredientView(r, rc,i,ic,0);
-//			
-//			r.addView(mv); // Add view function
-//			r.addView(av);
-//			r.addView(dv);
-//			r.addView(lv);
-//			r.addView(uv);
-//			r.addView(uiv);
+			RecipeIngredient i = new RecipeIngredient(); // Use empty constructor
+			Recipe r=new Recipe();
+			RecipeIngredientController ic = new RecipeIngredientController(i);
+			RecipeController rc=new RecipeController(r);			
+			MaitainRecipesView mv=new MaitainRecipesView(r, rc,0);			
+			RecipeAddView av = new RecipeAddView(r, rc,i,ic,0);
+			RecipeDeleteView dv=new RecipeDeleteView(r, rc,i,ic,0);
+			recipeListView lv=new recipeListView(r,rc,0);
+			UpdateRecipeView uv=new UpdateRecipeView(r, rc,i,ic,0);
+			updateRecipeIngredientView uiv=new updateRecipeIngredientView(r, rc,i,ic,0);
+			
+			r.addView(mv); // Add view function
+			r.addView(av);
+			r.addView(dv);
+			r.addView(lv);
+			r.addView(uv);
+			r.addView(uiv);
 			
 	
 //brew			
-//			Brew m=new Brew();
-//			BrewController c=new BrewController(m);			
-//			RecommendView v=new RecommendView(m,c,1);
-//			ResultListView resultv=new ResultListView(m,c,0);
-//			detailinfoView detailv=new detailinfoView(m,c,0);
-//			notAvailableView notav=new notAvailableView(m,c,0);
-//			shoppinglistView sv=new shoppinglistView(m,c,0);
-//			m.addView(v);
-//			m.addView(resultv);
-//			m.addView(detailv);
-//			m.addView(notav);
-//			m.addView(sv);
+			Brew bm=new Brew();
+			BrewController bc=new BrewController(bm);			
+			RecommendView bv=new RecommendView(bm,bc,0);
+			ResultListView bresultv=new ResultListView(bm,bc,0);
+			detailinfoView bdetailv=new detailinfoView(bm,bc,0);
+			notAvailableView bnotav=new notAvailableView(bm,bc,0);
+			shoppinglistView bsv=new shoppinglistView(bm,bc,0);
+			bm.addView(bv);
+			bm.addView(bresultv);
+			bm.addView(bdetailv);
+			bm.addView(bnotav);
+			bm.addView(bsv);
 			
 			
 			
 			
 			
 //equi			
-//			Equipment m = new Equipment(); // Use empty constructor
-//			EquipmentController c = new EquipmentController(m);		
-//			EquipmentView ev = new EquipmentView(m, c,1);
-//			EquipmentAddView eav = new EquipmentAddView(m, c,0);
-//			EquipmentUpdateView upv=new EquipmentUpdateView(m, c,0);
-//			m.addView(ev); // Add view function
-//			m.addView(eav);
-//			m.addView(upv);
+			Equipment em = new Equipment(); // Use empty constructor
+			EquipmentController ec = new EquipmentController(em);		
+			EquipmentView ev = new EquipmentView(em, ec,0);
+			EquipmentAddView eav = new EquipmentAddView(em, ec,0);
+			EquipmentUpdateView eupv=new EquipmentUpdateView(em, ec,0);
+			em.addView(ev); // Add view function
+			em.addView(eav);
+			em.addView(eupv);
 //			
-			//////////////////////
-			// Test for Storage Ingredient 
-			//////////////////////
-			
-			// Construct Model
-//			StorageIngredient sim = new StorageIngredient();
-//			StorageIngredientController sic = new StorageIngredientController(sim);
-//			
-//			// Create all related views
-//			StorageIngredientView simv = new StorageIngredientView(sim, sic, 1);
-//			StorageIngredientUpdateView siuv = new StorageIngredientUpdateView(sim, sic, 0);
-//			StorageIngredientAddView siav = new StorageIngredientAddView(sim, sic, 0);
-//			
-//			sim.addView(simv);
-//			sim.addView(siuv);
-//			sim.addView(siav);
 			
 			
 			
-//			Brew bm = new Brew(2.0, "20-19-5-2-Testing1");
-//			BrewView bv = new BrewView();
-//			BrewController bc = new BrewController(bm, bv);
-//			equipDao n=new equipDaoiml();
-//			Equipment z1=n.findById(1);
-//			
-//			List<Recipe> Recipes = bc.recommendRecipe(1.0);
-//			
-//			bc.implement(Recipes.get(1), 1.0, z1);
 			
-//			for(Recipe z :Recipes){
-//					System.out.print(z.getName()+"\n");
-//					
-// }
+			
+// Test for Storage Ingredient 
+
+			StorageIngredient sim = new StorageIngredient();
+			StorageIngredientController sic = new StorageIngredientController(sim);		
+			// Create all related views
+			StorageIngredientView simv = new StorageIngredientView(sim, sic, 0);
+			StorageIngredientUpdateView siuv = new StorageIngredientUpdateView(sim, sic, 0);
+			StorageIngredientAddView siav = new StorageIngredientAddView(sim, sic, 0);		
+			sim.addView(simv);
+			sim.addView(siuv);
+			sim.addView(siav);
+			
+			
+			
+			mainPageView main=new mainPageView(r, sim,em,bm,1);
 			
 
-//		RecipeIngredientDao n=new RecipeingredientDaoiml();
-//		n.delete(1);
-//		n.delete(2);
-//		n.delete(3);
-//		RecipeIngredient no=new RecipeIngredient(1,"water",1.0,"L",1);
-//		RecipeIngredient no1=new RecipeIngredient(2,"malts",2.0,"g",1);
-//		RecipeIngredient no2=new RecipeIngredient(3,"hops",3.0,"g",1);
-//		RecipeIngredient no3=new RecipeIngredient(4,"yeasts",4.0,"g",1);
-//		
-//		RecipeIngredient nn=new RecipeIngredient(5,"water",1.0,"L",2);
-//		RecipeIngredient nn1=new RecipeIngredient(6,"malts",6.0,"g",2);
-//		RecipeIngredient nn2=new RecipeIngredient(7,"hops",3.0,"g",2);
-//		RecipeIngredient nn3=new RecipeIngredient(8,"yeasts",4.0,"g",2);
-//		n.add(no);
-//		n.add(no1);
-//		n.add(no2);
-//		n.add(no3);
-//		n.add(nn);
-//		n.add(nn1);
-//		n.add(nn2);
-//		n.add(nn3);
-		
-		
-		
-		//storageingredientDao n=new storageingredientDaoiml();
-	//	System.out.print(n.getMaxIndex());
-//		StorageIngredient no=new StorageIngredient(1,"water",15.0,"L");
-//		StorageIngredient no1=new StorageIngredient(2,"malts",10.0,"g");
-//		StorageIngredient no2=new StorageIngredient(3,"hops",8.0,"g");
-//		StorageIngredient no3=new StorageIngredient(4,"yeasts",7.0,"g");
-//		StorageIngredient no4=new StorageIngredient(5,"suger",6.0,"g");
-//		n.add(no);
-//		n.add(no1);
-//		n.add(no2);
-//		n.add(no3);
-//		n.add(no4);
-//		List<StorageIngredient> StorageIngredients=n.findAll();
-//		StorageIngredient z1=n.findById(2);
-//		System.out.print(z1.getName());
-//		for(StorageIngredient z :StorageIngredients){
-//				System.out.print(z.getName());
-//			}
-		
-		
-	//	equipDao n=new equipDaoiml();
-//		Equipment no=new Equipment(1,"bowl",30.0);
-//		Equipment no1=new Equipment(2,"bowl2",30.0);	
-//		n.add(no);
-//		n.add(no1);
-		//n.delete(2);
-//		Equipment z1=n.findById(1);
-//		System.out.print(z1.getName());
-//		System.out.print(n.findAll());
-		
-//		recipeDao n=new recipeDaoiml();
-//		n.delete(1);
-//		n.delete(2);
-//		Recipe no=new Recipe(1,"anbulBeer",1.0,"L");
-//		Recipe no1=new Recipe(2,"turingBeer",1.0,"L");
-//		n.add(no);
-//		n.add(no1);
-//		Recipe z1=n.findById(1);
-//		System.out.print(z1.getName());
-//		List<Recipe> Recipes=n.findAll();
-//		for(Recipe z :Recipes){
-//				System.out.print(z.getName());
-			}
 
 
+
+		
+		
 	
-	}
+		}
+	
+}
 
 

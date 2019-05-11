@@ -13,10 +13,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import model.Brew;
+import model.Equipment;
+import model.Recipe;
+import model.StorageIngredient;
 import view.EquipmentView;
 
 public class MainpageGUI extends JFrame{
-	public MainpageGUI() {
+	public MainpageGUI(Recipe r, StorageIngredient s,Equipment eq,Brew b) {
 		this.setTitle("Mainpage");
 		this.setSize(400,300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,8 +35,14 @@ public class MainpageGUI extends JFrame{
 		JButton b1 = new JButton("Recommended a recipe");
 		b1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new RecommendRecipePageGUI().setVisible(true);
-				MainpageGUI.this.dispose();
+				b.getView().get(0).setvisible(1);								
+				try {
+					b.notifyView();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		p1.add(b1);
@@ -40,34 +50,45 @@ public class MainpageGUI extends JFrame{
 		JButton b2 = new JButton("Maintain recipe");
 		b2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MaintainRecipesGUI().setVisible(true);
-				MainpageGUI.this.dispose();
+				
+				r.getView().get(0).setvisible(1);								
+				try {
+					r.notifyView();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
 			}
 		});
 		p1.add(b2);
 		JButton b3 = new JButton("Maintain equipment");
 		b3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				eq.getView().get(0).setvisible(1);								
 				try {
-					new EquipmentView();
+					eq.notifyView();
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				MainpageGUI.this.dispose();
+			
 			}
 		});
 		p1.add(b3);
 		JButton b4 = new JButton("Maintain ingredient");
 		b4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				s.getView().get(0).setvisible(1);								
 				try {
-					new EquipmentView();
+					s.notifyView();
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				MainpageGUI.this.dispose();
+				
 			}
 		});
 		p1.add(b4);

@@ -94,7 +94,7 @@ public class MaintainRecipesGUI extends JFrame{
 		JButton b5 = new JButton("Main page");
 		b5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MainpageGUI().setVisible(true);
+			
 				MaintainRecipesGUI.this.dispose();
 			}
 		});

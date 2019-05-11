@@ -116,7 +116,7 @@ public class NotavailableListGUI extends JFrame{
 		
 		for(Recipe r:m.getnotRecommendedRecipeIndex())
 		{
-		JTextField ARecipe = new JTextField(r.getName(),30);
+		JTextField ARecipe = new JTextField(r.getName()+String.valueOf(r.getLackAmount()),30);
 		ARecipe.setEditable(false);
 		p2.add(ARecipe);
 	

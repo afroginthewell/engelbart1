@@ -36,7 +36,7 @@ public class RecommendRecipePageGUI extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				new MainpageGUI().setVisible(true);
+				
 				RecommendRecipePageGUI.this.dispose();
 			}
 		});
@@ -45,7 +45,7 @@ public class RecommendRecipePageGUI extends JFrame{
 		GetRecommend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				 
-				int Index=Integer.parseInt(BatchSize.getText().toString());
+				double Index=Double.parseDouble(BatchSize.getText().toString());
 				m.setBatchSize(Index);
 				
 				m.getView().get(0).setvisible(0);

@@ -80,7 +80,7 @@ public class EquipmentGUI extends JFrame{
 		mainpagebutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean checkLegal = true;
-					new MainpageGUI().setVisible(true);
+					
 					EquipmentGUI.this.dispose();
 			}
 		});

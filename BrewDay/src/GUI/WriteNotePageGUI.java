@@ -32,7 +32,7 @@ public class WriteNotePageGUI extends JFrame{
 		JButton submit = new JButton("submit");		
 		submit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MainpageGUI().setVisible(true);
+				
 				WriteNotePageGUI.this.dispose();
 				String getInote = note.getText().toString();
 				try {
