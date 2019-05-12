@@ -64,6 +64,7 @@ public class DetailRecipeInformationGUI extends JFrame{
 					e1.printStackTrace();
 				}
 				DetailRecipeInformationGUI.this.dispose();
+				new ConfirmChooseRecipeGUI();
 			}
 		});
 		

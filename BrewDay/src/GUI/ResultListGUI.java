@@ -89,6 +89,27 @@ public class ResultListGUI extends JFrame{
 		});
 		p3.add(b3);
 		p.add(p3);
+		
+		JPanel p4 = new JPanel();
+		p4.setLayout(new FlowLayout(1,10,10));
+		JButton b4 = new JButton("back to previous");
+		b4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {				
+				m.getView().get(1).setvisible(0);
+				
+				m.getView().get(0).setvisible(1);
+				try {
+					m.notifyView();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				ResultListGUI.this.dispose();
+			}
+		});
+		p4.add(b4);
+		p.add(p4);
 	
 		
 		

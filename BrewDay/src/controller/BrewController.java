@@ -18,7 +18,9 @@ import Daoiml.RecipeingredientDaoiml;
 import Daoiml.storageingredientDaoiml;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -216,6 +218,20 @@ public class BrewController extends Controller {
 		return equipment.getCapacity();
 	}
 	
+	
+//	public boolean editNode(String newNote) throws SQLException {
+//		noteDao e=new noteDaoiml();
+//		
+//		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+//		String createDate=df.format(new Date());
+//		
+//		System.out.println(df.format(new Date()));
+//		model.setNoteIndex(e.getMaxIndex()+1);
+//		model.setContent(newNote); 
+//		model.setCreateDate(createDate);
+//		e.add(model);
+//		return true;
+//	}
 	
 	
 		   
