@@ -117,12 +117,7 @@ public class MainpageGUI extends JFrame{
 		p1.add(b4);
 		p.add(p1); 
 
-		JPanel p2 = new JPanel();
-		JButton b5 = new JButton("Logout");
-		b5.setFont(new Font("Verdana",Font.ITALIC,15));
-		b5.setContentAreaFilled(false);
-		p2.add(b5);
-		p.add(p2);
+		
 		
 		bg.add(emptyPanel);
 		bg.add(p);
@@ -133,10 +128,10 @@ public class MainpageGUI extends JFrame{
 		b2.setOpaque(false);
 		b3.setOpaque(false);
 		b4.setOpaque(false);
-		b5.setOpaque(false);
+		
 		p.setOpaque(false);
 		p1.setOpaque(false);
-		p2.setOpaque(false);
+		
 		
 
 		this.setVisible(true);

@@ -125,7 +125,7 @@ public class IngredientMantainGUI extends JFrame{
 				m.getView().get(0).setvisible(0);
 				IngredientMantainGUI.this.dispose();
 				// Show the update page
-				m.getView().get(2).setvisible(1);
+				m.getView().get(1).setvisible(1);
 				try {
 					m.notifyView();
 				} catch (SQLException e1) {

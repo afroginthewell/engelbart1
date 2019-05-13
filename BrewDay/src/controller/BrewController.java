@@ -12,6 +12,7 @@ import Dao.RecipeIngredientDao;
 import Dao.equipDao;
 import Dao.noteDao;
 import Daoiml.equipDaoiml;
+import Daoiml.historyDaoiml;
 import Daoiml.noteDaoiml;
 import Daoiml.recipeDaoiml;
 import Daoiml.RecipeingredientDaoiml;
@@ -219,19 +220,12 @@ public class BrewController extends Controller {
 	}
 	
 	
-//	public boolean editNode(String newNote) throws SQLException {
-//		noteDao e=new noteDaoiml();
-//		
-//		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
-//		String createDate=df.format(new Date());
-//		
-//		System.out.println(df.format(new Date()));
-//		model.setNoteIndex(e.getMaxIndex()+1);
-//		model.setContent(newNote); 
-//		model.setCreateDate(createDate);
-//		e.add(model);
-//		return true;
-//	}
+	public boolean addHistory() throws SQLException {
+	
+		historyDaoiml h=new historyDaoiml();
+		h.add(model);
+		return true;
+	}
 	
 	
 		   

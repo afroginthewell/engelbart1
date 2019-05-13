@@ -7,13 +7,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 public class DBUtils {
-//	private static String driver="com.mysql.jdbc.Driver";
+	//private static String driver="com.mysql.jdbc.Driver";
 	private static String driver="com.mysql.cj.jdbc.Driver";
 	
    // private static String url="jdbc:mysql://127.0.0.1:3306/brew?suseSSL=false&serverTimezone=GMT%2B8";
     private static String url="jdbc:mysql://127.0.0.1:3306/brew?verifyServerCertificate=false&useSSL=true&serverTimezone=GMT%2B8";
     private static String user="root";
-    private static String password="mysql123456";
+    private static String password="zhenghao97";
         static {
             try {
                 Class.forName(driver);

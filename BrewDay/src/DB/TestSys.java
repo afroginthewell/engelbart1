@@ -24,6 +24,7 @@ import view.StorageIngredientAddView;
 import view.StorageIngredientUpdateView;
 import view.StorageIngredientView;
 import view.UpdateRecipeView;
+import view.confirmView;
 import view.detailinfoView;
 import view.mainPageView;
 import view.notAvailableView;
@@ -88,11 +89,13 @@ public class TestSys {
 			detailinfoView bdetailv=new detailinfoView(bm,bc,0);
 			notAvailableView bnotav=new notAvailableView(bm,bc,0);
 			shoppinglistView bsv=new shoppinglistView(bm,bc,0);
+			confirmView cmv=new confirmView(bm,bc,0);
 			bm.addView(bv);
 			bm.addView(bresultv);
 			bm.addView(bdetailv);
 			bm.addView(bnotav);
 			bm.addView(bsv);
+			bm.addView(cmv);
 			
 			
 			

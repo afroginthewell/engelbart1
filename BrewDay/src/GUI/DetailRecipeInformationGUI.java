@@ -67,23 +67,17 @@ public class DetailRecipeInformationGUI extends JFrame{
 		p2.add(chooseButton1);
 		chooseButton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					c.implement(m.getdetailindex(), m.getBatchSize());
-				} catch (SQLException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
-				}
-				m.getView().get(1).setvisible(1);
+				m.setInplementRecipeIndex(m.getdetailindex());
+				m.getView().get(5).setvisible(1);
 				m.getView().get(2).setvisible(0);
 				try {
 					m.notifyView();
-
+					
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				DetailRecipeInformationGUI.this.dispose();
-				new ConfirmChooseRecipeGUI();
 			}
 		});
 
