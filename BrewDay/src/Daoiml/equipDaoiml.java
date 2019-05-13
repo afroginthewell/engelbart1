@@ -143,7 +143,7 @@ public class equipDaoiml implements equipDao{
             }
         }catch(SQLException e){
             e.printStackTrace();
-            throw new SQLException("find all fail");
+
         }finally{
             DBUtils.close(rs, ps, conn);
         }
