@@ -12,6 +12,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import controller.NoteController;
+import model.Note;
+import view.NoteView;
+
 public class ConfirmChooseRecipeGUI extends JFrame{
 	public ConfirmChooseRecipeGUI() {
 		this.setTitle("RecommendRecipePageGUI");
@@ -21,7 +25,7 @@ public class ConfirmChooseRecipeGUI extends JFrame{
 		JPanel p = new JPanel();
 		//p.setLayout(new BoxLayout(p,BoxLayout.PAGE_AXIS));
 		
-		JTextArea note = new JTextArea("Are you sure to \n choose this recipe?", 5,25);
+		JTextArea note = new JTextArea("Are you sure to choose this recipe?", 5,25);
 		p.add(note);
 		
 		JPanel p2 = new JPanel(new FlowLayout(1,10,10));
@@ -29,14 +33,17 @@ public class ConfirmChooseRecipeGUI extends JFrame{
 		yes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String getnote = note.getText().toString();
-				new IngredientUpdateGUI().setVisible(true);
+				Note m=new Note();
+				NoteController c=new NoteController(m);
+				NoteView v=new NoteView(m,c,1);
+				m.addView(v);
 				ConfirmChooseRecipeGUI.this.dispose();
 			}
 		});
 		JButton no = new JButton("no");	
 		no.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new ResultListGUI().setVisible(true);
+				
 				ConfirmChooseRecipeGUI.this.dispose();
 			}
 		});
