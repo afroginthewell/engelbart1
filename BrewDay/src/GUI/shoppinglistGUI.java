@@ -25,11 +25,12 @@ public class shoppinglistGUI extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel p = new JPanel();
 		this.add(p);
-		p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
+		//p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
 		
-		
+		p.setLayout(new FlowLayout(1,10,10));
 		JPanel p2 = new JPanel();
-		p2.setLayout(new GridLayout(m.getShopList().size(), 3, 20, 10)); 
+		//p2.setLayout(new GridLayout(m.getShopList().size(), 3, 20, 10)); 
+		p2.setLayout(new BoxLayout(p2, BoxLayout.PAGE_AXIS));
 		
 		for (RecipeIngredient r: m.getShopList()) 
 		{
@@ -39,27 +40,31 @@ public class shoppinglistGUI extends JFrame{
 			p2.add(ingredient1);			
 		
 		}	
+		JPanel p3 = new JPanel();
+		//p2.setLayout(new GridLayout(m.getShopList().size(), 3, 20, 10)); 
+		p3.setLayout(new BoxLayout(p3, BoxLayout.PAGE_AXIS));
+		
 		for (double d: m.getShopingAmount()) 
 		{
 			if(d<0)
 			{
-				JTextArea ingredient1 = new JTextArea("enough", 2,10);	
+				JTextField ingredient1 = new JTextField("enough");	
 				ingredient1.setEditable(false);
-				p2.add(ingredient1);	
+				p3.add(ingredient1);	
 			}
 			else {
-				JTextArea ingredient1 = new JTextArea(String.valueOf(String.valueOf(d)), 2,10);	
+				JTextField ingredient1 = new JTextField(String.valueOf(String.valueOf(d)));	
 				ingredient1.setEditable(false);
-				p2.add(ingredient1);	
+				p3.add(ingredient1);	
 			}
-					
-			
 		}	
+		p.add(p2);
+		p.add(p3);
 		
 
 		
 		JButton backtopreviousButton = new JButton("Back to previous");
-		p2.add(backtopreviousButton);
+		p.add(backtopreviousButton);
 		backtopreviousButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				m.getView().get(3).setvisible(1);			
@@ -75,9 +80,9 @@ public class shoppinglistGUI extends JFrame{
 		});
 		
 		
-		p.add(p2); 
+		//p.add(p2); 
 		
-		JPanel p3 = new JPanel();
+		//JPanel p3 = new JPanel();
 		
 	}
 	public void controlVisible(int flag) {

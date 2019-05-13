@@ -86,6 +86,7 @@ public class RecommendRecipePageGUI extends JFrame{
 				}
 				if (!isBatchsize) {
 					JOptionPane.showMessageDialog(null, "Invaild input!!!");
+					
 				}
 
 				double Index=Double.parseDouble(BatchSizeText.getText().toString());
