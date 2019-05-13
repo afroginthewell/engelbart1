@@ -102,27 +102,27 @@ public class IngredientAddGUI extends JFrame {
 					// Alert successful information
 
 					// Jump back to IngredientMaintain page
-					m.getView().get(1).setvisible(0);
-					IngredientAddGUI.this.dispose();
-					m.getView().get(0).setvisible(1);
-					try {
-						m.notifyView();
-					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					IngredientAddGUI.this.dispose();
-				} else { // if illegal, return itself
-					m.getView().get(0).setvisible(1);
-					
 					m.getView().get(2).setvisible(0);
+					IngredientAddGUI.this.dispose();
+					m.getView().get(0).setvisible(1);
 					try {
 						m.notifyView();
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					IngredientAddGUI.this.dispose();
+//					IngredientAddGUI.this.dispose();
+//				} else { // if illegal, return itself
+//					m.getView().get(0).setvisible(1);
+//					
+//					m.getView().get(2).setvisible(0);
+//					try {
+//						m.notifyView();
+//					} catch (SQLException e1) {
+//						// TODO Auto-generated catch block
+//						e1.printStackTrace();
+//					}
+//					IngredientAddGUI.this.dispose();
 				}
 
 			}

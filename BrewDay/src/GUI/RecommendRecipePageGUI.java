@@ -1,4 +1,5 @@
 package GUI;
+
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -20,34 +21,35 @@ import javax.swing.JTextField;
 import controller.BrewController;
 import model.Brew;
 
-public class RecommendRecipePageGUI extends JFrame{
+public class RecommendRecipePageGUI extends JFrame {
 	public RecommendRecipePageGUI(Brew m, BrewController c) {
 		this.setTitle("RecommendRecipePageGUI");
-		this.setSize(500,500);
+		this.setSize(500, 500);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		///////////bg////////////
+		/////////// bg////////////
 		JPanel bg = new JPanel() {
 			public void paintComponent(Graphics g) {
 				super.paintComponent(g);
-				ImageIcon ii = new ImageIcon( "C:\\Users\\Jerry Zou\\Desktop\\JieLi\\Java workspace\\20190511\\brew.jpg");
+				ImageIcon ii = new ImageIcon(
+						"C:\\Users\\Jerry Zou\\Desktop\\JieLi\\Java workspace\\20190511\\brew.jpg");
 				g.drawImage(ii.getImage(), 0, 0, getWidth(), getHeight(), ii.getImageObserver());
 			}
 		};
 
 		JPanel emptyPanel = new JPanel();
-		emptyPanel.setLayout(new FlowLayout(1,10,10));
+		emptyPanel.setLayout(new FlowLayout(1, 10, 10));
 		emptyPanel.setPreferredSize(new Dimension(400, 80));
-		///////////bg////////////
+		/////////// bg////////////
 
 		JPanel p = new JPanel();
 		p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
 
 		JPanel p1 = new JPanel();
-		p1.setLayout(new FlowLayout(1,10,10));
+		p1.setLayout(new FlowLayout(1, 10, 10));
 
 		JTextField BatchSize = new JTextField("Input Batach Size: ");
-		BatchSize.setFont(new Font("Verdana",Font.ITALIC,15));
+		BatchSize.setFont(new Font("Verdana", Font.ITALIC, 15));
 		BatchSize.setBorder(BorderFactory.createEmptyBorder());
 		BatchSize.setOpaque(false);
 		BatchSize.setEditable(false);
@@ -57,44 +59,59 @@ public class RecommendRecipePageGUI extends JFrame{
 		p1.add(BatchSizeText);
 
 		JPanel p2 = new JPanel();
-		p2.setLayout(new FlowLayout(1,10,10));
+		p2.setLayout(new FlowLayout(1, 10, 10));
 
-		JButton GoToMain = new JButton("Go to main page");	
-		GoToMain.setFont(new Font("Verdana",Font.ITALIC,15));
+		JButton GoToMain = new JButton("Go to main page");
+		GoToMain.setFont(new Font("Verdana", Font.ITALIC, 15));
 		GoToMain.setContentAreaFilled(false);
 		GoToMain.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-
 
 				RecommendRecipePageGUI.this.dispose();
 			}
 		});
 
-		JButton GetRecommend = new JButton("Get Recommend");	
-		GetRecommend.setFont(new Font("Verdana",Font.ITALIC,15));
+		JButton GetRecommend = new JButton("Get Recommend");
+		GetRecommend.setFont(new Font("Verdana", Font.ITALIC, 15));
 		GetRecommend.setContentAreaFilled(false);
 		GetRecommend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				String getBatchSizeText= BatchSizeText.getText().toString();
-				//check batchsize
-				char[] charBatchSizeText = getBatchSizeText.toCharArray();
-				boolean isBatchsize = false;
-				for(int i = 0; i < charBatchSizeText.length; i++) {
-					isBatchsize = (charBatchSizeText[i] >= '0' && charBatchSizeText[i] <= '9');
-				}
-				if (!isBatchsize) {
+
+				String getBatchSizeText = BatchSizeText.getText().toString();
+				// check batchsize
+				// char[] charBatchSizeText = getBatchSizeText.toCharArray();
+				// boolean isBatchsize = false;
+				// for(int i = 0; i < charBatchSizeText.length; i++) {
+				// isBatchsize = (charBatchSizeText[i] >= '0' && charBatchSizeText[i] <= '9');
+				// }
+				// if (!isBatchsize) {
+				//
+				//
+				// }
+				// else {
+				double Index = -1;
+				try {
+					Index = Double.parseDouble(BatchSizeText.getText().toString());
+				} catch (Exception exception) {
+
 					JOptionPane.showMessageDialog(null, "Invaild input!!!");
-					
+					RecommendRecipePageGUI.this.dispose();
+
+				}
+				
+				
+				if (Index < 0) {
+					JOptionPane.showMessageDialog(null, "Invaild input!!!");
+					RecommendRecipePageGUI.this.dispose();
+
+				} else {
+					m.setBatchSize(Index);
+
+					m.getView().get(0).setvisible(0);
+					RecommendRecipePageGUI.this.dispose();
+					m.getView().get(1).setvisible(1);
 				}
 
-				double Index=Double.parseDouble(BatchSizeText.getText().toString());
-				m.setBatchSize(Index);
-
-				m.getView().get(0).setvisible(0);
-				RecommendRecipePageGUI.this.dispose();
-				m.getView().get(1).setvisible(1);
 				try {
 					m.notifyView();
 				} catch (SQLException e1) {
@@ -108,7 +125,7 @@ public class RecommendRecipePageGUI extends JFrame{
 		p2.add(GoToMain);
 		p2.add(GetRecommend);
 		p.add(p1);
-		p.add(p2);		
+		p.add(p2);
 		bg.add(emptyPanel);
 		bg.add(p);
 		this.add(bg);
@@ -123,11 +140,9 @@ public class RecommendRecipePageGUI extends JFrame{
 	}
 
 	public void controlVisible(int flag) {
-		if(flag==1)
-		{
+		if (flag == 1) {
 			this.setVisible(true);
-		}
-		else {
+		} else {
 			System.out.print(this.getClass());
 			this.setVisible(false);
 		}
