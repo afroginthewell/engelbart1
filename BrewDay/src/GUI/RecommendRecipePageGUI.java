@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -18,6 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Daoiml.equipDaoiml;
 import controller.BrewController;
 import model.Brew;
 
@@ -78,38 +80,38 @@ public class RecommendRecipePageGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				String getBatchSizeText = BatchSizeText.getText().toString();
-				// check batchsize
-				// char[] charBatchSizeText = getBatchSizeText.toCharArray();
-				// boolean isBatchsize = false;
-				// for(int i = 0; i < charBatchSizeText.length; i++) {
-				// isBatchsize = (charBatchSizeText[i] >= '0' && charBatchSizeText[i] <= '9');
-				// }
-				// if (!isBatchsize) {
-				//
-				//
-				// }
-				// else {
-				double Index = -1;
+			
+				double Index = -100.0;
 				try {
 					Index = Double.parseDouble(BatchSizeText.getText().toString());
 				} catch (Exception exception) {
 
 					JOptionPane.showMessageDialog(null, "Invaild input!!!");
 					RecommendRecipePageGUI.this.dispose();
+					
 
 				}
 				
-				
-				if (Index < 0) {
-					JOptionPane.showMessageDialog(null, "Invaild input!!!");
-					RecommendRecipePageGUI.this.dispose();
+				equipDaoiml edi = new equipDaoiml();
+				try {
+					if (Index < 0 || Index >edi.getTotalCapacity()) {
+						if(Index!=-100.0)
+						{
+						JOptionPane.showMessageDialog(null, "Invaild input!!!");
+						RecommendRecipePageGUI.this.dispose();
+						
+						}
 
-				} else {
-					m.setBatchSize(Index);
+					} else {
+						m.setBatchSize(Index);
 
-					m.getView().get(0).setvisible(0);
-					RecommendRecipePageGUI.this.dispose();
-					m.getView().get(1).setvisible(1);
+						m.getView().get(0).setvisible(0);
+						RecommendRecipePageGUI.this.dispose();
+						m.getView().get(1).setvisible(1);
+					}
+				} catch (HeadlessException | SQLException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
 				}
 
 				try {
@@ -121,9 +123,12 @@ public class RecommendRecipePageGUI extends JFrame {
 
 			}
 		});
+		
 
+		
 		p2.add(GoToMain);
 		p2.add(GetRecommend);
+	//	p2.add(back);
 		p.add(p1);
 		p.add(p2);
 		bg.add(emptyPanel);

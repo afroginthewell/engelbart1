@@ -25,12 +25,15 @@ public class EquipmentController extends Controller{
 		equipDaoiml edi = new equipDaoiml();
 		int index=model.getupdateindex();
 		Equipment e=edi.findById(index);
+		e.setCapacity(e.getCapacity() + addCapacityVolumn);
 		// Error Handle: Capacity cannot be negative value
 		if (e.getCapacity() + addCapacityVolumn < 0)
-			return false;
-
+		{
+			e.setCapacity(0);
+		}
+			
 		// Update the capacity
-		e.setCapacity(e.getCapacity() + addCapacityVolumn);
+		
 		edi.update(e);
 
 		return true;

@@ -16,6 +16,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -87,13 +88,46 @@ public class IngredientAddGUI extends JFrame {
 		b1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 						
-				boolean checkLegal = true;
-				if (checkLegal == true) {
+				
 					String name = inputAddIngredient.getText().toString();
 					String amount = inputaddAmount.getText().toString();
 					
+					
+					
+					
+					Double Index=-100.0;
 					try {
-						c.addNewIngredient(name, amount);
+					Index = Double.parseDouble(amount);
+					} catch (Exception exception) {
+				
+					JOptionPane.showMessageDialog(null, "Invaild input!!!");
+					IngredientAddGUI.this.dispose();
+					m.getView().get(2).setvisible(0);
+					IngredientAddGUI.this.dispose();
+					m.getView().get(0).setvisible(1);
+				
+				}
+				
+				
+				if (Index < 0) {
+					if(Index!=-100.0)
+					{
+					JOptionPane.showMessageDialog(null, "input bigger then 0!!!");
+					IngredientAddGUI.this.dispose();
+					m.getView().get(2).setvisible(0);
+					IngredientAddGUI.this.dispose();
+					m.getView().get(0).setvisible(1);
+					}
+				}
+				
+				 else {
+					
+					
+					
+				
+					
+					try {
+						c.addNewIngredient(name, Index);
 					} catch (SQLException e2) {
 						// TODO Auto-generated catch block
 						e2.printStackTrace();
@@ -105,28 +139,19 @@ public class IngredientAddGUI extends JFrame {
 					m.getView().get(2).setvisible(0);
 					IngredientAddGUI.this.dispose();
 					m.getView().get(0).setvisible(1);
+					
+				 }
 					try {
 						m.notifyView();
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-//					IngredientAddGUI.this.dispose();
-//				} else { // if illegal, return itself
-//					m.getView().get(0).setvisible(1);
-//					
-//					m.getView().get(2).setvisible(0);
-//					try {
-//						m.notifyView();
-//					} catch (SQLException e1) {
-//						// TODO Auto-generated catch block
-//						e1.printStackTrace();
-//					}
-//					IngredientAddGUI.this.dispose();
+
 				}
 
 			}
-		});
+		);
 		
 		JButton b2 = new JButton("Cancel");
 		b2.setContentAreaFilled(false);

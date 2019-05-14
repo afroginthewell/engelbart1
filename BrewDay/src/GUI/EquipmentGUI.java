@@ -50,7 +50,7 @@ public class EquipmentGUI extends JFrame{
 
 		JPanel p1 = new JPanel(); 
 		p1.setLayout(new FlowLayout(1,10,10));
-		JTextField title = new JTextField("Equipments recipes");
+		JTextField title = new JTextField("Equipments");
 		title.setFont(new Font("Verdana",Font.ITALIC,20));
 		title.setBorder(BorderFactory.createEmptyBorder());
 		title.setOpaque(false);
@@ -66,7 +66,7 @@ public class EquipmentGUI extends JFrame{
 		p2.setLayout(new GridLayout(equipList.size(), 3, 20, 10)); 
 		for (Equipment i: equipList) {
 			// Name
-			JTextField equipmentName = new JTextField(i.getName());
+			JTextField equipmentName = new JTextField(i.getName()+i.getCapacity()+"L");
 			equipmentName.setEditable(false);
 			p2.add(equipmentName);
 			// Button

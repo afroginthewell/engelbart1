@@ -26,6 +26,10 @@ public class RecipeIngredientController {
 		RecipeIngredientDao ri = new RecipeingredientDaoiml();
 		model=ri.findById(recipeid);
 		model.setAmount(changeAmount);
+		if(changeAmount<0)
+		{
+			model.setAmount(0);
+		}
 		ri.update(model);
 
 		return true;
@@ -49,7 +53,14 @@ public class RecipeIngredientController {
 		RecipeIngredientDao ri = new RecipeingredientDaoiml();
 		int newIndex = ri.getMaxIndex() + 1;
 		model.setName(name);
+		
+		
 		model.setAmount(amount);
+		if(amount<0)
+		{
+			model.setAmount(0);
+		}
+		
 		model.setUnit(unit);
 		model.setrecipeIndex(recipeindex);
 		model.setindex(newIndex);

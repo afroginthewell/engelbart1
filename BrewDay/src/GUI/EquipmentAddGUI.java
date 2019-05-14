@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -46,21 +47,48 @@ public class EquipmentAddGUI extends JFrame{
 		addButton.addActionListener(new ActionListener() {
 		
 			public void actionPerformed(ActionEvent e) {
-				boolean checkLegal = true;
-				if(checkLegal == true) {
+				
 					String name = t1.getText().toString();
-					String capacity = t2.getText().toString();
-					try {
-						c.addEquipment(name, Double.parseDouble(capacity));
-					} catch (NumberFormatException | SQLException e2) {
-						// TODO Auto-generated catch block
-						e2.printStackTrace();
-					}
 					
+					Double Index=-100.0;
+					try {
+					Index = Double.parseDouble(t2.getText().toString());
+				} catch (Exception exception) {
+				
+					JOptionPane.showMessageDialog(null, "Invaild input!!!");
+					EquipmentAddGUI.this.dispose();
 					m.getView().get(0).setvisible(1);
 					EquipmentAddGUI.this.dispose();
 					m.getView().get(1).setvisible(0);
+					
+				
+				}
+				
+				
+				if (Index < 0) {
+					if(Index!=-100.0)
+					{
+					JOptionPane.showMessageDialog(null, "input bigger then 0!!!");
+					EquipmentAddGUI.this.dispose();
+					m.getView().get(0).setvisible(1);
+					EquipmentAddGUI.this.dispose();
+					m.getView().get(1).setvisible(0);
+					}
+				
+				} else {
 					try {
+						c.addEquipment(name, Index);
+					} catch (NumberFormatException | SQLException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					
+					
+				
+				}
+					m.getView().get(0).setvisible(1);
+					EquipmentAddGUI.this.dispose();
+					m.getView().get(1).setvisible(0);
+				try {
 						m.notifyView();
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block

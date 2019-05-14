@@ -9,7 +9,7 @@ import Daoiml.storageingredientDaoiml;
 import model.StorageIngredient;
 import view.StorageIngredientView;
 
-public class StorageIngredientController extends Controller {
+public class StorageIngredientController extends Controller { 
 	private StorageIngredient model;
 
 	// Constructor
@@ -31,10 +31,23 @@ public class StorageIngredientController extends Controller {
 			
 			// Empty Error handle
 			if (inputTemp.equals("")) {inputTemp = "0.0";}
-			double changedAmount = Double.parseDouble(inputTemp);
+			
+			double changedAmount=0;
+			try {
+				changedAmount = Double.parseDouble(inputTemp);
+			} catch (NumberFormatException e1) {
+				// TODO Auto-generated catch block
+				
+			}
+			
 			
 			double updatedAmount = sIngredientList.get(i).getAmount() + changedAmount;
 			sIngredientList.get(i).setAmount(updatedAmount);
+			if(updatedAmount<0)
+			{
+				sIngredientList.get(i).setAmount(0);
+			}
+			
 			try {
 				sidi.update(sIngredientList.get(i));
 			} catch (SQLException e1) {
@@ -44,13 +57,13 @@ public class StorageIngredientController extends Controller {
 		}
 	}
 
-	public void addNewIngredient(String name, String amount) throws SQLException {
+	public void addNewIngredient(String name, Double amount) throws SQLException {
 		// Connected with Dao
 		storageingredientDaoiml sidi = new storageingredientDaoiml();
 		int newIngreIndex = sidi.getMaxIndex() + 1;
 		model.setindex(newIngreIndex);
 		model.setName(name);
-		model.setAmount(Double.parseDouble(amount));
+		model.setAmount(amount);
 		model.setUnit("g");
 		sidi.add(model);
 	}

@@ -15,6 +15,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -72,17 +73,7 @@ public class RecipeAddPageGUI extends JFrame{
 			name.add(water);
 		}
 
-		//		JTextArea water = new JTextArea("water", 1,10);
-		//		water.setEditable(false);
-		//		JTextArea malts = new JTextArea("malts", 1,10);
-		//		malts.setEditable(false);
-		//		JTextArea hops = new JTextArea("hops", 1,10);
-		//		hops.setEditable(false);
-		//		JTextArea yeasts = new JTextArea("yeasts", 1,10);
-		//		yeasts.setEditable(false);
-		//		JTextArea sugars = new JTextArea("sugars", 1,10);
-		//		sugars.setEditable(false);
-
+	
 
 
 		p1.add(name);
@@ -157,11 +148,11 @@ public class RecipeAddPageGUI extends JFrame{
 
 
 
-				double amount=Double.parseDouble(getIweight);
-				System.out.println(getIweight);
+				
+				//System.out.println(getIweight);
 
 				try {
-
+					double amount=Double.parseDouble(getIweight);
 					int recipid=c.addRecipe(getInote, amount, "L");
 
 					int i=0;
@@ -171,15 +162,14 @@ public class RecipeAddPageGUI extends JFrame{
 						ic.addRecipeIngredient(r.getName(), Double.parseDouble(text.get(i).getText().toString()), "g", recipid);
 						i++;
 					}		
-					//					ic.addRecipeIngredient("water", amount*Double.parseDouble(getIwater)/100, "L", recipid);
-					//					ic.addRecipeIngredient("malts", amount*Double.parseDouble(getImalts), "g", recipid);
-					//					ic.addRecipeIngredient("hops", amount*Double.parseDouble(getIhops), "g", recipid);
-					//					ic.addRecipeIngredient("yeasts", amount*Double.parseDouble(getIyeasts), "g", recipid);
-					//					ic.addRecipeIngredient("sugars", amount*Double.parseDouble(getIsugars), "g", recipid);
-					//					
+					
 				} catch (NumberFormatException | SQLException e1) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Invaild input!!!");
+					RecipeAddPageGUI.this.dispose();
+					m.getView().get(0).setvisible(1);
+					RecipeAddPageGUI.this.dispose();
+					m.getView().get(1).setvisible(0);
 				}
 
 

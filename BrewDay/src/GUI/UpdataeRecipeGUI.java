@@ -17,6 +17,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -53,30 +54,30 @@ public class UpdataeRecipeGUI extends JFrame{
 
 		JPanel name = new JPanel();
 		name.setLayout(new BoxLayout(name, BoxLayout.PAGE_AXIS));
-		JTextArea weight = new JTextArea("amount", 1,10);
-		weight.setFont(new Font("Verdana",Font.ITALIC,15));
-		weight.setBorder(BorderFactory.createEmptyBorder());
-		weight.setOpaque(false);
-		weight.setEditable(false);
-		
-		JTextArea recipename = new JTextArea("recipe name", 1,10);
-		recipename.setFont(new Font("Verdana",Font.ITALIC,15));
-		recipename.setBorder(BorderFactory.createEmptyBorder());
-		recipename.setOpaque(false);
-		recipename.setEditable(false);
-		
-		JTextArea unitt = new JTextArea("unit", 1,10);
-		unitt.setFont(new Font("Verdana",Font.ITALIC,15));
-		unitt.setBorder(BorderFactory.createEmptyBorder());
-		unitt.setOpaque(false);
-		unitt.setEditable(false);
-		
-		//recipename.setEditable(false);
-		//weight.setEditable(false);
-		name.add(weight);
-		name.add(recipename);
-		unitt.setEditable(false);
-		name.add(unitt);
+//		JTextArea weight = new JTextArea("amount", 1,10);
+//		weight.setFont(new Font("Verdana",Font.ITALIC,15));
+//		weight.setBorder(BorderFactory.createEmptyBorder());
+//		weight.setOpaque(false);
+//		weight.setEditable(false);
+//		
+//		JTextArea recipename = new JTextArea("recipe name", 1,10);
+//		recipename.setFont(new Font("Verdana",Font.ITALIC,15));
+//		recipename.setBorder(BorderFactory.createEmptyBorder());
+//		recipename.setOpaque(false);
+//		recipename.setEditable(false);
+//		
+//		JTextArea unitt = new JTextArea("unit", 1,10);
+//		unitt.setFont(new Font("Verdana",Font.ITALIC,15));
+//		unitt.setBorder(BorderFactory.createEmptyBorder());
+//		unitt.setOpaque(false);
+//		unitt.setEditable(false);
+//		
+//		//recipename.setEditable(false);
+//		//weight.setEditable(false);
+//		name.add(weight);
+//		name.add(recipename);
+//		unitt.setEditable(false);
+//		name.add(unitt);
 
 
 		for (RecipeIngredient r: sIngredientList) {
@@ -93,16 +94,16 @@ public class UpdataeRecipeGUI extends JFrame{
 
 		JPanel input = new JPanel();
 		input.setLayout(new BoxLayout(input, BoxLayout.PAGE_AXIS));
-		JTextArea Iweight = new JTextArea(String.valueOf(m.getQuantity()), 1,10);
-		Iweight.setPreferredSize(new Dimension(50, 18));
-		JTextArea Inote = new JTextArea(m.getName(), 1,10);
-		Inote.setPreferredSize(new Dimension(50, 18));
-		JTextArea Iunit = new JTextArea(m.getUnit(), 1,10);
-		Iunit.setPreferredSize(new Dimension(50, 18));
-		
-		input.add(Iunit);
-		input.add(Inote);
-		input.add(Iweight);
+//		JTextArea Iweight = new JTextArea(String.valueOf(m.getQuantity()), 1,10);
+//		Iweight.setPreferredSize(new Dimension(50, 18));
+//		JTextArea Inote = new JTextArea(m.getName(), 1,10);
+//		Inote.setPreferredSize(new Dimension(50, 18));
+//		JTextArea Iunit = new JTextArea(m.getUnit(), 1,10);
+//		Iunit.setPreferredSize(new Dimension(50, 18));
+//		
+//		input.add(Iunit);
+//		input.add(Inote);
+//		input.add(Iweight);
 
 
 
@@ -118,15 +119,15 @@ public class UpdataeRecipeGUI extends JFrame{
 
 		JPanel unit = new JPanel();
 		unit.setLayout(new BoxLayout(unit, BoxLayout.PAGE_AXIS));
-		JTextArea uweight = new JTextArea("", 1,5);
-		uweight.setEditable(false);
-		JTextArea uname = new JTextArea("", 1,5);
-		uname.setEditable(false);
-		JTextArea uunit = new JTextArea("g", 1,5);
-		uunit.setEditable(false);
-		unit.add(uweight);
-		unit.add(uname);
-		unit.add(uunit);
+//		JTextArea uweight = new JTextArea("", 1,5);
+//		uweight.setEditable(false);
+//		JTextArea uname = new JTextArea("", 1,5);
+//		uname.setEditable(false);
+//		JTextArea uunit = new JTextArea("g", 1,5);
+//		uunit.setEditable(false);
+//		unit.add(uweight);
+//		unit.add(uname);
+//		unit.add(uunit);
 
 		JTextArea uwater;
 		for (RecipeIngredient r: sIngredientList) {
@@ -139,12 +140,42 @@ public class UpdataeRecipeGUI extends JFrame{
 
 
 		JPanel p2 = new JPanel(new FlowLayout(1,10,10));
-		JButton add = new JButton("Add");
+		JButton add = new JButton("update");
 		add.setFont(new Font("Verdana",Font.ITALIC,15));
 		add.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				m.getView().get(0).setvisible(1);
+//				String getUnit=Iunit.getText().toString();
+//				String getIweight = Iweight.getText().toString();
+//				String getInote = Inote.getText().toString();
+
+
+				
+				//System.out.println(text.get(0).getText().toString());
+
+				try {
+					//double amount=Double.parseDouble(getIweight);
+					//c.addRecipe(getInote, amount, getUnit);
+					//c.updateRecipes(getInote, amount, m.getRecipeIndex());
+
+
+					int i=0;
+					for (RecipeIngredient r: sIngredientList) {
+						ic.updateAmount(Double.parseDouble(text.get(i).getText().toString()), r.getindex());
+						i++;
+						
+					}		
+
+				} catch (NumberFormatException | SQLException e1) {
+					JOptionPane.showMessageDialog(null, "Invaild input!!!");
+					UpdataeRecipeGUI.this.dispose();
+					m.getView().get(0).setvisible(1);
+					UpdataeRecipeGUI.this.dispose();
+					m.getView().get(1).setvisible(0);
+				}
+				
+
+				//m.getView().get(0).setvisible(1);
 				UpdataeRecipeGUI.this.dispose();
 				m.getView().get(1).setvisible(0);
 				try {
@@ -153,32 +184,6 @@ public class UpdataeRecipeGUI extends JFrame{
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				String getUnit=Iunit.getText().toString();
-				String getIweight = Iweight.getText().toString();
-				String getInote = Inote.getText().toString();
-
-
-				double amount=Double.parseDouble(getIweight);
-				System.out.println(text.get(0).getText().toString());
-
-				try {
-
-					//c.addRecipe(getInote, amount, getUnit);
-					c.updateRecipes(getInote, amount, m.getRecipeIndex());
-
-
-					int i=0;
-					for (RecipeIngredient r: sIngredientList) {
-						ic.updateAmount(Double.parseDouble(text.get(i).getText().toString()), r.getindex());
-						i++;
-
-					}		
-
-				} catch (NumberFormatException | SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-
 
 
 

@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -53,14 +54,28 @@ public class EquipmentUpdateGUI extends JFrame {
 		b2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String gett1 = t1.getText().toString();
-				double batchSize = Double.parseDouble(gett1);
+				double batchSize=0;
 				
-					try {
-						c.updateCapacity(batchSize);
-					} catch (SQLException e2) {
-						// TODO Auto-generated catch block
-						e2.printStackTrace();
-					}
+				try {
+					batchSize=Double.parseDouble(gett1);
+				} catch (Exception exception) {			
+					JOptionPane.showMessageDialog(null, "Invaild input!!!");
+					EquipmentUpdateGUI.this.dispose();
+					m.getView().get(0).setvisible(1);
+					EquipmentUpdateGUI.this.dispose();
+					m.getView().get(2).setvisible(0);
+				
+				}
+				
+				try {
+							c.updateCapacity(batchSize);
+							
+						} catch (SQLException e2) {
+							e2.printStackTrace();
+							
+							
+						}
+					
 					m.getView().get(0).setvisible(1);
 					EquipmentUpdateGUI.this.dispose();
 					m.getView().get(2).setvisible(0);
@@ -87,3 +102,29 @@ public class EquipmentUpdateGUI extends JFrame {
 
 	}
 }
+
+
+
+//try {
+//	Index = Double.parseDouble(BatchSizeText.getText().toString());
+//} catch (Exception exception) {
+//
+//	JOptionPane.showMessageDialog(null, "Invaild input!!!");
+//	RecommendRecipePageGUI.this.dispose();
+//
+//}
+//
+//
+//if (Index < 0) {
+//	JOptionPane.showMessageDialog(null, "Invaild input!!!");
+//	RecommendRecipePageGUI.this.dispose();
+//
+//} else {
+//	m.setBatchSize(Index);
+//
+//	m.getView().get(0).setvisible(0);
+//	RecommendRecipePageGUI.this.dispose();
+//	m.getView().get(1).setvisible(1);
+//}
+//
+
