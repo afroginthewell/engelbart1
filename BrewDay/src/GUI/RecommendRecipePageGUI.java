@@ -59,10 +59,10 @@ public class RecommendRecipePageGUI extends JFrame {
 
 		JTextField BatchSizeText = new JTextField("", 18);
 		p1.add(BatchSizeText);
-
+		
 		JPanel p2 = new JPanel();
 		p2.setLayout(new FlowLayout(1, 10, 10));
-
+		
 		JButton GoToMain = new JButton("Go to main page");
 		GoToMain.setFont(new Font("Verdana", Font.ITALIC, 15));
 		GoToMain.setContentAreaFilled(false);

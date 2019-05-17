@@ -31,7 +31,7 @@ public class IngredientAddGUI extends JFrame {
 			StorageIngredient m) {
 
 		this.setTitle("Ingredient add page");
-		this.setSize(500, 500);
+		this.setSize(500, 400);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		///////////bg////////////
@@ -54,12 +54,15 @@ public class IngredientAddGUI extends JFrame {
 		
 		JPanel p1 = new JPanel();
 		p1.setLayout(new GridLayout(2, 2, 20, 10)); 
-		p1.setPreferredSize(new Dimension(400, 80));
+		Dimension textSize = new Dimension(100,40);
+		
+		
 		JTextArea addIngredient = new JTextArea("Which ingredient you want to add?");
-		addIngredient.setFont(new Font("Verdana",Font.ITALIC,15));
+		addIngredient.setFont(new Font("Verdana",Font.ITALIC,13));
 		addIngredient.setBorder(BorderFactory.createEmptyBorder());
 		addIngredient.setOpaque(false);
 		JTextArea inputAddIngredient = new JTextArea("");
+		inputAddIngredient.setPreferredSize(textSize);
 		inputAddIngredient.setFont(new Font("Verdana",Font.ITALIC,15));
 		inputAddIngredient.setBorder(BorderFactory.createEmptyBorder());
 		//inputAddIngredient.setOpaque(false);
@@ -67,10 +70,13 @@ public class IngredientAddGUI extends JFrame {
 		p1.add(inputAddIngredient);
 		
 		
-		JTextArea addAmount = new JTextArea("Input how much you want to add?");
-		addAmount.setFont(new Font("Verdana",Font.ITALIC,15));
+		JTextArea addAmount = new JTextArea("How much you want to add?");
+		addAmount.setPreferredSize(textSize);
+		addAmount.setPreferredSize(textSize);
+		addAmount.setFont(new Font("Verdana",Font.ITALIC,13));
 		addAmount.setBorder(BorderFactory.createEmptyBorder());
 		addAmount.setOpaque(false);
+		
 		JTextArea inputaddAmount = new JTextArea("");
 		inputaddAmount .setFont(new Font("Verdana",Font.ITALIC,15));
 		inputaddAmount .setBorder(BorderFactory.createEmptyBorder());
