@@ -24,7 +24,7 @@ import model.Note;
 public class WriteNotePageGUI extends JFrame{
 	public WriteNotePageGUI(Note m, NoteController c) {
 		this.setTitle("RecommendRecipePageGUI");
-		this.setSize(400,300);
+		this.setSize(500,500);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		///////////bg////////////
@@ -35,7 +35,10 @@ public class WriteNotePageGUI extends JFrame{
 				g.drawImage(ii.getImage(), 0, 0, getWidth(), getHeight(), ii.getImageObserver());
 			}
 		};
-
+		
+		JPanel emptyPanel = new JPanel();
+		emptyPanel.setLayout(new FlowLayout(1,10,10));
+		emptyPanel.setPreferredSize(new Dimension(400, 80));
 		///////////bg////////////
 
 		JPanel p = new JPanel();
@@ -53,7 +56,8 @@ public class WriteNotePageGUI extends JFrame{
 		p.add(note);
 		JPanel p1 = new JPanel();
 		
-		JButton submit = new JButton("submit");		
+		JButton submit = new JButton("submit");	
+		submit.setOpaque(false);
 		submit.setFont(new Font("Verdana", Font.ITALIC, 15));
 		submit.setContentAreaFilled(false);
 		
@@ -78,7 +82,10 @@ public class WriteNotePageGUI extends JFrame{
 		
 		p1.add(submit);
 		p.add(p1);
+		emptyPanel.setOpaque(false);
 		p.setOpaque(false);
+		p1.setOpaque(false);
+		bg.add(emptyPanel);
 		bg.add(p);
 		this.add(bg);
 

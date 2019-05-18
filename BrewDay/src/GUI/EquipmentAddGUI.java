@@ -2,12 +2,16 @@ package GUI;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -25,34 +29,69 @@ public class EquipmentAddGUI extends JFrame{
 	public EquipmentAddGUI(Equipment m, EquipmentController c) {
 		
 		this.setTitle("EquipmentAdd page");
-		this.setSize(400,300);
+		this.setSize(500,500);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+
+		///////////bg////////////
+		JPanel bg = new JPanel() {
+			public void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				ImageIcon ii = new ImageIcon( "C:\\Users\\Jerry Zou\\Desktop\\JieLi\\Java workspace\\20190511\\brew.jpg");
+				g.drawImage(ii.getImage(), 0, 0, getWidth(), getHeight(), ii.getImageObserver());
+			}
+		};
+
+		JPanel emptyPanel = new JPanel();
+		emptyPanel.setLayout(new FlowLayout(1,10,10));
+		emptyPanel.setPreferredSize(new Dimension(400, 80));
+		///////////bg////////////
 		
 		JPanel p = new JPanel();
 		
-		this.add(p);
-		
 		p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
 		
-		JTextArea t1 = new JTextArea("Input equipment name(text box)");
-		p.add(t1);
+		JTextField name = new JTextField("Input equipment name");
+		name.setEditable(false);
+		name.setFont(new Font("Verdana",Font.ITALIC,13));
+		name.setBorder(BorderFactory.createEmptyBorder());
+		name.setOpaque(false);
 		
-		JTextArea t2 = new JTextArea("how much you want to add?(text box)");
-		p.add(t2);
+		JTextArea nameText = new JTextArea("");
+		
+		
+		p.add(name);
+		p.add(nameText);
+		
+		JTextField amount = new JTextField("how much you want to add?");
+		amount.setEditable(false);
+		amount.setFont(new Font("Verdana",Font.ITALIC,13));
+		amount.setBorder(BorderFactory.createEmptyBorder());
+		amount.setOpaque(false);
+		
+		JTextArea amountText = new JTextArea("");
+		
+		p.add(amount);
+		p.add(amountText);
+		
 		JPanel p1 = new JPanel();
 		
 		p1.setLayout(new FlowLayout(1,10,10));
 		
 		JButton addButton = new JButton("Add");
+		addButton.setContentAreaFilled(false);
+		addButton.setFont(new Font("Verdana",Font.ITALIC,15));
+		addButton.setOpaque(false);
+		
 		addButton.addActionListener(new ActionListener() {
 		
 			public void actionPerformed(ActionEvent e) {
 				
-					String name = t1.getText().toString();
+					String name = nameText.getText().toString();
 					
 					Double Index=-100.0;
 					try {
-					Index = Double.parseDouble(t2.getText().toString());
+					Index = Double.parseDouble(amountText.getText().toString());
 				} catch (Exception exception) {
 				
 					JOptionPane.showMessageDialog(null, "Invaild input!!!");
@@ -100,8 +139,12 @@ public class EquipmentAddGUI extends JFrame{
 		});
 		
 		p1.add(addButton);
-		JButton b2 = new JButton("Cancel");
-		b2.addActionListener(new ActionListener() {
+		JButton Cancel = new JButton("Cancel");
+		Cancel.setContentAreaFilled(false);
+		Cancel.setFont(new Font("Verdana",Font.ITALIC,15));
+		Cancel.setOpaque(false);
+		
+		Cancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				m.getView().get(0).setvisible(1);
 				EquipmentAddGUI.this.dispose();
@@ -114,8 +157,16 @@ public class EquipmentAddGUI extends JFrame{
 				}
 			}
 		});
-		p1.add(b2);
+		
+		emptyPanel.setOpaque(false);
+		p1.setOpaque(false);
+		p.setOpaque(false);
+		
+		p1.add(Cancel);
 		p.add(p1);
+		bg.add(emptyPanel);
+		bg.add(p);
+		this.add(bg);
 		
 		
 	}

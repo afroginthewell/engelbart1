@@ -31,7 +31,7 @@ public class IngredientAddGUI extends JFrame {
 			StorageIngredient m) {
 
 		this.setTitle("Ingredient add page");
-		this.setSize(500, 400);
+		this.setSize(500, 500);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		///////////bg////////////
