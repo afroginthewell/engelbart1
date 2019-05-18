@@ -46,14 +46,14 @@ public class UpdataeRecipeGUI extends JFrame{
 
 		JPanel emptyPanel = new JPanel();
 		emptyPanel.setLayout(new FlowLayout(1,10,10));
-		emptyPanel.setPreferredSize(new Dimension(400, 20));
+		emptyPanel.setPreferredSize(new Dimension(400, 60));
 		///////////bg////////////
 		
 		JPanel p = new JPanel();
-		p.setLayout(new FlowLayout(1,0,0));
+		p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
 
-		JPanel name = new JPanel();
-		name.setLayout(new BoxLayout(name, BoxLayout.PAGE_AXIS));
+//		JPanel name = new JPanel();
+//		name.setLayout(new BoxLayout(name, BoxLayout.PAGE_AXIS));
 //		JTextArea weight = new JTextArea("amount", 1,10);
 //		weight.setFont(new Font("Verdana",Font.ITALIC,15));
 //		weight.setBorder(BorderFactory.createEmptyBorder());
@@ -79,7 +79,12 @@ public class UpdataeRecipeGUI extends JFrame{
 //		unitt.setEditable(false);
 //		name.add(unitt);
 
-
+		JPanel p1 = new JPanel();
+		p1.setLayout(new GridLayout(1, 3, 50, 40)); 
+		
+		JPanel name = new JPanel();
+		name.setLayout(new BoxLayout(name, BoxLayout.PAGE_AXIS));
+		
 		for (RecipeIngredient r: sIngredientList) {
 			JTextArea water = new JTextArea(r.getName(), 1,10);
 			water.setEditable(false);
@@ -89,11 +94,11 @@ public class UpdataeRecipeGUI extends JFrame{
 
 
 
-		p.add(name);
+		//p.add(name);
 
 
-		JPanel input = new JPanel();
-		input.setLayout(new BoxLayout(input, BoxLayout.PAGE_AXIS));
+		//JPanel input = new JPanel(new FlowLayout(1,10,10));
+		//input.setLayout(new BoxLayout(input, BoxLayout.PAGE_AXIS));
 //		JTextArea Iweight = new JTextArea(String.valueOf(m.getQuantity()), 1,10);
 //		Iweight.setPreferredSize(new Dimension(50, 18));
 //		JTextArea Inote = new JTextArea(m.getName(), 1,10);
@@ -106,19 +111,20 @@ public class UpdataeRecipeGUI extends JFrame{
 //		input.add(Iweight);
 
 
-
+		JPanel input = new JPanel(new FlowLayout(1,10,10));
+		input.setLayout(new BoxLayout(input, BoxLayout.PAGE_AXIS));
+		
 		for (RecipeIngredient r: sIngredientList) {
 			JTextArea iwater = new JTextArea(String.valueOf(r.getAmount()), 1,10);			
 			input.add(iwater);
 			text.add(iwater);
 
 		}			
-		p.add(input);
+//		p.add(input);
 
 
 
-		JPanel unit = new JPanel();
-		unit.setLayout(new BoxLayout(unit, BoxLayout.PAGE_AXIS));
+		
 //		JTextArea uweight = new JTextArea("", 1,5);
 //		uweight.setEditable(false);
 //		JTextArea uname = new JTextArea("", 1,5);
@@ -128,20 +134,29 @@ public class UpdataeRecipeGUI extends JFrame{
 //		unit.add(uweight);
 //		unit.add(uname);
 //		unit.add(uunit);
-
+		
+		JPanel unit = new JPanel();
+		unit.setLayout(new BoxLayout(unit, BoxLayout.PAGE_AXIS));
+		
 		JTextArea uwater;
 		for (RecipeIngredient r: sIngredientList) {
 			uwater = new JTextArea("g", 1,10);	
 			uwater.setEditable(false);
 			unit.add(uwater);		
 		}			
-
-		p.add(unit);	
+		
+		p1.add(name);
+		p1.add(input);
+		p1.add(unit);
+		p.add(p1);	
 
 
 		JPanel p2 = new JPanel(new FlowLayout(1,10,10));
 		JButton add = new JButton("update");
+		add.setContentAreaFilled(false);
+		add.setOpaque(false);
 		add.setFont(new Font("Verdana",Font.ITALIC,15));
+		
 		add.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -190,7 +205,10 @@ public class UpdataeRecipeGUI extends JFrame{
 			}
 		});
 		JButton cancel = new JButton("Cancel");	
+		cancel.setContentAreaFilled(false);
+		cancel.setOpaque(false);
 		cancel.setFont(new Font("Verdana",Font.ITALIC,15));
+		
 		cancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				m.getView().get(0).setvisible(1);
@@ -208,13 +226,16 @@ public class UpdataeRecipeGUI extends JFrame{
 		
 		emptyPanel.setOpaque(false);
 		p.setOpaque(false);
+		p1.setOpaque(false);
 		p2.setOpaque(false);
 		add.setOpaque(false);
 		cancel.setOpaque(false);
 		
+		
 		p2.add(add);
 		p2.add(cancel);
 		p.add(p2);
+		
 		
 		bg.add(emptyPanel);
 		bg.add(p);

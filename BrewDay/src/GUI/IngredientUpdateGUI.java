@@ -28,7 +28,7 @@ public class IngredientUpdateGUI extends JFrame {
 	public IngredientUpdateGUI(ArrayList<StorageIngredient> sIngredientList, StorageIngredient m,
 			StorageIngredientController c) {
 		this.setTitle("Ingredient Update GUI");
-		this.setSize(500, 500);
+		this.setSize(600, 500);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		///////////bg////////////
@@ -46,35 +46,41 @@ public class IngredientUpdateGUI extends JFrame {
 		///////////bg////////////
 
 		JPanel p = new JPanel();
-		p.setLayout(new FlowLayout(1, 0, 0));
+		p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
+		
 		ArrayList<JTextArea> inputList = new ArrayList<JTextArea>();
 
 		// Connected with Dao
 		storageingredientDaoiml sidi = new storageingredientDaoiml();
-
+		
+		JPanel p1 = new JPanel();
+		p1.setLayout(new GridLayout(sIngredientList.size(), 2, 20, 10)); 
+		
 		// Print the ingredients list fetched from database
 		for (StorageIngredient si : sIngredientList) {
 			JPanel information = new JPanel();
-			information.setLayout(new BoxLayout(information, BoxLayout.X_AXIS));
+			//information.setLayout(new BoxLayout(information, BoxLayout.X_AXIS));
 			JTextArea ingredientType = new JTextArea(si.getName(), 1, 10);
 			ingredientType.setEditable(false);
 			ingredientType.setFont(new Font("Verdana",Font.ITALIC,15));
-			ingredientType.setBorder(BorderFactory.createEmptyBorder());
-			ingredientType.setOpaque(false);
+			//ingredientType.setBorder(BorderFactory.createEmptyBorder());
+			//ingredientType.setOpaque(false);
 			
 			JTextArea input = new JTextArea("",1,10);
 			input.setFont(new Font("Verdana",Font.ITALIC,15));
-			input.setBorder(BorderFactory.createEmptyBorder());
-			input.setOpaque(false);
+			//input.setBorder(BorderFactory.createEmptyBorder());
+			//input.setOpaque(false);
 			
 			inputList.add(input);
+			
 			JTextArea unit = new JTextArea("g", 1, 5);
-			information.add(ingredientType);
-			information.add(input);
-			information.add(unit);
-			p.add(information);
+			unit.setEditable(false);
+			
+			p1.add(ingredientType);
+			p1.add(input);
+			p1.add(unit);
 		}
-
+		
 		JPanel p2 = new JPanel(new FlowLayout(1, 10, 10));
 		JButton Subtract = new JButton("Update");
 		Subtract.setContentAreaFilled(false);
@@ -129,7 +135,9 @@ public class IngredientUpdateGUI extends JFrame {
 		});
 		p2.add(Subtract);
 		p2.add(Cancel);
+		p.add(p1);
 		p.add(p2);
+		
 		
 		bg.add(emptyPanel);
 		bg.add(p);
