@@ -65,6 +65,36 @@ public class RecipeListGUI extends JFrame{
 			equipmentName.setOpaque(false);
 			equipmentName.setEditable(false);
 			p.add(equipmentName);
+			
+			
+			JButton detailButton1 = new JButton("detail");
+			detailButton1.setContentAreaFilled(false);
+			detailButton1.setFont(new Font("Verdana",Font.ITALIC,15));
+			p.add(detailButton1);
+			detailButton1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					int targetIndex=r.getRecipeIndex();
+
+
+					m.getView().get(6).setvisible(1);
+					try {
+						m.getView().get(6).setindex(r.getRecipeIndex());
+					} catch (SQLException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					}		
+					RecipeListGUI.this.dispose();
+					m.getView().get(3).setvisible(0);
+					try {
+						m.notifyView();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			});
+			
+			
 		}
 		
 		JPanel p2 = new JPanel();

@@ -29,6 +29,7 @@ import view.detailinfoView;
 import view.mainPageView;
 import view.notAvailableView;
 import view.recipeListView;
+import view.recipeingredientDetailView;
 import view.searchView;
 import view.shoppinglistView;
 import view.updateRecipeIngredientView;
@@ -73,13 +74,14 @@ public class TestSys {
 			recipeListView lv=new recipeListView(r,rc,0);
 			UpdateRecipeView uv=new UpdateRecipeView(r, rc,i,ic,0);
 			updateRecipeIngredientView uiv=new updateRecipeIngredientView(r, rc,i,ic,0);
-			
+			recipeingredientDetailView detailv=new recipeingredientDetailView(r, rc,i,ic,0);
 			r.addView(mv); // Add view function
 			r.addView(av);
 			r.addView(dv);
 			r.addView(lv);
 			r.addView(uv);
 			r.addView(uiv);
+			r.addView(detailv);
 			
 	
 //brew			

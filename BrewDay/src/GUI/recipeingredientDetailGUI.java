@@ -28,8 +28,8 @@ import model.Recipe;
 import model.RecipeIngredient;
 import model.StorageIngredient;
 
-public class UpdataeRecipeGUI extends JFrame{
-	public UpdataeRecipeGUI(ArrayList<RecipeIngredient> sIngredientList,Recipe m, RecipeController c,RecipeIngredient i,RecipeIngredientController ic) {
+public class recipeingredientDetailGUI extends JFrame{
+	public recipeingredientDetailGUI(ArrayList<RecipeIngredient> sIngredientList,Recipe m, RecipeController c,RecipeIngredient i,RecipeIngredientController ic) {
 		this.setTitle("RecommendRecipePageGUI");
 		this.setSize(500,500);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -75,7 +75,8 @@ public class UpdataeRecipeGUI extends JFrame{
 		input.setLayout(new BoxLayout(input, BoxLayout.PAGE_AXIS));
 		
 		for (RecipeIngredient r: sIngredientList) {
-			JTextArea iwater = new JTextArea(String.valueOf(r.getAmount()), 1,10);			
+			JTextArea iwater = new JTextArea(String.valueOf(r.getAmount()), 1,10);		
+			iwater.setEditable(false);
 			input.add(iwater);
 			text.add(iwater);
 
@@ -98,59 +99,17 @@ public class UpdataeRecipeGUI extends JFrame{
 
 
 		JPanel p2 = new JPanel(new FlowLayout(1,10,10));
-		JButton add = new JButton("update");
-		add.setContentAreaFilled(false);
-		add.setOpaque(false);
-		add.setFont(new Font("Verdana",Font.ITALIC,15));
 		
-		add.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-
-				try {
-			
-
-
-					int i=0;
-					for (RecipeIngredient r: sIngredientList) {
-						ic.updateAmount(Double.parseDouble(text.get(i).getText().toString()), r.getindex());
-						i++;
-						
-					}		
-
-				} catch (NumberFormatException | SQLException e1) {
-					JOptionPane.showMessageDialog(null, "Invaild input!!!");
-					UpdataeRecipeGUI.this.dispose();
-					m.getView().get(0).setvisible(1);
-					UpdataeRecipeGUI.this.dispose();
-					m.getView().get(1).setvisible(0);
-				}
-				
-
-				//m.getView().get(0).setvisible(1);
-				UpdataeRecipeGUI.this.dispose();
-				m.getView().get(1).setvisible(0);
-				try {
-					m.notifyView();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-
-
-
-			}
-		});
-		JButton cancel = new JButton("Cancel");	
+		JButton cancel = new JButton("back to previous");	
 		cancel.setContentAreaFilled(false);
 		cancel.setOpaque(false);
 		cancel.setFont(new Font("Verdana",Font.ITALIC,15));
 		
 		cancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				m.getView().get(0).setvisible(1);
-				UpdataeRecipeGUI.this.dispose();
-				m.getView().get(5).setvisible(0);
+				m.getView().get(3).setvisible(1);
+				recipeingredientDetailGUI.this.dispose();
+				m.getView().get(6).setvisible(0);
 				try {
 					m.notifyView();
 				} catch (SQLException e1) {
@@ -165,11 +124,11 @@ public class UpdataeRecipeGUI extends JFrame{
 		p.setOpaque(false);
 		p1.setOpaque(false);
 		p2.setOpaque(false);
-		add.setOpaque(false);
+	
 		cancel.setOpaque(false);
 		
 		
-		p2.add(add);
+		
 		p2.add(cancel);
 		p.add(p2);
 		
