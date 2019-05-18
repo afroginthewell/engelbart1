@@ -122,10 +122,12 @@ public class NotavailableListGUI extends JFrame{
 		JPanel p = new JPanel();
 		p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
 
-		JPanel p1 = new JPanel(); 
-		JTextField title = new JTextField("Non-executable recipes",10);
+		JPanel p1 = new JPanel();
+		p1.setLayout(new FlowLayout(1, 10, 10));
+		
+		JTextField title = new JTextField("Non-executable recipes",12);
 		title.setEditable(false);
-		title.setFont(new Font("Verdana",Font.ITALIC,20));
+		title.setFont(new Font("Verdana",Font.ITALIC,15));
 		title.setBorder(BorderFactory.createEmptyBorder());
 		title.setOpaque(false);
 
@@ -172,7 +174,7 @@ public class NotavailableListGUI extends JFrame{
 
 		JPanel p3 = new JPanel();
 		p3.setLayout(new FlowLayout(1,1,5));
-		JButton b3 = new JButton("back to previvous");
+		JButton b3 = new JButton("Back to previvous");
 		b3.setFont(new Font("Verdana",Font.ITALIC,15));
 		b3.setContentAreaFilled(false);
 		

@@ -38,16 +38,18 @@ public class ResultListGUI extends JFrame{
 
 		JPanel emptyPanel = new JPanel();
 		emptyPanel.setLayout(new FlowLayout(1,10,10));
-		emptyPanel.setPreferredSize(new Dimension(400, 80));
+		emptyPanel.setPreferredSize(new Dimension(400, 70));
 		///////////bg////////////
 
 		JPanel p = new JPanel();
 		p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
-		p.setPreferredSize(new Dimension(350, 100));
+		//p.setPreferredSize(new Dimension(350, 100));
 		
 		JPanel p1 = new JPanel(); 
-		JTextField title = new JTextField("Able to brew recipes",30);
-		title.setEditable(false);
+		//p1.setLayout(new BoxLayout(p1, BoxLayout.PAGE_AXIS));
+		p1.setLayout(new FlowLayout(2, 10, 10));
+		JTextField title = new JTextField("Able to brew recipes",15);
+		//title.setEditable(false);
 		title.setFont(new Font("Verdana",Font.ITALIC,20));
 		title.setBorder(BorderFactory.createEmptyBorder());
 		title.setOpaque(false);
@@ -74,7 +76,7 @@ public class ResultListGUI extends JFrame{
 
 			p2.add(ARecipeQ);
 			JButton AButton = new JButton("Detail");
-			AButton.setFont(new Font("Verdana",Font.ITALIC,15));
+			AButton.setFont(new Font("Verdana",Font.ITALIC,14));
 			AButton.setContentAreaFilled(false);
 			AButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -103,7 +105,7 @@ public class ResultListGUI extends JFrame{
 		JPanel p3 = new JPanel();
 		p3.setLayout(new FlowLayout(1,10,10));
 		JButton b3 = new JButton("Non-executable recipes");
-		b3.setFont(new Font("Verdana",Font.ITALIC,15));
+		b3.setFont(new Font("Verdana",Font.ITALIC,14));
 		b3.setContentAreaFilled(false);
 		b3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				
@@ -122,11 +124,9 @@ public class ResultListGUI extends JFrame{
 		});
 		p3.add(b3);
 		p.add(p3);
-		
-		JPanel p4 = new JPanel();
-		p4.setLayout(new FlowLayout(1,10,10));
-		JButton b4 = new JButton("back to previous");
-		b4.setFont(new Font("Verdana",Font.ITALIC,15));
+	
+		JButton b4 = new JButton("Back to previous");
+		b4.setFont(new Font("Verdana",Font.ITALIC,14));
 		b4.setContentAreaFilled(false);
 		b4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				
@@ -143,13 +143,10 @@ public class ResultListGUI extends JFrame{
 				ResultListGUI.this.dispose();
 			}
 		});
-		p4.add(b4);
+		p3.add(b4);
 		
 		
 		
-		
-		
-		p.add(p4);
 		
 		emptyPanel.setOpaque(false);
 		p3.setOpaque(false);
