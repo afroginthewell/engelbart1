@@ -9,7 +9,9 @@ public class Brew extends Model {
 
 	private double batchSize=0; // Record the batch size this brew need
 	private String date; // Record the brew time
-	private ArrayList<Recipe> recommendedRecipeIndex=new ArrayList<Recipe>(); // Record the recipe recommended in this brew
+	private ArrayList<Recipe> recommendedRecipeIndex=new ArrayList<Recipe>(); 
+	private ArrayList<Brew> brewhistory=new ArrayList<Brew>(); 
+	
 	private int correspondingNoteIndex=0; // Record this brew's corrsponding note
 	private int inplementRecipeIndex=1;
 	private int detailindex=1;
@@ -63,6 +65,14 @@ public class Brew extends Model {
 
 	public void setRecommendedRecipeIndex(ArrayList<Recipe> recommendedRecipeIndex) {
 		this.recommendedRecipeIndex = recommendedRecipeIndex;
+	}
+	
+	public ArrayList<Brew> gethistory() {
+		return brewhistory;
+	}
+
+	public void sethistory(ArrayList<Brew> brewhistory) {
+		this.brewhistory = brewhistory;
 	}
 	
 	public ArrayList<Recipe> getnotRecommendedRecipeIndex() {

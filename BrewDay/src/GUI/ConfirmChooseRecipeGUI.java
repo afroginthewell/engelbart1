@@ -57,7 +57,7 @@ public class ConfirmChooseRecipeGUI extends JFrame{
 		yes.setFont(new Font("Verdana",Font.ITALIC,13));
 		yes.setOpaque(false);
 		
-		yes.setPreferredSize(preferredSize );
+		yes.setPreferredSize(preferredSize);
 		
 		yes.addActionListener(new ActionListener() {
 
@@ -71,10 +71,17 @@ public class ConfirmChooseRecipeGUI extends JFrame{
 					e1.printStackTrace();
 				}
 				String getnote = note.getText().toString();
-				Note m=new Note();
-				NoteController c=new NoteController(m);
-				NoteView v=new NoteView(m,c,1);
-				m.addView(v);
+				Note mm=new Note();
+				NoteController c=new NoteController(mm);
+				NoteView v=new NoteView(mm,c,1);
+				mm.addView(v);
+				m.getView().get(5).setvisible(0);
+				try {
+					m.notifyView();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				ConfirmChooseRecipeGUI.this.dispose();
 
 
@@ -88,6 +95,15 @@ public class ConfirmChooseRecipeGUI extends JFrame{
 		
 		no.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+					
+				m.getView().get(5).setvisible(0);
+				try {
+					m.notifyView();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
 				ConfirmChooseRecipeGUI.this.dispose();
 			}

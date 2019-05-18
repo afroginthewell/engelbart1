@@ -156,27 +156,37 @@ public class BrewController extends Controller {
 
 		double coverRatio;
 		// Subtract out the fake avaliable recipes
-		for (Recipe i : allRecipeList) {
+		for (Recipe i : allRecipeList)
+		{
+			double totalamount=0;
 			coverRatio= 1;
 			int flag = 0;
 			// Fine the corresponding recipe ingredient for this recipe
 			ArrayList<RecipeIngredient> corrRIList = new ArrayList<RecipeIngredient>();
 			corrRIList = (ArrayList<RecipeIngredient>) rIngDao.findbyrecipe(i.getRecipeIndex());
 			double amount = batchSize / i.getQuantity();
-			for (RecipeIngredient ri : corrRIList) {
+			for (RecipeIngredient ri : corrRIList)
+			{
+				
+				
 				// Get this Recipe ingredient's need amount
 				double needAmount = ri.getAmount() * amount;
+				totalamount+=needAmount;
 				// compare with this ingredient in store
 				// Fetch the information of store Ingredient firstly
 				int siID = 0;
-				for (StorageIngredient si : SIList) {
+				for (StorageIngredient si : SIList)
+				{
 					// Fine the matched ingredient
-					if (ri.getName().equals(si.getName())) {
+					if (ri.getName().equals(si.getName()))
+					{
 						// Check if the Stored amount is larger than need amount
-						if (si.getAmount() < needAmount) {
+						if (si.getAmount() < needAmount) 
+						{
 							flag = 1;
 							// i.setLackAmount(tmpLackAmount);
-							if (coverRatio >= si.getAmount() / needAmount) {
+							if (coverRatio >= si.getAmount() / needAmount) 
+							{
 								coverRatio = si.getAmount() / needAmount;
 							}
 						}
@@ -187,29 +197,20 @@ public class BrewController extends Controller {
 			
 			// Get the actual amount of beer can be brewed
 			i.setLackAmount(coverRatio * batchSize);
+			i.settotalingredient(totalamount);
 			if (flag == 0) {
 				rRecipeList.add(i);
 			}
 			if (flag == 1) {
 				nRecipeList.add(i);
 			}
+			
 		}
 		
-//		for(Recipe r:nRecipeList)
-//		{
-//			System.out.println(r.getLackAmount());
-//		}
-		
-		
-		
 
-		
-		// Sort Algorithm Based on LackAmount in nRecipeList
 		Collections.sort(nRecipeList,new Comparators());
-//		for(Recipe r:nRecipeList)
-//		{
-//			System.out.println(r.getLackAmount());
-//		}
+		Collections.sort(rRecipeList,new compareamount());
+
 		model.setRecommendedRecipeIndex(rRecipeList);
 		model.setnotRecommendedRecipeIndex(nRecipeList);
 		return rRecipeList;
@@ -227,6 +228,20 @@ public class BrewController extends Controller {
 		return true;
 	}
 	
+	public void SearchByDate(String searchdate) throws SQLException {
+		ArrayList<Brew> searchList = new ArrayList<Brew>();
+		
+		historyDaoiml h=new historyDaoiml();
+		searchList=(ArrayList<Brew>) h.find(searchdate);
+		
+		model.sethistory(searchList);
+		
+		for(Brew i :searchList)
+		{
+			System.out.println(i.getDate());
+		}
+		
+	}
 	
 		   
 

@@ -48,7 +48,7 @@ public class RecommendRecipePageGUI extends JFrame {
 		p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
 
 		JPanel p1 = new JPanel();
-		p1.setLayout(new FlowLayout(1, 10, 10));
+		p1.setLayout(new FlowLayout(2, 10, 10));
 
 		JTextField BatchSize = new JTextField("Input Batach Size: ");
 		BatchSize.setFont(new Font("Verdana", Font.ITALIC, 15));
@@ -56,9 +56,17 @@ public class RecommendRecipePageGUI extends JFrame {
 		BatchSize.setOpaque(false);
 		BatchSize.setEditable(false);
 		p1.add(BatchSize);
-
 		JTextField BatchSizeText = new JTextField("", 18);
 		p1.add(BatchSizeText);
+		
+		JTextField search = new JTextField("search by year-month-day: ");
+		search.setFont(new Font("Verdana", Font.ITALIC, 15));
+		search.setBorder(BorderFactory.createEmptyBorder());
+		search.setOpaque(false);
+		search.setEditable(false);
+		p1.add(search);
+		JTextField searchtext = new JTextField("xxxx-xx-xx", 18);
+		p1.add(searchtext);
 		
 		JPanel p2 = new JPanel();
 		p2.setLayout(new FlowLayout(1, 10, 10));
@@ -68,6 +76,34 @@ public class RecommendRecipePageGUI extends JFrame {
 		GoToMain.setContentAreaFilled(false);
 		GoToMain.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
+				RecommendRecipePageGUI.this.dispose();
+			}
+		});
+		
+		JButton GoTosearch = new JButton("Go to search");
+		GoTosearch.setFont(new Font("Verdana", Font.ITALIC, 15));
+		GoTosearch.setContentAreaFilled(false);
+		GoTosearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String getDate = searchtext.getText().toString();
+				try {
+					c.SearchByDate(getDate);
+				} catch (SQLException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				m.getView().get(0).setvisible(0);
+				RecommendRecipePageGUI.this.dispose();
+				m.getView().get(6).setvisible(1);
+
+				try {
+					m.notifyView();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
 
 				RecommendRecipePageGUI.this.dispose();
 			}
@@ -127,6 +163,7 @@ public class RecommendRecipePageGUI extends JFrame {
 
 		
 		p2.add(GoToMain);
+		p2.add(GoTosearch);
 		p2.add(GetRecommend);
 	//	p2.add(back);
 		p.add(p1);

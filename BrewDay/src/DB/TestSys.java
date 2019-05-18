@@ -29,6 +29,7 @@ import view.detailinfoView;
 import view.mainPageView;
 import view.notAvailableView;
 import view.recipeListView;
+import view.searchView;
 import view.shoppinglistView;
 import view.updateRecipeIngredientView;
 import Dao.storageingredientDao;
@@ -90,12 +91,14 @@ public class TestSys {
 			notAvailableView bnotav=new notAvailableView(bm,bc,0);
 			shoppinglistView bsv=new shoppinglistView(bm,bc,0);
 			confirmView cmv=new confirmView(bm,bc,0);
+			searchView searchv=new searchView(bm,bc,0);
 			bm.addView(bv);
 			bm.addView(bresultv);
 			bm.addView(bdetailv);
 			bm.addView(bnotav);
 			bm.addView(bsv);
 			bm.addView(cmv);
+			bm.addView(searchv);
 			
 			
 			
@@ -131,14 +134,7 @@ public class TestSys {
 			
 			
 			mainPageView main=new mainPageView(r, sim,em,bm,1);
-			
 
-
-
-
-		
-		
-	
 		}
 	
 }

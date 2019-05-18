@@ -11,6 +11,7 @@ public class Recipe extends Model{
 	private double quantity;
 	private String unit;
 	private double tmpLackAmount;
+	private double totalingredient;
 	
 	// Constructor
 	public Recipe() {
@@ -73,5 +74,13 @@ public class Recipe extends Model{
 	} 
 	public double getLackAmount() {
 		return this.tmpLackAmount;
+	} 
+	
+	public void settotalingredient(double totalingredient) {
+		this.totalingredient=totalingredient;
+		
+	} 
+	public double gettotalingredient() {
+		return this.totalingredient;
 	} 
 }

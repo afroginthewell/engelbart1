@@ -14,6 +14,7 @@ import Dao.noteDao;
 import model.Brew;
 import model.Note;
 import model.Recipe;
+import model.StorageIngredient;
 
 
 public class historyDaoiml {
@@ -38,6 +39,35 @@ public class historyDaoiml {
 	        }finally{
 	            DBUtils.close(null, ps, conn);
 	        }
+	    }
+	 
+	 public List<Brew> find(String s) throws SQLException {
+	        Connection conn = null;
+	        PreparedStatement ps = null;
+	        ResultSet rs = null;
+	        
+	        List<Brew> history = new ArrayList<Brew>();
+	        String sql = "select batchsize,Time,recommendedRecipeIndex from brewhistory where Time like ? ";
+	        try{
+	            conn = DBUtils.getConnection();
+	            ps = conn.prepareStatement(sql);
+	            ps.setString(1, "%"+s+"%");
+	            rs = ps.executeQuery();
+	            while(rs.next()){
+	            	Brew p = new Brew();
+	            	p.setBatchSize(rs.getDouble(1));
+	            	p.setDate(rs.getString(2));
+	            	p.setInplementRecipeIndex(rs.getInt(3));
+	          
+	            	history.add(p);
+	            }
+	        }catch(SQLException e){
+	            e.printStackTrace();
+	            throw new SQLException("find all fail");
+	        }finally{
+	            DBUtils.close(rs, ps, conn);
+	        }
+	        return history;
 	    }
 
 }
