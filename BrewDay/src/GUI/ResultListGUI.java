@@ -24,7 +24,7 @@ import model.Recipe;
 public class ResultListGUI extends JFrame{
 	public ResultListGUI(Brew m, BrewController c) {
 		this.setTitle("Result list page");
-		this.setSize(500,500);
+		this.setSize(600,500);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		///////////bg////////////
@@ -47,7 +47,7 @@ public class ResultListGUI extends JFrame{
 		
 		JPanel p1 = new JPanel(); 
 		//p1.setLayout(new BoxLayout(p1, BoxLayout.PAGE_AXIS));
-		p1.setLayout(new FlowLayout(2, 10, 10));
+		p1.setLayout(new FlowLayout(1, 10, 10));
 		JTextField title = new JTextField("Able to brew recipes",15);
 		//title.setEditable(false);
 		title.setFont(new Font("Verdana",Font.ITALIC,20));
@@ -59,23 +59,25 @@ public class ResultListGUI extends JFrame{
 		p.add(p1);
 
 		JPanel p2 = new JPanel();
-		p2.setLayout(new GridLayout(m.getRecommendedRecipeIndex().size(), 3, 20, 10)); 
-
+		p2.setLayout(new GridLayout(m.getRecommendedRecipeIndex().size(), 3, 50, 10)); 
+		//p2.setLayout(new FlowLayout(1, 50, 20));
 
 		for(Recipe r:m.getRecommendedRecipeIndex())
 		{
-			JTextField ARecipe = new JTextField(r.getName(),30);
+			JTextField ARecipe = new JTextField(r.getName(),13);
 			ARecipe.setEditable(false);
 			p2.add(ARecipe);
-			JTextField ARecipeQ = new JTextField(String.valueOf(m.getBatchSize()),30);
+			
+			JTextField ARecipeQ = new JTextField(String.valueOf(m.getBatchSize()),1);
 			ARecipeQ.setForeground(Color.RED);
-			ARecipeQ.setFont(new Font("Verdana",Font.ITALIC,20));
+			ARecipeQ.setFont(new Font("Verdana",Font.ITALIC,18));
 			ARecipeQ.setBorder(BorderFactory.createEmptyBorder());
 			ARecipeQ.setOpaque(false);
 			ARecipeQ.setEditable(false);
-
 			p2.add(ARecipeQ);
-			JButton AButton = new JButton("Detail");
+			
+			
+			JButton AButton = new JButton("Detail"); 
 			AButton.setFont(new Font("Verdana",Font.ITALIC,14));
 			AButton.setContentAreaFilled(false);
 			AButton.addActionListener(new ActionListener() {
@@ -95,6 +97,7 @@ public class ResultListGUI extends JFrame{
 					ResultListGUI.this.dispose();
 				}
 			});
+			//AButton.setPreferredSize(new Dimension(50,15));
 			p2.add(AButton);
 		}
 
