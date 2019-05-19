@@ -135,7 +135,13 @@ public class RecommendRecipePageGUI extends JFrame {
 					if (Index < 0 || Index >edi.getTotalCapacity()) {
 						if(Index!=-100.0)
 						{
-						JOptionPane.showMessageDialog(null, "Invaild input!!!");
+							if(Index >edi.getTotalCapacity())
+							{
+								JOptionPane.showMessageDialog(null, "lager than equipment capacity");
+							}else {
+								JOptionPane.showMessageDialog(null, "Invaild input!!!");
+							}
+						
 						RecommendRecipePageGUI.this.dispose();
 						
 						}

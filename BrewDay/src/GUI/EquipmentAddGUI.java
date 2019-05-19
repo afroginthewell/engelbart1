@@ -63,7 +63,7 @@ public class EquipmentAddGUI extends JFrame{
 		p.add(name);
 		p.add(nameText);
 		
-		JTextField amount = new JTextField("how much you want to add?");
+		JTextField amount = new JTextField("How much capacity you want to add?");
 		amount.setEditable(false);
 		amount.setFont(new Font("Verdana",Font.ITALIC,13));
 		amount.setBorder(BorderFactory.createEmptyBorder());
@@ -107,7 +107,7 @@ public class EquipmentAddGUI extends JFrame{
 				if (Index < 0) {
 					if(Index!=-100.0)
 					{
-					JOptionPane.showMessageDialog(null, "input bigger then 0!!!");
+					JOptionPane.showMessageDialog(null, "Input should be bigger than 0!!!");
 					EquipmentAddGUI.this.dispose();
 					m.getView().get(0).setvisible(1);
 					EquipmentAddGUI.this.dispose();

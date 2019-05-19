@@ -69,7 +69,7 @@ public class RecipeListGUI extends JFrame{
 		
 		for (Recipe r: recipeList) {
 			//p.add(new JTextField(r.getName(),30));
-			JTextField equipmentName = new JTextField(r.getName(),1);
+			JTextField equipmentName = new JTextField(r.getName(),8);
 			equipmentName.setForeground(Color.RED);
 			equipmentName.setFont(new Font("Verdana",Font.ITALIC,18));
 			equipmentName.setBorder(BorderFactory.createEmptyBorder());

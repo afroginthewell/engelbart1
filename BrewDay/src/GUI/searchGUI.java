@@ -20,16 +20,19 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Dao.noteDao;
 import Dao.recipeDao;
+import Daoiml.noteDaoiml;
 import Daoiml.recipeDaoiml;
 import controller.BrewController;
 import model.Brew;
+import model.Note;
 import model.Recipe;
 
 public class searchGUI extends JFrame{
 	public searchGUI(Brew m, BrewController c) throws SQLException {
 		this.setTitle("Result list page");
-		this.setSize(600,500);
+		this.setSize(800,500);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		///////////bg////////////
@@ -87,6 +90,13 @@ public class searchGUI extends JFrame{
 			JTextField recipename = new JTextField(recipe.getName(),13);
 			recipename.setEditable(false);
 			p2.add(recipename);
+			
+			
+			noteDao e=new noteDaoiml();
+			Note n=e.findById(r.getnoteindex());
+			JTextField anote = new JTextField(n.getContent(),13);
+			anote.setEditable(false);
+			p2.add(anote);
 			
 		
 		}

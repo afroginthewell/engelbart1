@@ -16,6 +16,7 @@ public class Brew extends Model {
 	private int inplementRecipeIndex=1;
 	private int detailindex=1;
 	private int shopindex=1;
+	private int noteindex=1;
 	private ArrayList<RecipeIngredient> ingredientList=new ArrayList<RecipeIngredient>();
 	private ArrayList<RecipeIngredient> notingredientList=new ArrayList<RecipeIngredient>();
 	private ArrayList<Recipe> notrecommendedRecipeIndex=new ArrayList<Recipe>();
@@ -28,6 +29,14 @@ public class Brew extends Model {
 
 	public void setshopindex(int shopindex) {
 		this.shopindex = shopindex;
+	}
+	
+	public int getnoteindex() {
+		return noteindex;
+	}
+
+	public void setnoteindex(int noteindex) {
+		this.noteindex = noteindex;
 	}
 	
 	public int getdetailindex() {

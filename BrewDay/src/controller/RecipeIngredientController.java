@@ -5,6 +5,8 @@ import model.RecipeIngredient;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import Dao.RecipeIngredientDao;
 import Dao.equipDao;
 import Daoiml.RecipeingredientDaoiml;
@@ -25,10 +27,13 @@ public class RecipeIngredientController {
 
 		RecipeIngredientDao ri = new RecipeingredientDaoiml();
 		model=ri.findById(recipeid);
-		model.setAmount(changeAmount);
+		
 		if(changeAmount<0)
 		{
-			model.setAmount(0);
+			
+			JOptionPane.showMessageDialog(null, "Cannot be smaller than 0");
+		}else {
+			model.setAmount(changeAmount);
 		}
 		ri.update(model);
 

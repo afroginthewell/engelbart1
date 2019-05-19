@@ -28,7 +28,7 @@ import model.StorageIngredient;
 
 public class RecipeAddPageGUI extends JFrame{
 	public RecipeAddPageGUI(ArrayList<StorageIngredient> sIngredientList,Recipe m, RecipeController c,RecipeIngredient i,RecipeIngredientController ic) {
-		this.setTitle("RecommendRecipePageGUI");
+		this.setTitle("RecipeAddPage");
 		this.setSize(500,500);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -56,13 +56,13 @@ public class RecipeAddPageGUI extends JFrame{
 		
 		JPanel name = new JPanel();
 		name.setLayout(new BoxLayout(name, BoxLayout.PAGE_AXIS));
-		JTextArea weight = new JTextArea("amount", 1,10);
 		JTextArea recipename = new JTextArea("recipe name", 1,10);
+		JTextArea weight = new JTextArea("amount", 1,10);
 		JTextArea unitt = new JTextArea("unit", 1,10);
 		recipename.setEditable(false);
 		weight.setEditable(false);
-		name.add(weight);
 		name.add(recipename);
+		name.add(weight);
 		unitt.setEditable(false);
 		name.add(unitt);
 
@@ -85,8 +85,9 @@ public class RecipeAddPageGUI extends JFrame{
 		JTextArea Inote = new JTextArea("", 1,10);
 		JTextArea Iunit = new JTextArea("L", 1,10);
 		Iunit.setEditable(false);
-		input.add(Iweight);
 		input.add(Inote);
+		input.add(Iweight);
+		
 
 		input.add(Iunit);
 
@@ -109,8 +110,8 @@ public class RecipeAddPageGUI extends JFrame{
 		uname.setEditable(false);
 		JTextArea uunit = new JTextArea("", 1,5);
 		uunit.setEditable(false);
-		unit.add(uweight);
 		unit.add(uname);
+		unit.add(uweight);
 		unit.add(uunit);
 
 		JTextArea uwater;

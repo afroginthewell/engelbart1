@@ -43,11 +43,12 @@ public class StorageIngredientController extends Controller {
 			}
 			
 			double updatedAmount = sIngredientList.get(i).getAmount() + changedAmount;
+			double tmpAmount = sIngredientList.get(i).getAmount();
 			sIngredientList.get(i).setAmount(updatedAmount);
 			if(updatedAmount<0)
 			{
 				// Alert error information
-				JOptionPane.showMessageDialog(null, "Do not have enough ingredient!");
+				JOptionPane.showMessageDialog(null, "Do not have enough ingredient! Only can subtract "+tmpAmount);
 				sIngredientList.get(i).setAmount(0);
 			}
 			

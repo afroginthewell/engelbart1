@@ -45,7 +45,7 @@ public class EquipmentUpdateGUI extends JFrame {
 
 		JPanel p = new JPanel();
 		p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
-		JTextField amount = new JTextField("Input how much you want to update?");
+		JTextField amount = new JTextField("Input how much you want add(+) or subtract(-)?");
 		amount.setEditable(false);
 		amount.setFont(new Font("Verdana",Font.ITALIC,13));
 		amount.setBorder(BorderFactory.createEmptyBorder());

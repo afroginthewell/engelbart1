@@ -30,7 +30,7 @@ import model.StorageIngredient;
 
 public class recipeingredientDetailGUI extends JFrame{
 	public recipeingredientDetailGUI(ArrayList<RecipeIngredient> sIngredientList,Recipe m, RecipeController c,RecipeIngredient i,RecipeIngredientController ic) {
-		this.setTitle("RecommendRecipePageGUI");
+		this.setTitle("RecipeIngredientDetail");
 		this.setSize(500,500);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ArrayList<JTextArea> text=new ArrayList<JTextArea>();

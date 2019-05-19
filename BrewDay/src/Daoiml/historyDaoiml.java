@@ -23,7 +23,7 @@ public class historyDaoiml {
 	 public void add(Brew p) throws SQLException {
 	        Connection conn = null;
 	        PreparedStatement ps = null;
-	        String sql = "insert into brewhistory(batchsize,Time,recommendedRecipeIndex)values(?,?,?)";
+	        String sql = "insert into brewhistory(batchsize,Time,recommendedRecipeIndex,noteindex)values(?,?,?,?)";
 	        try{
 	            conn = DBUtils.getConnection();
 	            ps = conn.prepareStatement(sql);
@@ -31,7 +31,8 @@ public class historyDaoiml {
 	            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
 	    		String createDate=df.format(new Date());
 	            ps.setString(2, createDate);
-	            ps.setInt(3, p.getInplementRecipeIndex());	       
+	            ps.setInt(3, p.getInplementRecipeIndex());	
+	            ps.setInt(4, p.getnoteindex());
 	            ps.executeUpdate();
 	        }catch(SQLException e){
 	            e.printStackTrace();
@@ -47,7 +48,7 @@ public class historyDaoiml {
 	        ResultSet rs = null;
 	        
 	        List<Brew> history = new ArrayList<Brew>();
-	        String sql = "select batchsize,Time,recommendedRecipeIndex from brewhistory where Time like ? ";
+	        String sql = "select batchsize,Time,recommendedRecipeIndex,noteindex from brewhistory where Time like ? ";
 	        try{
 	            conn = DBUtils.getConnection();
 	            ps = conn.prepareStatement(sql);
@@ -58,6 +59,7 @@ public class historyDaoiml {
 	            	p.setBatchSize(rs.getDouble(1));
 	            	p.setDate(rs.getString(2));
 	            	p.setInplementRecipeIndex(rs.getInt(3));
+	            	p.setnoteindex(rs.getInt(4));
 	          
 	            	history.add(p);
 	            }

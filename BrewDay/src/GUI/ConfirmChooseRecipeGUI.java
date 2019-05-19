@@ -13,6 +13,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -25,17 +26,20 @@ import view.NoteView;
 
 public class ConfirmChooseRecipeGUI extends JFrame{
 	public ConfirmChooseRecipeGUI(Brew m, BrewController c) {
-		this.setTitle("RecommendRecipePageGUI");
-		this.setSize(180,110);
+		this.setTitle("Confirm window");
+		this.setSize(700,500);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		///////////bg////////////
 		JPanel bg = new JPanel() {
 			public void paintComponent(Graphics g) {
 				super.paintComponent(g);
-				ImageIcon ii = new ImageIcon( "C:\\Users\\Jerry Zou\\Desktop\\JieLi\\Java workspace\\20190511\\brew.jpg");
+				ImageIcon ii = new ImageIcon( "C:\\Users\\yuan\\Desktop\\SE\\2.jpg");
 				g.drawImage(ii.getImage(), 0, 0, getWidth(), getHeight(), ii.getImageObserver());
 			}
 		};
+		JPanel emptyPanel = new JPanel();
+		emptyPanel.setLayout(new FlowLayout(1,10,10));
+		emptyPanel.setPreferredSize(new Dimension(400, 70));
 		///////////bg////////////
 
 		JPanel p = new JPanel();
@@ -43,7 +47,7 @@ public class ConfirmChooseRecipeGUI extends JFrame{
 		p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
 		
 		JTextField note = new JTextField("Are you sure to choose this recipe?",20);
-		note.setFont(new Font("Verdana",Font.ITALIC,10));
+		note.setFont(new Font("Verdana",Font.ITALIC,20));
 		note.setOpaque(false);
 		note.setBorder(BorderFactory.createEmptyBorder());
 		note.setEditable(false);
@@ -54,7 +58,7 @@ public class ConfirmChooseRecipeGUI extends JFrame{
 		JPanel p2 = new JPanel(new FlowLayout(1,10,10));
 		JButton yes = new JButton("yes");	
 		yes.setContentAreaFilled(false);
-		yes.setFont(new Font("Verdana",Font.ITALIC,13));
+		yes.setFont(new Font("Verdana",Font.ITALIC,15));
 		yes.setOpaque(false);
 		
 		yes.setPreferredSize(preferredSize);
@@ -62,7 +66,8 @@ public class ConfirmChooseRecipeGUI extends JFrame{
 		yes.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-
+				
+				JOptionPane.showMessageDialog(null, "Do not drive after drinking!!!");
 				try {
 					c.implement(m.getdetailindex(), m.getBatchSize());
 					c.addHistory();
@@ -89,7 +94,7 @@ public class ConfirmChooseRecipeGUI extends JFrame{
 		});
 		JButton no = new JButton("no");	
 		no.setContentAreaFilled(false);
-		no.setFont(new Font("Verdana",Font.ITALIC,13));
+		no.setFont(new Font("Verdana",Font.ITALIC,15));
 		no.setOpaque(false);
 		no.setPreferredSize(preferredSize );
 		
@@ -111,10 +116,12 @@ public class ConfirmChooseRecipeGUI extends JFrame{
 		
 		p2.setOpaque(false);
 		p.setOpaque(false);
+		emptyPanel.setOpaque(false);
 		
 		p2.add(yes);
 		p2.add(no);
 		p.add(p2);
+		bg.add(emptyPanel);
 		bg.add(p);
 		this.add(bg);
 

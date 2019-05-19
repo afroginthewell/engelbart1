@@ -91,7 +91,7 @@ public class BrewController extends Controller {
 		return true;
 	}
 
-	public boolean computeamount(int recipeindex, double batchSize) throws SQLException {
+	public boolean computeamount(int recipeindex, double batchSize) throws SQLException{
 
 		storageingredientDao sIDao = new storageingredientDaoiml();
 		RecipeIngredientDao rIngDao = new RecipeingredientDaoiml();
@@ -114,7 +114,10 @@ public class BrewController extends Controller {
 		}
 
 		// subtract the amount
-		double amount = batchSize / recipe.getQuantity();
+		double amount=0;
+		
+		amount = batchSize / recipe.getQuantity();
+		
 		ArrayList<RecipeIngredient> corrRIList = new ArrayList<RecipeIngredient>();
 		corrRIList = (ArrayList<RecipeIngredient>) rIngDao.findbyrecipe(recipe.getRecipeIndex());
 		for (RecipeIngredient ri : corrRIList) {
@@ -224,6 +227,9 @@ public class BrewController extends Controller {
 	public boolean addHistory() throws SQLException {
 	
 		historyDaoiml h=new historyDaoiml();
+		
+		noteDao e=new noteDaoiml();
+		model.setnoteindex(e.getMaxIndex()+1);
 		h.add(model);
 		return true;
 	}

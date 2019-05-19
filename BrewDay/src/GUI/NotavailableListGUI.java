@@ -102,7 +102,7 @@ import model.Recipe;
 public class NotavailableListGUI extends JFrame{
 	public NotavailableListGUI(Brew m, BrewController c) {
 		this.setTitle("NotavailableList");
-		this.setSize(500,500);
+		this.setSize(1000,500);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		///////////bg////////////
@@ -140,7 +140,7 @@ public class NotavailableListGUI extends JFrame{
 
 		for(Recipe r:m.getnotRecommendedRecipeIndex())
 		{
-			JTextField ARecipe = new JTextField(r.getName()+String.valueOf(r.getLackAmount()),30);
+			JTextField ARecipe = new JTextField(r.getName()+"  "+String.valueOf(r.getLackAmount()+" L"),30);
 			ARecipe.setEditable(false);
 			p2.add(ARecipe);
 

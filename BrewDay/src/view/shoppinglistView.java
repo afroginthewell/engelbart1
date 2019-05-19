@@ -43,7 +43,13 @@ public class shoppinglistView extends View{
 		int recipeindex=m.getshopindex();
 		RecipeIngredientDao ri = new RecipeingredientDaoiml();
 		m.setShopList((ArrayList<RecipeIngredient>) ri.findbyrecipe(recipeindex));
-		c.computeamount(recipeindex, m.getBatchSize());	
+	
+	try {c.computeamount(recipeindex, m.getBatchSize());}
+	catch(Exception e1)
+	{
+		
+	}
+		
 		shoppinglistGUI shopGUI = new shoppinglistGUI(m,c);	
 		shopGUI.controlVisible(this.getvisible());
 	}

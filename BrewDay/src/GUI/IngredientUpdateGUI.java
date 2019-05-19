@@ -58,6 +58,11 @@ public class IngredientUpdateGUI extends JFrame {
 		p1.setLayout(new GridLayout(sIngredientList.size(), 2, 20, 10)); 
 		
 		// Print the ingredients list fetched from database
+		JPanel p3 = new JPanel();
+		JTextField amount = new JTextField("Input how much you want add(+) or subtract(-)?");
+		amount.setEditable(false);
+		p3.add(amount);
+		
 		for (StorageIngredient si : sIngredientList) {
 			JPanel information = new JPanel();
 			//information.setLayout(new BoxLayout(information, BoxLayout.X_AXIS));
@@ -134,8 +139,10 @@ public class IngredientUpdateGUI extends JFrame {
 		});
 		p2.add(Subtract);
 		p2.add(Cancel);
+		p.add(p3);
 		p.add(p1);
 		p.add(p2);
+		
 		
 		
 		bg.add(emptyPanel);
