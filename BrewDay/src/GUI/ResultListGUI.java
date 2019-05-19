@@ -48,9 +48,9 @@ public class ResultListGUI extends JFrame{
 		JPanel p1 = new JPanel(); 
 		//p1.setLayout(new BoxLayout(p1, BoxLayout.PAGE_AXIS));
 		p1.setLayout(new FlowLayout(1, 10, 10));
-		JTextField title = new JTextField("Able to brew recipes",15);
+		JTextField title = new JTextField("Able to brew recipes",20);
 		//title.setEditable(false);
-		title.setFont(new Font("Verdana",Font.ITALIC,20));
+		title.setFont(new Font("Verdana",Font.ITALIC,18));
 		title.setBorder(BorderFactory.createEmptyBorder());
 		title.setOpaque(false);
 		title.setEditable(false);

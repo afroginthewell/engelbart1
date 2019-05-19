@@ -44,33 +44,44 @@ public class RecipeListGUI extends JFrame{
 
 		JPanel p = new JPanel();
 		p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
-		p.setPreferredSize(new Dimension(400, 200));
-		
-		JPanel p1 = new JPanel(); 
-		p1.setLayout(new FlowLayout(1,10,10));
-		JTextField title = new JTextField("Recipe list",30);
-		title.setFont(new Font("Verdana",Font.ITALIC,20));
-		title.setBorder(BorderFactory.createEmptyBorder());
-		title.setOpaque(false);
-		title.setEditable(false);
-		//p1.add(title);
+		//p.setPreferredSize(new Dimension(300, 400));
+//		
+//		JPanel pTitle = new JPanel(); 
+//
+//		JTextField title = new JTextField("Recipe list",30);
+//		title.setFont(new Font("Verdana",Font.ITALIC,20));
+//		title.setBorder(BorderFactory.createEmptyBorder());
+//		title.setOpaque(false);
+//		title.setEditable(false);
+//		pTitle.add(title);
+		//p.add(title);
 		//p.add(p1);
 
+		
+		JPanel p1 = new JPanel();
+		p1.setLayout(new GridLayout(1, 2, 100, 10)); 
+		
+		JPanel pName = new JPanel();
+		pName.setLayout(new BoxLayout(pName, BoxLayout.PAGE_AXIS));
+		
+		JPanel pButton = new JPanel();
+		pButton.setLayout(new BoxLayout(pButton, BoxLayout.PAGE_AXIS));
+		
 		for (Recipe r: recipeList) {
 			//p.add(new JTextField(r.getName(),30));
-			JTextField equipmentName = new JTextField(r.getName(),30);
+			JTextField equipmentName = new JTextField(r.getName(),1);
 			equipmentName.setForeground(Color.RED);
-			equipmentName.setFont(new Font("Verdana",Font.ITALIC,20));
+			equipmentName.setFont(new Font("Verdana",Font.ITALIC,18));
 			equipmentName.setBorder(BorderFactory.createEmptyBorder());
 			equipmentName.setOpaque(false);
 			equipmentName.setEditable(false);
-			p.add(equipmentName);
+//			p.add(equipmentName);
 			
 			
 			JButton detailButton1 = new JButton("detail");
 			detailButton1.setContentAreaFilled(false);
 			detailButton1.setFont(new Font("Verdana",Font.ITALIC,15));
-			p.add(detailButton1);
+//			p.add(detailButton1);
 			detailButton1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					int targetIndex=r.getRecipeIndex();
@@ -94,8 +105,13 @@ public class RecipeListGUI extends JFrame{
 				}
 			});
 			
+			pName.add(equipmentName);
+			pButton.add(detailButton1);
+			
 			
 		}
+		
+		
 		
 		JPanel p2 = new JPanel();
 		p2.setLayout(new FlowLayout(1,10,10));
@@ -118,8 +134,10 @@ public class RecipeListGUI extends JFrame{
 			}
 		});
 		
-		p1.add(title);
+		p1.add(pName);
+		p1.add(pButton);
 		p2.add(b1);
+		//p.add(pTitle);
 		p.add(p1);
 		p.add(p2);
 
@@ -128,6 +146,9 @@ public class RecipeListGUI extends JFrame{
 		this.add(bg);
 
 		emptyPanel.setOpaque(false);
+		//pTitle.setOpaque(false);
+		pName.setOpaque(false);
+		pButton.setOpaque(false);
 		b1.setOpaque(false);
 		p1.setOpaque(false);
 		p2.setOpaque(false);

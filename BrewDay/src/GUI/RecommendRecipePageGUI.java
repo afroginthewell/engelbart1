@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,7 +27,7 @@ import model.Brew;
 public class RecommendRecipePageGUI extends JFrame {
 	public RecommendRecipePageGUI(Brew m, BrewController c) {
 		this.setTitle("RecommendRecipePageGUI");
-		this.setSize(500, 500);
+		this.setSize(550, 500);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		/////////// bg////////////
@@ -48,8 +49,9 @@ public class RecommendRecipePageGUI extends JFrame {
 		p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
 
 		JPanel p1 = new JPanel();
-		p1.setLayout(new FlowLayout(2, 10, 10));
-
+//		p1.setLayout(new FlowLayout(2, 10, 10));
+		p1.setLayout(new GridLayout(2, 2, 20, 10)); 
+		
 		JTextField BatchSize = new JTextField("Input Batach Size: ");
 		BatchSize.setFont(new Font("Verdana", Font.ITALIC, 15));
 		BatchSize.setBorder(BorderFactory.createEmptyBorder());
@@ -81,7 +83,7 @@ public class RecommendRecipePageGUI extends JFrame {
 			}
 		});
 		
-		JButton GoTosearch = new JButton("Go to search");
+		JButton GoTosearch = new JButton("Go to search ");
 		GoTosearch.setFont(new Font("Verdana", Font.ITALIC, 15));
 		GoTosearch.setContentAreaFilled(false);
 		GoTosearch.addActionListener(new ActionListener() {

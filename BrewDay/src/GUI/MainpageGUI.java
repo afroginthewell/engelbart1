@@ -47,7 +47,7 @@ public class MainpageGUI extends JFrame{
 
 		JPanel p1 = new JPanel(); 
 		p1.setLayout(new GridLayout(2, 2, 20, 10)); 
-		JButton b1 = new JButton("Recommended a recipe");
+		JButton b1 = new JButton("Recommended recipe");
 		b1.setFont(new Font("Verdana",Font.ITALIC,15));
 		b1.setContentAreaFilled(false);
 		b1.addActionListener(new ActionListener() {
