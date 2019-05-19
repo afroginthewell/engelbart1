@@ -2,6 +2,7 @@ package GUI;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -64,6 +65,8 @@ public class shoppinglistGUI extends JFrame{
 
 		
 		JButton backtopreviousButton = new JButton("Back to previous");
+		backtopreviousButton.setContentAreaFilled(false);
+		backtopreviousButton.setFont(new Font("Verdana",Font.ITALIC,15));
 		p.add(backtopreviousButton);
 		backtopreviousButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
