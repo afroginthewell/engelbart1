@@ -16,6 +16,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -63,13 +64,11 @@ public class IngredientUpdateGUI extends JFrame {
 			JTextArea ingredientType = new JTextArea(si.getName(), 1, 10);
 			ingredientType.setEditable(false);
 			ingredientType.setFont(new Font("Verdana",Font.ITALIC,15));
-			//ingredientType.setBorder(BorderFactory.createEmptyBorder());
-			//ingredientType.setOpaque(false);
+
 			
 			JTextArea input = new JTextArea("",1,10);
 			input.setFont(new Font("Verdana",Font.ITALIC,15));
-			//input.setBorder(BorderFactory.createEmptyBorder());
-			//input.setOpaque(false);
+
 			
 			inputList.add(input);
 			
@@ -93,13 +92,13 @@ public class IngredientUpdateGUI extends JFrame {
 
 				try {
 					c.updateAmount(inputList, sIngredientList);
+					
 				} catch (SQLException e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
 
-				// Alert successful information
-
+				
 				// Jump back to IngredientMaintain page
 				m.getView().get(1).setvisible(0);
 				IngredientUpdateGUI.this.dispose();

@@ -105,7 +105,6 @@ public class IngredientAddGUI extends JFrame {
 					try {
 					Index = Double.parseDouble(amount);
 					} catch (Exception exception) {
-				
 					JOptionPane.showMessageDialog(null, "Invaild input!!!");
 					IngredientAddGUI.this.dispose();
 					m.getView().get(2).setvisible(0);
@@ -118,7 +117,7 @@ public class IngredientAddGUI extends JFrame {
 				if (Index < 0) {
 					if(Index!=-100.0)
 					{
-					JOptionPane.showMessageDialog(null, "input bigger then 0!!!");
+					JOptionPane.showMessageDialog(null, "input should be bigger then 0!!!");
 					IngredientAddGUI.this.dispose();
 					m.getView().get(2).setvisible(0);
 					IngredientAddGUI.this.dispose();
@@ -129,9 +128,6 @@ public class IngredientAddGUI extends JFrame {
 				 else {
 					
 					
-					
-				
-					
 					try {
 						c.addNewIngredient(name, Index);
 					} catch (SQLException e2) {
@@ -140,7 +136,7 @@ public class IngredientAddGUI extends JFrame {
 					}
 					
 					// Alert successful information
-
+					JOptionPane.showMessageDialog(null, "Add Sucessfully!");
 					// Jump back to IngredientMaintain page
 					m.getView().get(2).setvisible(0);
 					IngredientAddGUI.this.dispose();

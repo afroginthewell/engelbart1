@@ -3,6 +3,7 @@ package controller;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 import Daoiml.storageingredientDaoiml;
@@ -37,14 +38,16 @@ public class StorageIngredientController extends Controller {
 				changedAmount = Double.parseDouble(inputTemp);
 			} catch (NumberFormatException e1) {
 				// TODO Auto-generated catch block
-				
+				// Alert successful information
+				JOptionPane.showMessageDialog(null, "Invalid input!");
 			}
-			
 			
 			double updatedAmount = sIngredientList.get(i).getAmount() + changedAmount;
 			sIngredientList.get(i).setAmount(updatedAmount);
 			if(updatedAmount<0)
 			{
+				// Alert error information
+				JOptionPane.showMessageDialog(null, "Do not have enough ingredient!");
 				sIngredientList.get(i).setAmount(0);
 			}
 			
