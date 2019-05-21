@@ -26,11 +26,12 @@ import model.RecipeIngredient;
 
 public class DeleteRecipeGUI extends JFrame{
 	public DeleteRecipeGUI(ArrayList<Recipe> recipeList,Recipe m, RecipeController c,RecipeIngredient i,RecipeIngredientController ic) {
+		//the basic setting for the whole panel
 		this.setTitle("DeleteRecipe");
 		this.setSize(500,500);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		///////////bg////////////
+		///////////background////////////
 		JPanel bg = new JPanel() {
 			public void paintComponent(Graphics g) {
 				super.paintComponent(g);
@@ -43,7 +44,8 @@ public class DeleteRecipeGUI extends JFrame{
 		emptyPanel.setLayout(new FlowLayout(1,10,10));
 		emptyPanel.setPreferredSize(new Dimension(400, 20));
 		///////////bg////////////
-
+		
+		//for the first panel which is to palce the title
 		JPanel p = new JPanel();
 		p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
 
@@ -59,6 +61,7 @@ public class DeleteRecipeGUI extends JFrame{
 		
 		p.add(p1);
 
+		//for each recipe, we will add the delete buttons
 		JPanel p2 = new JPanel(); 	
 		p2.setLayout(new GridLayout(recipeList.size(), 3, 20, 10)); 
 		for (Recipe r: recipeList) {
@@ -102,6 +105,7 @@ public class DeleteRecipeGUI extends JFrame{
 
 		p.add(p2); 
 
+		// for the panel 3
 		JPanel p3 = new JPanel();
 		p3.setLayout(new FlowLayout(1,10,10));
 		JButton cancelButton = new JButton("Cancel"); 
@@ -137,6 +141,8 @@ public class DeleteRecipeGUI extends JFrame{
 		this.add(bg);
 
 	}
+	
+	//this is set the visible
 	public void controlVisible(int flag) {
 		if(flag==1)
 		{
