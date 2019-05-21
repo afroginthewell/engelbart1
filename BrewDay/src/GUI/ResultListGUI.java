@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -67,8 +68,9 @@ public class ResultListGUI extends JFrame{
 			JTextField ARecipe = new JTextField(r.getName(),13);
 			ARecipe.setEditable(false);
 			p2.add(ARecipe);
+			DecimalFormat df=new DecimalFormat("0.00");
 			
-			JTextField ARecipeQ = new JTextField(String.valueOf(r.gettotalingredient())+"g used",3);
+			JTextField ARecipeQ = new JTextField(String.valueOf(df.format(r.gettotalingredient()))+"g used",3);
 			ARecipeQ.setForeground(Color.RED);
 			ARecipeQ.setFont(new Font("Verdana",Font.ITALIC,18));
 			ARecipeQ.setBorder(BorderFactory.createEmptyBorder());

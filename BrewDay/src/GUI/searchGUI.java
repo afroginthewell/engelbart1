@@ -72,7 +72,8 @@ public class searchGUI extends JFrame{
 
 		for(Brew r:m.gethistory())
 		{
-			JTextField ARecipe = new JTextField(r.getDate(),13);
+			
+			try {			JTextField ARecipe = new JTextField(r.getDate(),13);
 			ARecipe.setEditable(false);
 			p2.add(ARecipe);
 			
@@ -96,9 +97,10 @@ public class searchGUI extends JFrame{
 			Note n=e.findById(r.getnoteindex());
 			JTextField anote = new JTextField(n.getContent(),13);
 			anote.setEditable(false);
-			p2.add(anote);
+			p2.add(anote);}catch(Exception e) {
+
 			
-		
+			}
 		}
 
 

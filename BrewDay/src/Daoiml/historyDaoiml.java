@@ -59,8 +59,7 @@ public class historyDaoiml {
 	            	p.setBatchSize(rs.getDouble(1));
 	            	p.setDate(rs.getString(2));
 	            	p.setInplementRecipeIndex(rs.getInt(3));
-	            	p.setnoteindex(rs.getInt(4));
-	          
+	            	p.setnoteindex(rs.getInt(4));	          
 	            	history.add(p);
 	            }
 	        }catch(SQLException e){
