@@ -27,7 +27,7 @@ import view.NoteView;
 public class ConfirmChooseRecipeGUI extends JFrame{
 	public ConfirmChooseRecipeGUI(Brew m, BrewController c) {
 		this.setTitle("Confirm window");
-		this.setSize(700,500);
+		this.setSize(700,500);// the biggest panel
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		///////////bg////////////
 		JPanel bg = new JPanel() {
@@ -37,7 +37,9 @@ public class ConfirmChooseRecipeGUI extends JFrame{
 				g.drawImage(ii.getImage(), 0, 0, getWidth(), getHeight(), ii.getImageObserver());
 			}
 		};
-		JPanel emptyPanel = new JPanel();
+		
+		// make a empty to fill the font head
+		JPanel emptyPanel = new JPanel(); 
 		emptyPanel.setLayout(new FlowLayout(1,10,10));
 		emptyPanel.setPreferredSize(new Dimension(400, 70));
 		///////////bg////////////
@@ -46,6 +48,7 @@ public class ConfirmChooseRecipeGUI extends JFrame{
 		//p.setLayout(new BoxLayout(p,BoxLayout.PAGE_AXIS));
 		p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
 		
+		// this is the note test filed
 		JTextField note = new JTextField("Are you sure to choose this recipe?",20);
 		note.setFont(new Font("Verdana",Font.ITALIC,20));
 		note.setOpaque(false);
@@ -63,10 +66,11 @@ public class ConfirmChooseRecipeGUI extends JFrame{
 		
 		yes.setPreferredSize(preferredSize);
 		
+		// set the action listener to the user
 		yes.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				
+				// show some alert to the user
 				JOptionPane.showMessageDialog(null, "Do not drive after drinking!!!");
 				try {
 					c.implement(m.getdetailindex(), m.getBatchSize());
@@ -92,16 +96,17 @@ public class ConfirmChooseRecipeGUI extends JFrame{
 
 			}
 		});
+		
+		// add a new button
 		JButton no = new JButton("no");	
 		no.setContentAreaFilled(false);
 		no.setFont(new Font("Verdana",Font.ITALIC,15));
 		no.setOpaque(false);
 		no.setPreferredSize(preferredSize );
 		
+		// for the no button action listener
 		no.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-					
 				m.getView().get(5).setvisible(0);
 				try {
 					m.notifyView();
@@ -128,6 +133,8 @@ public class ConfirmChooseRecipeGUI extends JFrame{
 
 	}
 
+	
+	// thisi sone is to control the visible
 	public void controlVisible(int flag) {
 		if(flag==1)
 		{
