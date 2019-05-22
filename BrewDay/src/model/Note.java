@@ -17,13 +17,14 @@ public class Note extends Model{
 		this.createDate = createDate;
 		this.noteIndex = noteIndex;
 	}
+	// this is a empty construct
 	public Note() {
 		super();
 	}
 	
 	
 	
-	
+	// make some new functions
 	public String getContent() {
 		return content;
 	}
@@ -43,7 +44,7 @@ public class Note extends Model{
 		this.noteIndex = noteIndex;
 	}
 	
-	
+	// make it become visible
 	public void notifyView() throws SQLException {
 		for (View v: super.views) {
 			v.update();
