@@ -24,14 +24,12 @@ public class NoteController extends Controller{
 	// Function
 	public boolean editNode(String newNote) throws SQLException {
 		noteDao e=new noteDaoiml();
-		
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//the format of the data
 		String createDate=df.format(new Date());
-		
 		System.out.println(df.format(new Date()));
 		model.setNoteIndex(e.getMaxIndex()+1);
 		model.setContent(newNote); 
-		model.setCreateDate(createDate);
+		model.setCreateDate(createDate);// connect the database
 		e.add(model);
 		return true;
 	}
