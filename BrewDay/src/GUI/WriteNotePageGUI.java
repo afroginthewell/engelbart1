@@ -23,11 +23,13 @@ import model.Note;
 
 public class WriteNotePageGUI extends JFrame{
 	public WriteNotePageGUI(Note m, NoteController c) {
+		
+		//this is the main panel
 		this.setTitle("RecommendRecipePageGUI");
 		this.setSize(500,500);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		///////////bg////////////
+		///////////background////////////
 		JPanel bg = new JPanel() {
 			public void paintComponent(Graphics g) {
 				super.paintComponent(g);
@@ -41,30 +43,34 @@ public class WriteNotePageGUI extends JFrame{
 		emptyPanel.setPreferredSize(new Dimension(400, 80));
 		///////////bg////////////
 
+		//make a new panel
 		JPanel p = new JPanel();
 		//p.setLayout(new BoxLayout(p,BoxLayout.PAGE_AXIS));
 		p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
 		
+		// make a new text field
 		JTextField noteTitle = new JTextField("Write note in the following:", 15);
 		noteTitle.setFont(new Font("Verdana",Font.ITALIC,13));
 		noteTitle.setOpaque(false);
 		noteTitle.setBorder(BorderFactory.createEmptyBorder());
-		noteTitle.setEditable(false);
+		noteTitle.setEditable(false);// make it cannot be edit
 		
+		// this is a text note
 		JTextArea note = new JTextArea("", 5,25);
 		p.add(noteTitle);
 		p.add(note);
 		JPanel p1 = new JPanel();
 		
+		//add a new button
 		JButton submit = new JButton("submit");	
 		submit.setOpaque(false);
 		submit.setFont(new Font("Verdana", Font.ITALIC, 15));
 		submit.setContentAreaFilled(false);
 		
+		//add a new action listener
 		submit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				WriteNotePageGUI.this.dispose();
+				WriteNotePageGUI.this.dispose();// make it disappear
 				String getInote = note.getText().toString();
 				try {
 					if(c.editNode(getInote)==true) {
@@ -80,6 +86,7 @@ public class WriteNotePageGUI extends JFrame{
 			}
 		});
 		
+		// add all the thing to the same panel
 		p1.add(submit);
 		p.add(p1);
 		emptyPanel.setOpaque(false);
@@ -91,7 +98,7 @@ public class WriteNotePageGUI extends JFrame{
 
 	}
 
-
+	// this is control the visible
 	public void controlVisible(int flag) {
 		if (flag == 1) {
 			this.setVisible(true);
