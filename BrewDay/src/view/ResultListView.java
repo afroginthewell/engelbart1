@@ -16,12 +16,14 @@ public class ResultListView extends View{
 	int visible;
 	
 	public ResultListView(Brew m, BrewController c, int visible) throws SQLException {
+		//the View for show recommend recipe
 		super(m, c, visible);
 		this.m = m;
 		this.c = c;
 		this.visible=visible;	
 		double batch=m.getBatchSize();
 		c.recommendRecipe(batch);	
+		//call controller do recommendation according to batch size
 		ResultListGUI resultGUI = new ResultListGUI(m,c);
 		resultGUI.controlVisible(this.getvisible());
 		

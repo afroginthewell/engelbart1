@@ -69,7 +69,7 @@ public class MainpageGUI extends JFrame{
 		b2.setContentAreaFilled(false);
 		b2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+//set visibility of recipe page to 1
 				r.getView().get(0).setvisible(1);								
 				try {
 					r.notifyView();
@@ -87,7 +87,7 @@ public class MainpageGUI extends JFrame{
 		b3.setContentAreaFilled(false);
 		b3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				//set visibility of equipment page to 1
 				eq.getView().get(0).setvisible(1);								
 				try {
 					eq.notifyView();
@@ -104,6 +104,7 @@ public class MainpageGUI extends JFrame{
 		b4.setContentAreaFilled(false);
 		b4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//set visibility of ingredient page to 1
 				s.getView().get(0).setvisible(1);								
 				try {
 					s.notifyView();

@@ -42,7 +42,7 @@ public class EquipmentGUI extends JFrame{
 		JPanel emptyPanel = new JPanel();
 		emptyPanel.setLayout(new FlowLayout(1,10,10));
 		emptyPanel.setPreferredSize(new Dimension(400, 80));
-		///////////bg////////////
+		
 
 		JPanel p = new JPanel();
 
@@ -64,7 +64,7 @@ public class EquipmentGUI extends JFrame{
 		//		ArrayList<Equipment> equipList = new ArrayList<Equipment>();
 		//		equipList = c.updateView();
 		p2.setLayout(new GridLayout(equipList.size(), 3, 20, 10)); 
-		for (Equipment i: equipList) {
+		for (Equipment i: equipList) {//for all equipment in equipment list
 			// Name
 			JTextField equipmentName = new JTextField(i.getName()+i.getCapacity()+"L");
 			equipmentName.setEditable(false);
@@ -82,6 +82,7 @@ public class EquipmentGUI extends JFrame{
 					m.setupdateindex(i.getEquipmentIndex());
 
 					try {
+						//update all view
 						m.notifyView();
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block

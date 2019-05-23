@@ -32,7 +32,7 @@ public class RecipeAddPageGUI extends JFrame{
 		this.setSize(500,500);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		///////////bg////////////
+	
 		JPanel bg = new JPanel() {
 			public void paintComponent(Graphics g) {
 				super.paintComponent(g);
@@ -44,7 +44,7 @@ public class RecipeAddPageGUI extends JFrame{
 		JPanel emptyPanel = new JPanel();
 		emptyPanel.setLayout(new FlowLayout(1,10,10));
 		emptyPanel.setPreferredSize(new Dimension(400, 120));
-		///////////bg////////////
+		
 
 		ArrayList<JTextArea> text=new ArrayList<JTextArea>();
 		
@@ -73,7 +73,7 @@ public class RecipeAddPageGUI extends JFrame{
 			name.add(water);
 		}
 
-	
+	//for all ingredient in storage ingredient, we got the input value
 
 
 		p1.add(name);
@@ -155,6 +155,7 @@ public class RecipeAddPageGUI extends JFrame{
 				try {
 					double amount=Double.parseDouble(getIweight);
 					int recipid=c.addRecipe(getInote, amount, "L");
+					//add particular recipe
 
 					int i=0;
 
@@ -163,6 +164,7 @@ public class RecipeAddPageGUI extends JFrame{
 						ic.addRecipeIngredient(r.getName(), Double.parseDouble(text.get(i).getText().toString()), "g", recipid);
 						i++;
 					}		
+					//add recipe ingredient from the input array
 					
 				} catch (NumberFormatException | SQLException e1) {
 					// TODO Auto-generated catch block

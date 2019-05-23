@@ -40,8 +40,10 @@ public class recipeingredientDetailView extends View{
 		
 		ArrayList<RecipeIngredient> sIngredientList = new ArrayList<RecipeIngredient>();
 		sIngredientList=ic.GetByRecipe(index);
+		//get ingredient for that recipe
 		
 		recipeingredientDetailGUI addrecipeGUI = new recipeingredientDetailGUI(sIngredientList,m,c,i,ic);
+		//need controler and model for both recipe and recipe ingredient
 		addrecipeGUI.controlVisible(this.getvisible());
 	}
 	

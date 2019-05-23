@@ -8,20 +8,24 @@ import view.View;
 public class Brew extends Model {
 
 	private double batchSize=0; // Record the batch size this brew need
-	private String date; // Record the brew time
-	private ArrayList<Recipe> recommendedRecipeIndex=new ArrayList<Recipe>(); 
-	private ArrayList<Brew> brewhistory=new ArrayList<Brew>(); 
-	
+	private String date; // Record the brew date
+	private ArrayList<Recipe> recommendedRecipeIndex=new ArrayList<Recipe>(); //record all recipe that can brewed for that batch size
+	private ArrayList<Brew> brewhistory=new ArrayList<Brew>(); 	//contain all brew history
 	private int correspondingNoteIndex=0; // Record this brew's corrsponding note
-	private int inplementRecipeIndex=1;
-	private int detailindex=1;
+	private int inplementRecipeIndex=1;//record the recipe that is been implemented
+	private int detailindex=1;//the recipe which you want to see detail information
 	private int shopindex=1;
+	//the recipe index which you want to see its shopping list
 	private int noteindex=1;
+	//corresponding note index
 	private ArrayList<RecipeIngredient> ingredientList=new ArrayList<RecipeIngredient>();
+	//the ingredient list all the recipe you want to see detail
 	private ArrayList<RecipeIngredient> notingredientList=new ArrayList<RecipeIngredient>();
+	//the corresponding ingredient for non-executable recipe
 	private ArrayList<Recipe> notrecommendedRecipeIndex=new ArrayList<Recipe>();
+	//the list of recipe which is non-executable for the batch size
 	private ArrayList<Double> shopingAmount=new ArrayList<Double>();
-	
+	//a double array record the lack amount of each recipeingredient
 	
 	public int getshopindex() {
 		return shopindex;

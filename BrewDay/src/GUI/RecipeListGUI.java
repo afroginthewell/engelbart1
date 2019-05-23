@@ -68,7 +68,7 @@ public class RecipeListGUI extends JFrame{
 //			p.add(equipmentName);
 			
 			
-			JButton detailButton1 = new JButton("detail");
+			JButton detailButton1 = new JButton("detail");//when click, see the detail info of recipe
 			detailButton1.setContentAreaFilled(false);
 			detailButton1.setFont(new Font("Verdana",Font.ITALIC,15));
 		

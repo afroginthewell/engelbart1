@@ -70,14 +70,14 @@ public class searchGUI extends JFrame{
 		p2.setLayout(new GridLayout(m.gethistory().size(), 3, 50, 10)); 
 		//p2.setLayout(new FlowLayout(1, 50, 20));
 
-		for(Brew r:m.gethistory())
+		for(Brew r:m.gethistory())//show al brew history
 		{
 			
 			try {			JTextField ARecipe = new JTextField(r.getDate(),13);
 			ARecipe.setEditable(false);
 			p2.add(ARecipe);
 			
-			JTextField ARecipeQ = new JTextField(String.valueOf(r.getBatchSize()+"L"),3);
+			JTextField ARecipeQ = new JTextField(String.valueOf(r.getBatchSize()),3);//batch size for brew
 			ARecipeQ.setForeground(Color.RED);
 			ARecipeQ.setFont(new Font("Verdana",Font.ITALIC,18));
 			ARecipeQ.setBorder(BorderFactory.createEmptyBorder());
@@ -88,13 +88,13 @@ public class searchGUI extends JFrame{
 			
 			recipeDao rdi = new recipeDaoiml();
 			Recipe recipe=rdi.findById(r.getInplementRecipeIndex());		
-			JTextField recipename = new JTextField(recipe.getName(),13);
+			JTextField recipename = new JTextField(recipe.getName(),13);//implemented recipe
 			recipename.setEditable(false);
 			p2.add(recipename);
 			
 			
 			noteDao e=new noteDaoiml();
-			Note n=e.findById(r.getnoteindex());
+			Note n=e.findById(r.getnoteindex());//corresponding note
 			JTextField anote = new JTextField(n.getContent(),13);
 			anote.setEditable(false);
 			p2.add(anote);}catch(Exception e) {

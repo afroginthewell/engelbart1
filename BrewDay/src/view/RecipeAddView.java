@@ -22,7 +22,7 @@ public class RecipeAddView extends View{
 	private RecipeIngredient i;
 	private RecipeIngredientController ic;
 	
-	
+	//view for adding recipe
 	
 	public RecipeAddView(Recipe m, RecipeController c,RecipeIngredient i,RecipeIngredientController ic,int visible) throws SQLException {
 		super(m, c,visible);
@@ -34,7 +34,9 @@ public class RecipeAddView extends View{
 		storageingredientDaoiml sidi = new storageingredientDaoiml();
 		ArrayList<StorageIngredient> sIngredientList = new ArrayList<StorageIngredient>();
 		sIngredientList=(ArrayList<StorageIngredient>) sidi.findAll();
+		//get all storage ingredient and when add recipe, it will consider all ingredient in storagee
 		RecipeAddPageGUI addrecipeGUI = new RecipeAddPageGUI(sIngredientList,m,c,i,ic);
+		//need controler and model for both recipe and recipe ingredient
 		addrecipeGUI.controlVisible(this.getvisible());
 	}
 	

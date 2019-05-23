@@ -12,7 +12,7 @@ import java.util.Comparator;
 
 public class Comparators implements Comparator{
 
-
+//this class is for sort according to the recipe's max brew amount
 
 	@Override
 	public int compare(Object o1, Object o2) {

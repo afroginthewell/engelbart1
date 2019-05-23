@@ -16,6 +16,7 @@ public class StorageIngredient extends Ingredient {
 	}
 
 	// Rewrite
+	//update all view in the model
 	public void notifyView() throws SQLException {
 		for (View v: super.views) {
 			v.update();

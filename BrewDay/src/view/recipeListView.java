@@ -21,7 +21,7 @@ public class recipeListView extends View{
 	int visible;
 	ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
 	
-	
+	//view for list all recipe
 	
 	public recipeListView(Recipe m, RecipeController c,int visible) throws SQLException {
 		super(m, c,visible);
@@ -29,6 +29,7 @@ public class recipeListView extends View{
 		this.c = c;
 		this.visible=visible;	
 		recipeList=c.updateRecipeView();
+		//record all recipe in recipe list
 		RecipeListGUI listrecipeGUI = new RecipeListGUI(recipeList,m,c);
 		listrecipeGUI.controlVisible(this.getvisible());
 	}

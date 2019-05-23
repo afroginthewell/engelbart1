@@ -75,7 +75,8 @@ public class UpdataeRecipeGUI extends JFrame{
 		input.setLayout(new BoxLayout(input, BoxLayout.PAGE_AXIS));
 		
 		for (RecipeIngredient r: sIngredientList) {
-			JTextArea iwater = new JTextArea(String.valueOf(r.getAmount()), 1,10);			
+			JTextArea iwater = new JTextArea(String.valueOf(r.getAmount()), 1,10);		
+			//show each ingredient amount
 			input.add(iwater);
 			text.add(iwater);
 
@@ -114,12 +115,14 @@ public class UpdataeRecipeGUI extends JFrame{
 					int i=0;
 					for (RecipeIngredient r: sIngredientList) {
 						ic.updateAmount(Double.parseDouble(text.get(i).getText().toString()), r.getindex());
+						//update recipe ingredient from input array
 						i++;
 						
 					}		
 
 				} catch (NumberFormatException | SQLException e1) {
 					JOptionPane.showMessageDialog(null, "Invaild input!!!");
+					//check invalid input
 					UpdataeRecipeGUI.this.dispose();
 					m.getView().get(0).setvisible(1);
 					UpdataeRecipeGUI.this.dispose();

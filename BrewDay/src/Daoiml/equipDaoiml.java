@@ -15,11 +15,11 @@ public class equipDaoiml implements equipDao{
     public void add(Equipment p) throws SQLException {
         Connection conn = null;
         PreparedStatement ps = null;
-        String sql = "insert into equipment(Equipment_Index,name,capacity)values(?,?,?)";
+        String sql = "insert into equipment(Equipment_Index,name,capacity)values(?,?,?)";//sql statement
         try{
             conn = DBUtils.getConnection();
             ps = conn.prepareStatement(sql);
-            ps.setInt(1, p.getEquipmentIndex());
+            ps.setInt(1, p.getEquipmentIndex());//set value for the first "?"
             ps.setString(2, p.getName());
             ps.setDouble(3, p.getCapacity());     
             ps.executeUpdate();
@@ -72,6 +72,7 @@ public class equipDaoiml implements equipDao{
 
 
     @Override
+    //find equipment by id
     public Equipment findById(int id) throws SQLException {
         Connection conn = null;
         PreparedStatement ps = null;
@@ -95,7 +96,7 @@ public class equipDaoiml implements equipDao{
         return p;
     }
 
- 
+ //get total capacity for all equipment
     @Override
     public double getTotalCapacity() throws SQLException {
     	double totallcapacity=0;
@@ -126,6 +127,7 @@ public class equipDaoiml implements equipDao{
     }
     
     @Override
+    //find all equipment and return
     public List<Equipment> findAll() throws SQLException {
         Connection conn = null;
         PreparedStatement ps = null;
@@ -152,7 +154,7 @@ public class equipDaoiml implements equipDao{
     }
     
     @Override
-    public int getMaxIndex() throws SQLException{
+    public int getMaxIndex() throws SQLException{//find the max id in database, it is used for generate new  equipment
     	double totallcapacity=0;
         Connection conn = null;
         PreparedStatement ps = null;
@@ -184,7 +186,7 @@ public class equipDaoiml implements equipDao{
         	current=s.getEquipmentIndex();
         	if(current>max)
         	{
-        		max=current;
+        		max=current;//update the max id
         	}
         	
         }

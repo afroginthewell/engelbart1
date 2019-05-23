@@ -27,7 +27,7 @@ import controller.RecipeIngredientController;
 import model.Recipe;
 import model.RecipeIngredient;
 import model.StorageIngredient;
-
+//the detail information of recipe
 public class recipeingredientDetailGUI extends JFrame{
 	public recipeingredientDetailGUI(ArrayList<RecipeIngredient> sIngredientList,Recipe m, RecipeController c,RecipeIngredient i,RecipeIngredientController ic) {
 		this.setTitle("RecipeIngredientDetail");

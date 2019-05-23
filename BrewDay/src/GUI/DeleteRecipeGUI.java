@@ -43,7 +43,7 @@ public class DeleteRecipeGUI extends JFrame{
 		JPanel emptyPanel = new JPanel();
 		emptyPanel.setLayout(new FlowLayout(1,10,10));
 		emptyPanel.setPreferredSize(new Dimension(400, 20));
-		///////////bg////////////
+		
 		
 		//for the first panel which is to palce the title
 		JPanel p = new JPanel();
@@ -84,7 +84,9 @@ public class DeleteRecipeGUI extends JFrame{
 
 					try {
 						c.deleteRecipe(targetIndex);
+						//delete recipe
 						ic.deleteRecipeIngredient(targetIndex);
+						//delete corresponding ingredient
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -114,8 +116,10 @@ public class DeleteRecipeGUI extends JFrame{
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				m.getView().get(0).setvisible(1);
+				//set the maitain page visibility to 1 
 				DeleteRecipeGUI.this.dispose();
 				m.getView().get(2).setvisible(0);
+				//set current page visibility to 0
 				try {
 					m.notifyView();
 				} catch (SQLException e1) {

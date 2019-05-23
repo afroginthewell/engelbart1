@@ -54,7 +54,7 @@ import controller.StorageIngredientController;
 
 public class TestSys {	
 		public static void main(String[] args) throws SQLException {
-			// Construct model
+			
 //note
 //			Note m=new Note();
 //			NoteController c=new NoteController(m);
@@ -66,11 +66,12 @@ public class TestSys {
 //recipe			
 			RecipeIngredient i = new RecipeIngredient(); // Use empty constructor
 			Recipe r=new Recipe();
-			RecipeIngredientController ic = new RecipeIngredientController(i);
+			RecipeIngredientController ic = new RecipeIngredientController(i);//put model in controller
 			RecipeController rc=new RecipeController(r);			
-			MaitainRecipesView mv=new MaitainRecipesView(r, rc,0);			
-			RecipeAddView av = new RecipeAddView(r, rc,i,ic,0);
+			MaitainRecipesView mv=new MaitainRecipesView(r, rc,0);			//put model and controller in View
+			RecipeAddView av = new RecipeAddView(r, rc,i,ic,0);//the initiale visibility is set to 0
 			RecipeDeleteView dv=new RecipeDeleteView(r, rc,i,ic,0);
+			
 			recipeListView lv=new recipeListView(r,rc,0);
 			UpdateRecipeView uv=new UpdateRecipeView(r, rc,i,ic,0);
 			updateRecipeIngredientView uiv=new updateRecipeIngredientView(r, rc,i,ic,0);
@@ -81,7 +82,7 @@ public class TestSys {
 			r.addView(lv);
 			r.addView(uv);
 			r.addView(uiv);
-			r.addView(detailv);
+			r.addView(detailv);//add all view to model
 			
 	
 //brew			
@@ -106,7 +107,7 @@ public class TestSys {
 			
 			
 			
-//equi			
+//for equipment			
 			Equipment em = new Equipment(); // Use empty constructor
 			EquipmentController ec = new EquipmentController(em);		
 			EquipmentView ev = new EquipmentView(em, ec,0);
@@ -121,7 +122,7 @@ public class TestSys {
 			
 			
 			
-// Test for Storage Ingredient 
+// for Storage Ingredient 
 
 			StorageIngredient sim = new StorageIngredient();
 			StorageIngredientController sic = new StorageIngredientController(sim);		
@@ -136,6 +137,7 @@ public class TestSys {
 			
 			
 			mainPageView main=new mainPageView(r, sim,em,bm,1);
+			//start main page, the visibility is set to 1
 
 		}
 	

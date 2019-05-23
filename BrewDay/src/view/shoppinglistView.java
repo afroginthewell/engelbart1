@@ -30,7 +30,8 @@ public class shoppinglistView extends View{
 		int recipeindex=m.getshopindex();
 		RecipeIngredientDao ri = new RecipeingredientDaoiml();
 		m.setShopList((ArrayList<RecipeIngredient>) ri.findbyrecipe(recipeindex));
-		c.computeamount(recipeindex, m.getBatchSize());		
+		c.computeamount(recipeindex, m.getBatchSize());	
+		//it is used to set the lacked amount of ingredient according to batch size
 		shoppinglistGUI shopGUI = new shoppinglistGUI(m,c);	
 		shopGUI.controlVisible(this.getvisible());
 	
@@ -43,7 +44,7 @@ public class shoppinglistView extends View{
 		int recipeindex=m.getshopindex();
 		RecipeIngredientDao ri = new RecipeingredientDaoiml();
 		m.setShopList((ArrayList<RecipeIngredient>) ri.findbyrecipe(recipeindex));
-	
+	//it is used to set the lacked amount of ingredient
 	try {c.computeamount(recipeindex, m.getBatchSize());}
 	catch(Exception e1)
 	{

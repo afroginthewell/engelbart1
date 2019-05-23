@@ -6,11 +6,11 @@ import controller.Controller;
 import controller.RecipeController;
 import model.Model;
 import model.Recipe;
-
+//father class for all View
 public class View {
 	private Model m;
 	private Controller c;
-	int visible;
+	int visible;// it is for set whether the View is visible or not
 	int index;
 	
 	public void setindex(int index) throws SQLException
@@ -18,6 +18,7 @@ public class View {
 		this.index=index;
 	}
 
+	//view cntain model and controller
 	public View(Model m, Controller c, int visible) {
 		this.m = m;
 		this.c = c;

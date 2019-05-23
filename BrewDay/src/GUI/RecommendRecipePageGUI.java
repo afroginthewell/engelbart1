@@ -52,7 +52,7 @@ public class RecommendRecipePageGUI extends JFrame {
 //		p1.setLayout(new FlowLayout(2, 10, 10));
 		p1.setLayout(new GridLayout(2, 2, 20, 10)); 
 		
-		JTextField BatchSize = new JTextField("Input Batach Size: ");
+		JTextField BatchSize = new JTextField("Input Batach Size: ");//this for input batch size
 		BatchSize.setFont(new Font("Verdana", Font.ITALIC, 15));
 		BatchSize.setBorder(BorderFactory.createEmptyBorder());
 		BatchSize.setOpaque(false);
@@ -61,7 +61,7 @@ public class RecommendRecipePageGUI extends JFrame {
 		JTextField BatchSizeText = new JTextField("", 18);
 		p1.add(BatchSizeText);
 		
-		JTextField search = new JTextField("search by year-month-day: ");
+		JTextField search = new JTextField("search by year-month-day: ");//this for input date to search
 		search.setFont(new Font("Verdana", Font.ITALIC, 15));
 		search.setBorder(BorderFactory.createEmptyBorder());
 		search.setOpaque(false);
@@ -90,7 +90,7 @@ public class RecommendRecipePageGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String getDate = searchtext.getText().toString();
 				try {
-					c.SearchByDate(getDate);
+					c.SearchByDate(getDate);//search by date
 				} catch (SQLException e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
@@ -125,6 +125,7 @@ public class RecommendRecipePageGUI extends JFrame {
 				} catch (Exception exception) {
 
 					JOptionPane.showMessageDialog(null, "Invaild input!!!");
+					//alert when wrong input
 					RecommendRecipePageGUI.this.dispose();
 					
 
@@ -148,6 +149,7 @@ public class RecommendRecipePageGUI extends JFrame {
 
 					} else {
 						m.setBatchSize(Index);
+						//set the batch size for recoomend
 
 						m.getView().get(0).setvisible(0);
 						RecommendRecipePageGUI.this.dispose();

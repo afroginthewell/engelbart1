@@ -29,14 +29,6 @@ import java.util.List;
 
 
 
-
-
-
-
-
-
-
-
 public class BrewController extends Controller {
 	private Brew model;
 
@@ -210,7 +202,8 @@ public class BrewController extends Controller {
 			
 		}
 		
-
+		//for result recipe, sort by total ingredient used
+		//for non-execcutable recipe, sort by the max batch size
 		Collections.sort(nRecipeList,new Comparators());
 		Collections.sort(rRecipeList,new compareamount());
 
@@ -223,7 +216,7 @@ public class BrewController extends Controller {
 		return equipment.getCapacity();
 	}
 	
-	
+	// add brew history into database
 	public boolean addHistory() throws SQLException {
 	
 		historyDaoiml h=new historyDaoiml();
@@ -233,6 +226,8 @@ public class BrewController extends Controller {
 		h.add(model);
 		return true;
 	}
+	
+	//this is for search function
 	
 	public void SearchByDate(String searchdate) throws SQLException {
 		ArrayList<Brew> searchList = new ArrayList<Brew>();

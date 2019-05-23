@@ -29,6 +29,7 @@ public class RecipeingredientDaoiml implements RecipeIngredientDao{
             ps.setDouble(2, p.getAmount());
             ps.setString(3, p.getUnit());
             ps.setInt(4, p.getrecipeIndex());
+            //recipe ingredient need recipe index
             ps.setString(5, p.getName());
             ps.executeUpdate();
         }catch(SQLException e){
@@ -78,7 +79,7 @@ public class RecipeingredientDaoiml implements RecipeIngredientDao{
         }        
     }
 
-
+//find all recipe ingredient for that recipe
     @Override
     public RecipeIngredient findById(int id) throws SQLException {
         Connection conn = null;

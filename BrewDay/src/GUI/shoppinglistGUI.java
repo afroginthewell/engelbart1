@@ -33,7 +33,7 @@ public class shoppinglistGUI extends JFrame{
 		//p2.setLayout(new GridLayout(m.getShopList().size(), 3, 20, 10)); 
 		p2.setLayout(new BoxLayout(p2, BoxLayout.PAGE_AXIS));
 		
-		for (RecipeIngredient r: m.getShopList()) 
+		for (RecipeIngredient r: m.getShopList()) //show all ingredient for that recipe
 		{
 			
 			JTextField ingredient1 = new JTextField(r.getName());
@@ -45,11 +45,11 @@ public class shoppinglistGUI extends JFrame{
 		//p2.setLayout(new GridLayout(m.getShopList().size(), 3, 20, 10)); 
 		p3.setLayout(new BoxLayout(p3, BoxLayout.PAGE_AXIS));
 		
-		for (double d: m.getShopingAmount()) 
+		for (double d: m.getShopingAmount()) //print lacked amount for all ingredient
 		{
 			if(d<0)
 			{
-				JTextField ingredient1 = new JTextField("enough");	
+				JTextField ingredient1 = new JTextField("enough");	//enough means not lack
 				ingredient1.setEditable(false);
 				p3.add(ingredient1);	
 			}

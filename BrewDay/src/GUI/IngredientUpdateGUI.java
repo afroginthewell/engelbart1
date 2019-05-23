@@ -50,6 +50,7 @@ public class IngredientUpdateGUI extends JFrame {
 		p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
 		
 		ArrayList<JTextArea> inputList = new ArrayList<JTextArea>();
+		//list for all input text
 
 		// Connected with Dao
 		storageingredientDaoiml sidi = new storageingredientDaoiml();

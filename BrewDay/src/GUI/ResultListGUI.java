@@ -71,6 +71,7 @@ public class ResultListGUI extends JFrame{
 			DecimalFormat df=new DecimalFormat("0.00");
 			
 			JTextField ARecipeQ = new JTextField(String.valueOf(df.format(r.gettotalingredient()))+"g used",3);
+			//print sorted total ingredient used
 			ARecipeQ.setForeground(Color.RED);
 			ARecipeQ.setFont(new Font("Verdana",Font.ITALIC,18));
 			ARecipeQ.setBorder(BorderFactory.createEmptyBorder());
@@ -80,6 +81,7 @@ public class ResultListGUI extends JFrame{
 			
 			
 			JButton AButton = new JButton("Detail"); 
+			//see detail for choosed recipe
 			AButton.setFont(new Font("Verdana",Font.ITALIC,14));
 			AButton.setContentAreaFilled(false);
 			AButton.addActionListener(new ActionListener() {

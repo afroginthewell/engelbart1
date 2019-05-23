@@ -23,7 +23,7 @@ public class RecipeDeleteView extends View{
 	private RecipeIngredientController ic;
 	ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
 	
-	
+	//view for delete recipe
 	
 	public RecipeDeleteView(Recipe m, RecipeController c,RecipeIngredient i,RecipeIngredientController ic,int visible) throws SQLException {
 		super(m, c,visible);
@@ -34,6 +34,7 @@ public class RecipeDeleteView extends View{
 		this.visible=visible;	
 		recipeList=c.updateRecipeView();
 		DeleteRecipeGUI deletrecipeGUI = new DeleteRecipeGUI(recipeList,m,c,i,ic);
+		//need controler and model for both recipe and recipe ingredient
 		deletrecipeGUI.controlVisible(this.getvisible());
 	}
 	

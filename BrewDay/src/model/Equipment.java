@@ -62,19 +62,14 @@ public class Equipment extends Model {
 		this.capacity = capacity;
 	}
 	
-//	public void addEquipmentToDB(Equipment equipment) throws SQLException
-//	{
-//		int newEquipIndex = edi.getMaxIndex() + 1;
-//		equipment.setEquipmentIndex(newEquipIndex);		
-//		edi.add(equipment);
-//		
-//	}
+
 
 	public void notifyView() throws SQLException {
 		for (View v: super.views) {
 			v.update();
 		}
 	} 
+	//update all views by equipment model
 	
 	
 }

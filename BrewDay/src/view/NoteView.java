@@ -11,7 +11,7 @@ public class NoteView extends View {
 	private NoteController c;
 	private Note m;
 	int visible;
-	
+	//the view for write note
 	public NoteView(Note m, NoteController c,int visible) {
 		
 		super(m,c,visible);

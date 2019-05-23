@@ -16,7 +16,7 @@ public class searchView extends View{
 	Brew m;
 	BrewController c=new BrewController(m);
 	int visible;
-	
+	//view for search
 	public searchView(Brew m, BrewController c, int visible) throws SQLException {
 		super(m, c, visible);
 		this.m = m;

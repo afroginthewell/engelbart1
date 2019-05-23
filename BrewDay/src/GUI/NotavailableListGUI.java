@@ -138,7 +138,7 @@ public class NotavailableListGUI extends JFrame{
 		p2.setLayout(new GridLayout(m.getnotRecommendedRecipeIndex().size(), 3, 20, 10)); 
 
 
-		for(Recipe r:m.getnotRecommendedRecipeIndex())
+		for(Recipe r:m.getnotRecommendedRecipeIndex())//for all recipe that is non-executable
 		{
 			JTextField ARecipe = new JTextField(r.getName()+"  "+String.valueOf(r.getLackAmount()+" L"),30);
 			ARecipe.setEditable(false);
@@ -150,7 +150,7 @@ public class NotavailableListGUI extends JFrame{
 			
 			AButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-
+					//when click, jump to shopping list page
 					m.setshopindex(r.getRecipeIndex());
 
 					m.getView().get(3).setvisible(0);

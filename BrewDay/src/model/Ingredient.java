@@ -1,7 +1,7 @@
 package model;
 
 import java.sql.SQLException;
-
+//parent class for storage ingredient and recipe ingredient
 public class Ingredient extends Model {
 	private int index;
 	private String name;

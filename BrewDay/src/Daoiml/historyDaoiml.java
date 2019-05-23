@@ -19,7 +19,7 @@ import model.StorageIngredient;
 
 public class historyDaoiml {
 
-	
+	//add brew history to database
 	 public void add(Brew p) throws SQLException {
 	        Connection conn = null;
 	        PreparedStatement ps = null;
@@ -28,7 +28,7 @@ public class historyDaoiml {
 	            conn = DBUtils.getConnection();
 	            ps = conn.prepareStatement(sql);
 	            ps.setDouble(1, p.getBatchSize());
-	            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+	            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//set date format
 	    		String createDate=df.format(new Date());
 	            ps.setString(2, createDate);
 	            ps.setInt(3, p.getInplementRecipeIndex());	
@@ -42,6 +42,8 @@ public class historyDaoiml {
 	        }
 	    }
 	 
+	 
+	 //fuzzy search for Time
 	 public List<Brew> find(String s) throws SQLException {
 	        Connection conn = null;
 	        PreparedStatement ps = null;

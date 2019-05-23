@@ -32,14 +32,16 @@ public class confirmView extends View{
 		
 		ConfirmChooseRecipeGUI cGUI = new ConfirmChooseRecipeGUI(m,c);	
 		cGUI.controlVisible(this.getvisible());
+		//set the visibility for the GUI
 	
 	}
 	
 	
-	public void update() throws SQLException
+	public void update() throws SQLException//update the GUI
 	{
 		ConfirmChooseRecipeGUI cGUI = new ConfirmChooseRecipeGUI(m,c);	
 		cGUI.controlVisible(this.getvisible());
+		
 	}
 
 }

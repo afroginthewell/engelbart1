@@ -11,7 +11,7 @@ public class EquipmentAddView extends View{
 	private EquipmentController c;
 	private Equipment m;
 	int visible;
-	
+	//the view for equipment adding
 	public EquipmentAddView(Equipment m, EquipmentController c, int visible) throws SQLException {
 		super(m, c, visible);
 		this.m = m;

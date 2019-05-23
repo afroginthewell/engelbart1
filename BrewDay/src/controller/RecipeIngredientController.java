@@ -28,7 +28,7 @@ public class RecipeIngredientController {
 		RecipeIngredientDao ri = new RecipeingredientDaoiml();
 		model=ri.findById(recipeid);
 		
-		if(changeAmount<0)
+		if(changeAmount<0)//if the substract amount larger then current amount, allert error message
 		{
 			
 			JOptionPane.showMessageDialog(null, "Cannot be smaller than 0");
@@ -78,6 +78,7 @@ public class RecipeIngredientController {
 		RecipeIngredientDao ri = new RecipeingredientDaoiml();
 		RecipeIngredientList = (ArrayList<RecipeIngredient>) ri.findAll();
 		return RecipeIngredientList;
+		//used to get all recipe ingredient in database
 	}	
 	
 	public ArrayList<RecipeIngredient> GetByRecipe(int id) throws SQLException {
@@ -85,5 +86,6 @@ public class RecipeIngredientController {
 		RecipeIngredientDao ri = new RecipeingredientDaoiml();
 		RecipeIngredientList = (ArrayList<RecipeIngredient>) ri.findbyrecipe(id);
 		return RecipeIngredientList;
+		//find all recipeingredient for particular recipe
 	}	
 }

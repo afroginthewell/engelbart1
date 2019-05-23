@@ -39,7 +39,7 @@ public class DetailRecipeInformationGUI extends JFrame{
 		JPanel emptyPanel = new JPanel();
 		emptyPanel.setLayout(new FlowLayout(1,10,10));
 		emptyPanel.setPreferredSize(new Dimension(400, 80));
-		///////////bg////////////
+		
 
 		JPanel p = new JPanel();
 		p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
@@ -48,10 +48,11 @@ public class DetailRecipeInformationGUI extends JFrame{
 		JPanel p2 = new JPanel();
 		p2.setLayout(new GridLayout(m.getdetailRecipe().size(), 3, 20, 10)); 
 
-		for (RecipeIngredient r: m.getdetailRecipe()) 
+		for (RecipeIngredient r: m.getdetailRecipe()) //for all recipe ingredient for thaat recipe
 		{
 			JTextArea iwater = new JTextArea(String.valueOf(r.getAmount()), 1,10);	
 			JTextField ingredient1 = new JTextField(r.getName()+"/"+String.valueOf(r.getAmount()*m.getBatchSize()+"g"));
+			//output ingredient information
 			ingredient1.setEditable(false);
 			p2.add(ingredient1);
 

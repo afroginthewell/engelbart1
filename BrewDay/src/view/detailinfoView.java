@@ -25,12 +25,16 @@ public class detailinfoView extends View{
 		this.m = m;
 		this.c = c;
 		this.visible=visible;	
+		
 		int recipeindex=m.getdetailindex();
+		//know which recipe you want to see detail
 		RecipeIngredientDao ri = new RecipeingredientDaoiml();
 		m.setdetailRecipe((ArrayList<RecipeIngredient>) ri.findbyrecipe(recipeindex));
+		//find all recipe ingredient for given recipe
 		
 		DetailRecipeInformationGUI detailGUI = new DetailRecipeInformationGUI(m,c);	
 		detailGUI.controlVisible(this.getvisible());
+		//set the visibility for the GUI
 	
 	}
 	

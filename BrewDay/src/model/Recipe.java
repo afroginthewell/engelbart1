@@ -10,8 +10,8 @@ public class Recipe extends Model{
 	private String name;
 	private double quantity;
 	private String unit;
-	private double tmpLackAmount;
-	private double totalingredient;
+	private double tmpLackAmount;//if recipe lack ingredient for particular batch size,count the max batch size for the stored ingredient
+	private double totalingredient;//the total ingredient used for particular batch size
 	
 	// Constructor
 	public Recipe() {

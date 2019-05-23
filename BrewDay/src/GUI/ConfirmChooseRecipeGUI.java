@@ -29,7 +29,7 @@ public class ConfirmChooseRecipeGUI extends JFrame{
 		this.setTitle("Confirm window");
 		this.setSize(700,500);// the biggest panel
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		///////////bg////////////
+		
 		JPanel bg = new JPanel() {
 			public void paintComponent(Graphics g) {
 				super.paintComponent(g);
@@ -42,7 +42,7 @@ public class ConfirmChooseRecipeGUI extends JFrame{
 		JPanel emptyPanel = new JPanel(); 
 		emptyPanel.setLayout(new FlowLayout(1,10,10));
 		emptyPanel.setPreferredSize(new Dimension(400, 70));
-		///////////bg////////////
+		
 
 		JPanel p = new JPanel();
 		//p.setLayout(new BoxLayout(p,BoxLayout.PAGE_AXIS));
@@ -74,7 +74,8 @@ public class ConfirmChooseRecipeGUI extends JFrame{
 				JOptionPane.showMessageDialog(null, "Do not drive after drinking!!!");
 				try {
 					c.implement(m.getdetailindex(), m.getBatchSize());
-					c.addHistory();
+					//controller do implement
+					c.addHistory();//add history to DB
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -82,7 +83,7 @@ public class ConfirmChooseRecipeGUI extends JFrame{
 				String getnote = note.getText().toString();
 				Note mm=new Note();
 				NoteController c=new NoteController(mm);
-				NoteView v=new NoteView(mm,c,1);
+				NoteView v=new NoteView(mm,c,1);//new note view
 				mm.addView(v);
 				m.getView().get(5).setvisible(0);
 				try {
@@ -109,7 +110,7 @@ public class ConfirmChooseRecipeGUI extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				m.getView().get(5).setvisible(0);
 				try {
-					m.notifyView();
+					m.notifyView();//update all view
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -134,7 +135,7 @@ public class ConfirmChooseRecipeGUI extends JFrame{
 	}
 
 	
-	// thisi sone is to control the visible
+	// this one is to control the visible
 	public void controlVisible(int flag) {
 		if(flag==1)
 		{

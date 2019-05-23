@@ -16,7 +16,7 @@ import model.Recipe;
 import model.StorageIngredient;
 
 public class mainPageView{
-
+//view for mainpage
 	
 	private Recipe r;
 	private StorageIngredient s;
@@ -34,6 +34,7 @@ public class mainPageView{
 		this.b=b;
 		this.visible=visible;	
 		MainpageGUI maitainGUI = new MainpageGUI(r,s,e,b);
+		//create mainpage
 		
 	}
 

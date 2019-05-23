@@ -70,7 +70,7 @@ public class EquipmentUpdateGUI extends JFrame {
 		cancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				m.getView().get(0).setvisible(1);
-
+				//set the maitain page visibility to 1 //set current page visibility to 0
 				m.getView().get(2).setvisible(0);
 				try {
 					m.notifyView();

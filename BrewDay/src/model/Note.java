@@ -24,7 +24,6 @@ public class Note extends Model{
 	
 	
 	
-	// make some new functions
 	public String getContent() {
 		return content;
 	}
@@ -44,7 +43,7 @@ public class Note extends Model{
 		this.noteIndex = noteIndex;
 	}
 	
-	// make it become visible
+	// update all view
 	public void notifyView() throws SQLException {
 		for (View v: super.views) {
 			v.update();

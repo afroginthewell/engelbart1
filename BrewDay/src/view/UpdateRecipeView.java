@@ -20,7 +20,7 @@ public class UpdateRecipeView extends View{
 	private RecipeIngredientController ic;
 	ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
 	
-	
+	//View for update ingredient for one recipe
 	
 	public UpdateRecipeView(Recipe m, RecipeController c,RecipeIngredient i,RecipeIngredientController ic,int visible) throws SQLException {
 		super(m, c,visible);
@@ -32,6 +32,7 @@ public class UpdateRecipeView extends View{
 		recipeList=c.updateRecipeView();
 		
 		UpdateGUI uprecipeGUI = new UpdateGUI(recipeList,m,c,i,ic);
+		//need controler and model for both recipe and recipe ingredient
 		uprecipeGUI.controlVisible(this.getvisible());
 	}
 	

@@ -16,7 +16,7 @@ public class EquipmentView extends View{
 	
 	ArrayList<Equipment> equipList = new ArrayList<Equipment>();
 	
-	
+	//view for showing equipment list
 	public EquipmentView(Equipment m, EquipmentController c,int visible) throws SQLException {
 		super(m, c,visible);
 		this.m = m;
@@ -30,10 +30,7 @@ public class EquipmentView extends View{
 	public void update() throws SQLException
 	{
 		equipList = c.updateView();
-//		for(Equipment e:equipList)
-//		{
-//			System.out.println(e.getName());
-//		}
+
 		EquipmentGUI equipmentGUI = new EquipmentGUI(equipList, c,m);
 		System.out.println(this.getvisible());
 		equipmentGUI.controlVisible(this.getvisible());

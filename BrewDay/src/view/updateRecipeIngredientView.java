@@ -38,10 +38,12 @@ public class updateRecipeIngredientView extends View{
 		this.visible=visible;	
 		
 		ArrayList<RecipeIngredient> sIngredientList = new ArrayList<RecipeIngredient>();
+		//got all ingredient for that recipe
 		sIngredientList=ic.GetByRecipe(index);
 		
 		UpdataeRecipeGUI addrecipeGUI = new UpdataeRecipeGUI(sIngredientList,m,c,i,ic);
 		addrecipeGUI.controlVisible(this.getvisible());
+		//need controler and model for both recipe and recipe ingredient
 	}
 	
 	

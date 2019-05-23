@@ -16,6 +16,8 @@ public class RecommendView extends View{
 	BrewController c=new BrewController(m);
 	int visible;
 	
+	
+	//this page is for What should I brew today
 	public RecommendView(Brew m, BrewController c, int visible) {
 		super(m, c, visible);
 		this.m = m;

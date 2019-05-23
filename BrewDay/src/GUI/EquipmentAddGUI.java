@@ -89,9 +89,11 @@ public class EquipmentAddGUI extends JFrame{
 				
 					String name = nameText.getText().toString();
 					
+					
 					Double Index=-100.0;
 					try {
 					Index = Double.parseDouble(amountText.getText().toString());
+					//detect error
 				} catch (Exception exception) {
 				
 					JOptionPane.showMessageDialog(null, "Invaild input!!!");
@@ -105,7 +107,7 @@ public class EquipmentAddGUI extends JFrame{
 				
 				
 				if (Index < 0) {
-					if(Index!=-100.0)
+					if(Index!=-100.0)//shouln't smaller then 0
 					{
 					JOptionPane.showMessageDialog(null, "Input should be bigger than 0!!!");
 					EquipmentAddGUI.this.dispose();
