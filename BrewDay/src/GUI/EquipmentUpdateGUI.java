@@ -25,6 +25,7 @@ import view.EquipmentView;
 
 public class EquipmentUpdateGUI extends JFrame {
 	public EquipmentUpdateGUI(Equipment m,EquipmentController c) {
+		//this is the main panel
 		this.setTitle("Equipment update page");
 		this.setSize(500, 500);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -43,6 +44,7 @@ public class EquipmentUpdateGUI extends JFrame {
 		emptyPanel.setPreferredSize(new Dimension(400, 80));
 		///////////bg////////////
 
+		// this is the panel for the text filed which is write the sentence
 		JPanel p = new JPanel();
 		p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
 		JTextField amount = new JTextField("Input how much you want add(+) or subtract(-)?");
@@ -56,6 +58,7 @@ public class EquipmentUpdateGUI extends JFrame {
 		p.add(amount);
 		p.add(amountText);
 
+		// this panel is for the button
 		JPanel p1 = new JPanel();
 		p1.setLayout(new FlowLayout(1, 10, 10));
 		JButton cancel = new JButton("Cancel");
@@ -63,6 +66,7 @@ public class EquipmentUpdateGUI extends JFrame {
 		cancel.setFont(new Font("Verdana",Font.ITALIC,15));
 		cancel.setOpaque(false);
 		
+		//add the action listener to the button
 		cancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				m.getView().get(0).setvisible(1);
@@ -79,12 +83,13 @@ public class EquipmentUpdateGUI extends JFrame {
 		});
 		p1.add(cancel);
 
-
+		// add one new button
 		JButton update = new JButton("Update");
 		update.setContentAreaFilled(false);
 		update.setFont(new Font("Verdana",Font.ITALIC,15));
 		update.setOpaque(false);
 		
+		//add the action listener
 		update.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String getamountText = amountText.getText().toString();
@@ -134,6 +139,8 @@ public class EquipmentUpdateGUI extends JFrame {
 		bg.add(p);
 		this.add(bg);
 	}
+	
+	// set the visible
 	public void controlVisible(int flag) {
 		if (flag == 1) {
 			this.setVisible(true);
@@ -143,29 +150,4 @@ public class EquipmentUpdateGUI extends JFrame {
 
 	}
 }
-
-
-
-//try {
-//	Index = Double.parseDouble(BatchSizeText.getText().toString());
-//} catch (Exception exception) {
-//
-//	JOptionPane.showMessageDialog(null, "Invaild input!!!");
-//	RecommendRecipePageGUI.this.dispose();
-//
-//}
-//
-//
-//if (Index < 0) {
-//	JOptionPane.showMessageDialog(null, "Invaild input!!!");
-//	RecommendRecipePageGUI.this.dispose();
-//
-//} else {
-//	m.setBatchSize(Index);
-//
-//	m.getView().get(0).setvisible(0);
-//	RecommendRecipePageGUI.this.dispose();
-//	m.getView().get(1).setvisible(1);
-//}
-//
 
