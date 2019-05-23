@@ -42,9 +42,12 @@ public class StorageIngredientController extends Controller {
 				JOptionPane.showMessageDialog(null, "Invalid input!");
 			}
 			
+			// Determine the amount we need to update
 			double updatedAmount = sIngredientList.get(i).getAmount() + changedAmount;
 			double tmpAmount = sIngredientList.get(i).getAmount();
 			sIngredientList.get(i).setAmount(updatedAmount);
+			
+			// if we dont have enough amount to dupdate
 			if(updatedAmount<0)
 			{
 				// Alert error information
@@ -52,6 +55,7 @@ public class StorageIngredientController extends Controller {
 				sIngredientList.get(i).setAmount(0);
 			}
 			
+			// Update the database by dao object
 			try {
 				sidi.update(sIngredientList.get(i));
 			} catch (SQLException e1) {
@@ -65,6 +69,7 @@ public class StorageIngredientController extends Controller {
 		// Connected with Dao
 		storageingredientDaoiml sidi = new storageingredientDaoiml();
 		int newIngreIndex = sidi.getMaxIndex() + 1;
+		// variable setting
 		model.setindex(newIngreIndex);
 		model.setName(name);
 		model.setAmount(amount);
@@ -73,7 +78,9 @@ public class StorageIngredientController extends Controller {
 	}
 
 	public ArrayList<StorageIngredient> updateView() throws SQLException {
+		// Update view function
 		storageingredientDaoiml sidi = new storageingredientDaoiml();
+		// Here we need to update all the storage ingredient inside the pages
 		ArrayList<StorageIngredient> sIngredientList = new ArrayList<StorageIngredient>();
 		sIngredientList = (ArrayList<StorageIngredient>) sidi.findAll();
 		return sIngredientList;

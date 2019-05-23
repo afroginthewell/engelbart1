@@ -56,7 +56,8 @@ public class IngredientAddGUI extends JFrame {
 		p1.setLayout(new GridLayout(2, 2, 20, 10)); 
 		Dimension textSize = new Dimension(100,40);
 		
-		
+		// First text field
+		// Indicate the use what they want todo
 		JTextArea addIngredient = new JTextArea("Which ingredient you want to add?");
 		addIngredient.setFont(new Font("Verdana",Font.ITALIC,13));
 		addIngredient.setBorder(BorderFactory.createEmptyBorder());
@@ -65,11 +66,12 @@ public class IngredientAddGUI extends JFrame {
 		inputAddIngredient.setPreferredSize(textSize);
 		inputAddIngredient.setFont(new Font("Verdana",Font.ITALIC,15));
 		inputAddIngredient.setBorder(BorderFactory.createEmptyBorder());
-		//inputAddIngredient.setOpaque(false);
+		
+		// Add the ingredient text field
 		p1.add(addIngredient);
 		p1.add(inputAddIngredient);
 		
-		
+		// Use text field as the guidline
 		JTextArea addAmount = new JTextArea("How much you want to add?");
 		addAmount.setPreferredSize(textSize);
 		addAmount.setPreferredSize(textSize);
@@ -80,7 +82,8 @@ public class IngredientAddGUI extends JFrame {
 		JTextArea inputaddAmount = new JTextArea("");
 		inputaddAmount .setFont(new Font("Verdana",Font.ITALIC,15));
 		inputaddAmount .setBorder(BorderFactory.createEmptyBorder());
-		//inputaddAmount .setOpaque(false);
+		
+		// Add component to page
 		p1.add(addAmount);
 		p1.add(inputaddAmount );
 		
@@ -91,18 +94,18 @@ public class IngredientAddGUI extends JFrame {
 		b1.setFont(new Font("Verdana",Font.ITALIC,15));
 		b1.setOpaque(false);
 		
+		// Set the listener
 		b1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 						
-				
+					// Get the info. from input
 					String name = inputAddIngredient.getText().toString();
 					String amount = inputaddAmount.getText().toString();
 					
-					
-					
-					
+					// Flage to identify the invalid input
 					Double Index=-100.0;
 					try {
+						// Error input
 					Index = Double.parseDouble(amount);
 					} catch (Exception exception) {
 					JOptionPane.showMessageDialog(null, "Invaild input!!!");
@@ -117,6 +120,7 @@ public class IngredientAddGUI extends JFrame {
 				if (Index < 0) {
 					if(Index!=-100.0)
 					{
+						// Numeriacla error input
 					JOptionPane.showMessageDialog(null, "input should be bigger then 0!!!");
 					IngredientAddGUI.this.dispose();
 					m.getView().get(2).setvisible(0);
@@ -154,12 +158,13 @@ public class IngredientAddGUI extends JFrame {
 
 			}
 		);
-		
+		// Set cancel operations
 		JButton b2 = new JButton("Cancel");
 		b2.setContentAreaFilled(false);
 		b2.setFont(new Font("Verdana",Font.ITALIC,15));
 		b2.setOpaque(false);
 		
+		// corrdinate the page visibility in the system
 		b2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				m.getView().get(0).setvisible(1);
@@ -174,6 +179,7 @@ public class IngredientAddGUI extends JFrame {
 				IngredientAddGUI.this.dispose();
 			}
 		});
+		// Add component
 		p2.add(b1);
 		p2.add(b2);
 		p.add(p1);
@@ -190,7 +196,8 @@ public class IngredientAddGUI extends JFrame {
 		
 		IngredientAddGUI.this.setAlwaysOnTop(true);
 	}
-
+	
+	// Invere visibility
 	public void controlVisible(int flag) {
 		if (flag == 1) {
 			this.setVisible(true);

@@ -29,7 +29,7 @@ public class IngredientMantainGUI extends JFrame{
 		this.setSize(500,800);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		///////////bg////////////
+		///////////UISetting////////////
 		JPanel bg = new JPanel() {
 			public void paintComponent(Graphics g) {
 				super.paintComponent(g);
@@ -41,7 +41,7 @@ public class IngredientMantainGUI extends JFrame{
 		JPanel emptyPanel = new JPanel();
 		emptyPanel.setLayout(new FlowLayout(1,10,10));
 		emptyPanel.setPreferredSize(new Dimension(400, 80));
-		///////////bg////////////
+		///////////UIsetting////////////
 
 		JPanel p = new JPanel();
 		p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
@@ -62,10 +62,13 @@ public class IngredientMantainGUI extends JFrame{
 		p2.setLayout(new GridLayout(sIngredientList.size(), 1, 20, 10)); 
 		//p2.setLayout(new FlowLayout(1,0,0));
 		
+		// Dynamically load the list into the GUI
 		for (StorageIngredient si : sIngredientList) {
 			JTextField listName = new JTextField(si.getName(),1);
 			JTextField listAmount = new JTextField(""+si.getAmount(),1);
 			p2.add(listName);
+			
+			// Set the component parameter
 			listName.setForeground(Color.RED);
 			listName.setFont(new Font("Verdana",Font.ITALIC,20));
 			listName.setBorder(BorderFactory.createEmptyBorder());
@@ -81,6 +84,7 @@ public class IngredientMantainGUI extends JFrame{
 		}
 		p.add(p2); 
 		
+		// Setting all the button inside
 		JPanel p3 = new JPanel();
 		p3.setLayout(new FlowLayout(1,10,10));
 		JButton Add = new JButton("Add"); 
@@ -156,6 +160,7 @@ public class IngredientMantainGUI extends JFrame{
 	}
 
 	public void controlVisible(int flag) {
+		// INverse the visibility currently 
 		if(flag==1)
 		{
 			this.setVisible(true);

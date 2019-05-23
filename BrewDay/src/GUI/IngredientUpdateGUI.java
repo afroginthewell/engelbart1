@@ -63,6 +63,8 @@ public class IngredientUpdateGUI extends JFrame {
 		amount.setEditable(false);
 		p3.add(amount);
 		
+		// dynamically to load the storage ingredient list
+		
 		for (StorageIngredient si : sIngredientList) {
 			JPanel information = new JPanel();
 			//information.setLayout(new BoxLayout(information, BoxLayout.X_AXIS));
@@ -70,7 +72,7 @@ public class IngredientUpdateGUI extends JFrame {
 			ingredientType.setEditable(false);
 			ingredientType.setFont(new Font("Verdana",Font.ITALIC,15));
 
-			
+			// Identify the attribute of ingrdient want to update
 			JTextArea input = new JTextArea("",1,10);
 			input.setFont(new Font("Verdana",Font.ITALIC,15));
 
@@ -85,16 +87,18 @@ public class IngredientUpdateGUI extends JFrame {
 			p1.add(unit);
 		}
 		
+		// Set the panel 2 for update
 		JPanel p2 = new JPanel(new FlowLayout(1, 10, 10));
 		JButton Subtract = new JButton("Update");
 		Subtract.setContentAreaFilled(false);
 		Subtract.setFont(new Font("Verdana",Font.ITALIC,15));
 		Subtract.setOpaque(false);
 		
+		// Set listenr
 		Subtract.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean checkLegal = true;
-
+				
 				try {
 					c.updateAmount(inputList, sIngredientList);
 					
@@ -144,6 +148,7 @@ public class IngredientUpdateGUI extends JFrame {
 		p.add(p2);
 		
 		
+		// Add component
 		
 		bg.add(emptyPanel);
 		bg.add(p);
@@ -154,7 +159,8 @@ public class IngredientUpdateGUI extends JFrame {
 		p2.setOpaque(false);
 		p.setOpaque(false);
 	}
-
+	
+	// inverse the visibility
 	public void controlVisible(int flag) {
 		if (flag == 1) {
 			this.setVisible(true);
